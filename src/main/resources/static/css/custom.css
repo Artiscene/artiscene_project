@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat');
+
+body{
+    background-color: gray;
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    font-family: 'Walter Turncoat', cursive;
+}
+
+.main-header{
+    text-align: center;
+    font-size: 5em;
+    color: black;
+}
+
+.header {
+    font-family: 'Walter Turncoat', cursive;
+}
+
+#homepage-header-block {
+    background-image: url('../img/block-background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 12em 0 18em 0;
+}
+
