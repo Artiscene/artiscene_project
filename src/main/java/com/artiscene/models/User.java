@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * Created by vanessamnoble on 2/17/17.
@@ -18,6 +19,7 @@ import javax.validation.constraints.Size;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private int id;
 
     @Column(nullable = false)
@@ -42,7 +44,7 @@ public class User {
     private String profile_pic;
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -50,7 +52,7 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username) {
@@ -58,7 +60,7 @@ public class User {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -66,7 +68,7 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
@@ -74,7 +76,7 @@ public class User {
     }
 
     public String getPhone() {
-        return phone;
+        return this.phone;
     }
 
     public void setPhone(String phone) {
@@ -82,7 +84,7 @@ public class User {
     }
 
     public String getProfile_pic() {
-        return profile_pic;
+        return this.profile_pic;
     }
 
     public void setProfile_pic(String profile_pic) {
@@ -90,7 +92,7 @@ public class User {
     }
 
     public List<Project> getProjects() {
-        return projects;
+        return this.projects;
     }
 
     public void setProjects(List<Project> projects) {
@@ -102,12 +104,13 @@ public class User {
     private List<Project> projects;
 
     public User(User user) {
-        username = user.username;
-        email = user.email;
-        password = user.password;
-        phone = user.phone;
-        profile_pic = user.profile_pic;
-        projects = user.projects;
+        this.id = user.id;
+        this.username = user.username;
+        this.email = user.email;
+        this.password = user.password;
+        this.phone = user.phone;
+        this.profile_pic = user.profile_pic;
+        this.projects = user.projects;
     }
     public User(){
 
