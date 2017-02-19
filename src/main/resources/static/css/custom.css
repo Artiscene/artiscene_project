@@ -153,6 +153,12 @@ a:hover {
     flex-wrap: wrap;
 }
 
+#favorites-div {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 30px;
+}
+
 #favorites-div > .sub-header {
     color: white;
 }
