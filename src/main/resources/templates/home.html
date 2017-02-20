@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/header :: header('ARTiScene')"></head>
 <body>
 
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <div id="homepage-header-block" class="container-fluid">
-        <h1 class="header main-header">ARTiScene</h1>
-    </div>
+        <h1 class="main-header">ARTiScene</h1>
+    </div> <!-- end of homepage-header-block -->
 
+    <div id="homepage-art-block" class="container">
+        <a href=""><h3 class="header">Featured Artwork</h3></a>
+        <div class="container scroll-block">
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <a href="">View More...</a>
+        </div>
+    </div> <!-- end of homepage-art-block -->
+
+    <div id="homepage-post-block" class="container">
+        <a href=""><h3 class="header">Featured Posts</h3></a>
+        <div class="container scroll-block">
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <img class="thumbnail" src="" />
+            <a href="">View More...</a>
+        </div>
+    </div> <!-- end of homepage-post-block -->
 
     <div th:replace="fragments/footer :: footer"></div>
 
