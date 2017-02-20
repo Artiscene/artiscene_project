@@ -34,16 +34,24 @@ public class Project {
     @Column(nullable = false, length = 100)
     private String img_url;
 
-    @ManyToMany(mappedBy = "projects")
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+    private List<Favorite> favorites;
+
+    @OneToOne
+    private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="tag_projects",
+            joinColumns={@JoinColumn(name="tag_id")},
+            inverseJoinColumns={@JoinColumn(name="project_id")}
+    )
     private List<Tag> tags;
 
-
-    @ManyToOne
-    @JoinColumn(name="user_id") //define at the tag level
-    private User user;
-//    @JsonManagedReference
-
     public Project(){}
+
 
     public int getId() {
         return this.id;
