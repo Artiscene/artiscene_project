@@ -7,24 +7,27 @@ import javax.persistence.*;
 /**
  * Created by vanessamnoble on 2/17/17.
  */
-/*
+
 @Entity
 @Table(name="favorites")
 public class Favorite {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+
     public Favorite(User user, Project project) {
         this.user = user;
         this.project = project;
+
     }
 
     @ManyToOne
-    @JoinColumn (name = "user_id") // define at the table level
-    @JsonManagedReference
-    private User user;  // owner, author
+    @JoinColumn(name="user_id")
+    private User user;
 
     @ManyToOne
-    @JoinColumn (name = "project_id") // define at the table level
-    @JsonManagedReference
-    private Project project;  // owner, author
+    @JoinColumn(name="project_id")
+    private Project project;
 
     public Favorite(){}
 
@@ -43,5 +46,13 @@ public class Favorite {
     public void setProject(Project project) {
         this.project = project;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
-*/
+
