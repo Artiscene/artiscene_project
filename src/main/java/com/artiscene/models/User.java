@@ -42,19 +42,14 @@ public class User {
     @Column(nullable = false, length = 100)
     private String profile_pic;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-//    private List<Favorite> favorites;
-    @JoinTable(
-        name="favorite",
-        joinColumns={@JoinColumn(name="user_id")},
-        inverseJoinColumns={@JoinColumn(name="artwork_id")}
-    )
-//    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Favorite> favorites;
 
 
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Project> projects;
+
+
+
 
 
     public User(){}
@@ -107,13 +102,7 @@ public class User {
         this.profile_pic = profile_pic;
     }
 
-    public List<Project> getProjects() {
-        return this.projects;
-    }
 
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
-    }
 
     public User(User user) {
         this.id = user.id;
@@ -122,7 +111,7 @@ public class User {
         this.password = user.password;
         this.phone = user.phone;
         this.profile_pic = user.profile_pic;
-        this.projects = user.projects;
+
     }
 
 }

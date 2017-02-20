@@ -17,12 +17,7 @@ public class Tag {
     @Column(nullable = false, length = 50)
     private String tag_name;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name="tag_projects",
-            joinColumns={@JoinColumn(name="tag_id")},
-            inverseJoinColumns={@JoinColumn(name="project_id")}
-    )
+    @ManyToMany(mappedBy = "tags")
     private List<Project> projects;
 
     public Tag(){}
