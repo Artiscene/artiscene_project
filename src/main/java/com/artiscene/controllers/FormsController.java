@@ -20,4 +20,10 @@ public class FormsController {
         return "forms/login";
     }
 
+    @GetMapping("/forms/upload")
+    public String uploadPage(Model model) { return "forms/upload"; }
+
+    @GetMapping("/forms/purchase")
+    public String purchasePage(Model model) { return "forms/purchase"; }
+
 }

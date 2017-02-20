@@ -10,14 +10,14 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">ARTiScene</a>
+                    <a class="navbar-brand" href="/">ARTiScene</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Forum</a></li>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Log-In</a></li>
+                    <li><a th:href="@{/gallery}">Gallery</a></li>
+                    <li><a th:href="@{/forum}">Forum</a></li>
+                    <li><a th:href="@{/register}">Register</a></li>
+                    <li><a th:href="@{/login}">Log-In</a></li>
                 </ul>
             </div>
         </nav>
