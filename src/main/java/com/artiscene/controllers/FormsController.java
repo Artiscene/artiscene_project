@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FormsController {
 
+
     @GetMapping("/forms/register")
     public String registerPage(Model model){
         return "forms/register";
@@ -17,7 +18,17 @@ public class FormsController {
 
     @GetMapping("/forms/login")
     public String loginPage(Model model){
+
+    @GetMapping("/register")
+    public String registerPage(){
+        return "forms/register";
+    }
+
+    @GetMapping("/login")
+    public String loginPage(){
+
         return "forms/login";
     }
 
 }
+

@@ -166,5 +166,27 @@ a:hover {
 #favorites-div > .artwork-div > .thumbnail {
     max-width: 150px;
     max-height: 150px;
+
+}
+
+#gallery-header-block {
+    background-image: url('../img/streetart.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 8em 0 8em 0;
+    text-align: center;
+    color: white;
+}
+
+#gallery-header-block > h1 {
+    font-size: 4em;
+}
+
+#gallery-search-div {
+    margin: 0 auto;
+    width: 80%;
+
 }
 
