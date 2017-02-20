@@ -29,6 +29,23 @@ public class Project {
     @Type(type="org.hibernate.type.NumericBooleanType")
     private Boolean forSale;
 
+    @Column(nullable = false)
+    private int views;
+
+    @Column(nullable = false, length = 100)
+    private String img_url;
+
+    @ManyToOne
+    @JoinColumn(name="tag_id") //define at the tag level
+    @JsonManagedReference
+    private List<Tag> tags;
+
+    @ManyToOne
+    @JoinColumn (name = "user_id") // define at the table level
+    @JsonManagedReference
+    private User user;  // owner, author
+
+    public Project(){}
 
     public int getId() {
         return this.id;
@@ -86,12 +103,6 @@ public class Project {
         this.user = user;
     }
 
-    @Column(nullable = false)
-    private int views;
-
-    @Column(nullable = false, length = 100)
-    private String img_url;
-
     public Project(Project project) {
         this.title = project.title;
         this.forSale = project.forSale;
@@ -100,17 +111,5 @@ public class Project {
         this.tags = project.tags;
         this.user = project.user;
     }
-
-    @ManyToOne
-    @JoinColumn(name="tag_id") //define at the tag level
-    @JsonManagedReference
-    private List<Tag> tags;
-
-    @ManyToOne
-    @JoinColumn (name = "user_id") // define at the table level
-    @JsonManagedReference
-    private User user;  // owner, author
-
-    public Project(){}
 
 }
