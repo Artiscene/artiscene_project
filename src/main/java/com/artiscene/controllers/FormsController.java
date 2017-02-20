@@ -15,4 +15,9 @@ public class FormsController {
         return "forms/register";
     }
 
+    @GetMapping("/froms/login")
+    public String loginPage(Model model){
+        return "forms/login";
+    }
+
 }
