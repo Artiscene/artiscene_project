@@ -7,6 +7,7 @@ import javax.persistence.*;
 /**
  * Created by vanessamnoble on 2/17/17.
  */
+/*
 @Entity
 @Table(name="favorites")
 public class Favorite {
@@ -43,3 +44,4 @@ public class Favorite {
         this.project = project;
     }
 }
+*/

@@ -1,6 +1,7 @@
 package com.artiscene.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by vanessamnoble on 2/17/17.
@@ -14,8 +15,15 @@ public class Tag {
     private int id;
 
     @Column(nullable = false, length = 50)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tag")
     private String tag_name;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="tag_projects",
+            joinColumns={@JoinColumn(name="tag_id")},
+            inverseJoinColumns={@JoinColumn(name="project_id")}
+    )
+    private List<Project> projects;
 
     public Tag(){}
 

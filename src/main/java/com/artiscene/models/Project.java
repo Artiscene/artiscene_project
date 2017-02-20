@@ -16,7 +16,6 @@ import java.util.List;
 @Table(name="project")
 public class Project {
     @Id
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -35,15 +34,14 @@ public class Project {
     @Column(nullable = false, length = 100)
     private String img_url;
 
-    @ManyToOne
-    @JoinColumn(name="tag_id") //define at the tag level
-    @JsonManagedReference
+    @ManyToMany(mappedBy = "projects")
     private List<Tag> tags;
 
+
     @ManyToOne
-    @JoinColumn (name = "user_id") // define at the table level
-    @JsonManagedReference
-    private User user;  // owner, author
+    @JoinColumn(name="user_id") //define at the tag level
+    private User user;
+//    @JsonManagedReference
 
     public Project(){}
 
@@ -95,13 +93,7 @@ public class Project {
         this.tags = tags;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Project(Project project) {
         this.title = project.title;
@@ -109,7 +101,7 @@ public class Project {
         this.views = project.views;
         this.img_url = project.img_url;
         this.tags = project.tags;
-        this.user = project.user;
+
     }
 
 }

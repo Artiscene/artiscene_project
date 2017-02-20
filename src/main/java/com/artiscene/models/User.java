@@ -19,7 +19,6 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private int id;
 
     @Column(nullable = false)
@@ -43,9 +42,20 @@ public class User {
     @Column(nullable = false, length = 100)
     private String profile_pic;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
-    @JsonBackReference
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+//    private List<Favorite> favorites;
+    @JoinTable(
+        name="favorite",
+        joinColumns={@JoinColumn(name="user_id")},
+        inverseJoinColumns={@JoinColumn(name="artwork_id")}
+    )
+//    @JsonBackReference
+
+
+
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Project> projects;
+
 
     public User(){}
 
