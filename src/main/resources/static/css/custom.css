@@ -39,6 +39,12 @@ a:hover {
     font-size: 40px;
 }
 
+.sub-header {
+    font-family: 'Walter Turncoat', cursive;
+    padding:10px;
+    font-size: 26px;
+}
+
 .scroll-block {
     display: inline-flex;
     flex-direction: row;
@@ -69,5 +75,96 @@ a:hover {
     padding: 10em 0 16em 0;
 }
 
+#portfolio-header-block {
+    background-image: url('../img/nebula.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: .2em;
+    text-align: center;
+    color: white;
+    font-size: 3em;
+}
 
+#profile-header {
+    text-shadow: 1px 2px 2px black;
+}
+
+#profile-edit-btn {
+    display: flex;
+    float: right;
+    margin: 10px;
+    padding: 10px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: 1px 2px 2px black;
+    color: black;
+}
+
+#profile-body{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#profile-info-div {
+    display: flex;
+    flex-direction: column;
+    float:left;
+    padding: 10px;
+    border: 1px solid white;
+    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8dbb1;
+    color:black;
+}
+
+#profile-main-column {
+    display:flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px;
+}
+
+#profile-about-me{
+    background-color: #a4f8d3;
+    color: black;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid #f8dbb1;
+    padding: 10px;
+}
+
+#portfolio-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#portfolio-div > .sub-header{
+    color: white;
+}
+
+.artwork-div {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#favorites-div {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+#favorites-div > .sub-header {
+    color: white;
+}
+
+#favorites-div > .artwork-div > .thumbnail {
+    max-width: 150px;
+    max-height: 150px;
+}
 
