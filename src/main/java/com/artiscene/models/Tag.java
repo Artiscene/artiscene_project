@@ -17,11 +17,11 @@ public class Tag {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tag")
     private String tag_name;
 
+    public Tag(){}
+
     public Tag(String tag_name) {
         this.tag_name = tag_name;
     }
-
-    public Tag(){}
 
     public int getId() {
         return id;

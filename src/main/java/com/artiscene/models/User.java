@@ -43,6 +43,12 @@ public class User {
     @Column(nullable = false, length = 100)
     private String profile_pic;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    @JsonBackReference
+    private List<Project> projects;
+
+    public User(){}
+
     public int getId() {
         return this.id;
     }
@@ -99,10 +105,6 @@ public class User {
         this.projects = projects;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
-    @JsonBackReference
-    private List<Project> projects;
-
     public User(User user) {
         this.id = user.id;
         this.username = user.username;
@@ -111,9 +113,6 @@ public class User {
         this.phone = user.phone;
         this.profile_pic = user.profile_pic;
         this.projects = user.projects;
-    }
-    public User(){
-
     }
 
 }
