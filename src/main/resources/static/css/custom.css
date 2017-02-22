@@ -83,6 +83,8 @@ a:hover {
     padding: 10em 0 16em 0;
 }
 
+/* Portfolio Page */
+
 #portfolio-header-block {
     background-image: url('../img/nebula.jpeg');
     background-attachment: fixed;
@@ -177,6 +179,8 @@ a:hover {
 
 }
 
+/* Gallery Page */
+
 #gallery-header-block {
     background-image: url('../img/streetart.jpeg');
     background-size: cover;
@@ -197,6 +201,13 @@ a:hover {
     width: 80%;
 
 }
+
+/* Forum Page */
+
+#forum-header-div {
+    background-image: url('');
+}
+
 
 /* Form styling */
 
