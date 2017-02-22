@@ -20,6 +20,7 @@ public class FormsController {
     private UserRepository repository;
     private PasswordEncoder encoder;
 
+
     @Autowired
     public FormsController(UserRepository repository, PasswordEncoder encoder){
         this.repository=repository;
@@ -29,6 +30,10 @@ public class FormsController {
 
     @GetMapping("/login")
     public String loginPage(Model model) {
+
+
+   
+
 
         return "forms/login";
     }
@@ -52,4 +57,13 @@ public class FormsController {
         return "redirect:/login";
 
     }
+
+    @GetMapping("forms/upload")
+    public String uploadPage() { return "forms/upload"; }
+
+    @GetMapping("forms/purchase")
+    public String purchasePage(Model model) { return "forms/purchase"; }
+
+
 }
+

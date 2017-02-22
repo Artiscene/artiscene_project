@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/header :: header('Register')"></head>
+
+<head th:replace="fragments/header :: header('Login - ARTiScene')"></head>
+
 <body>
+
 <div th:replace="fragments/navbar :: navbar"></div>
 
 <div th:if="${param.error}">
@@ -28,4 +31,5 @@
 <div th:replace="fragments/footer :: footer"></div>
 
 </body>
+
 </html>
