@@ -4,32 +4,31 @@
 <head th:replace="fragments/header :: header('Login - ARTiScene')"></head>
 
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
 
-    <div class="form-body">
-        <div class="form-header">
-            <h1 class="header">Login</h1>
-        </div>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-        <div class="container">
-            <form th:action="@{/forms/login}" method="POST">
-                <!-- Username -->
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input name="username" id="username" class="form-control" />
-                </div>
-                <!-- Password -->
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input name="password" id="password" class="form-control" />
-                </div>
-                <button class="btn" type="submit">Login</button>
-            </form>
-        </div><!-- end of container -->
-    </div><!-- end of form body -->
+<div th:if="${param.error}">
+    Invalid Username and Password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
 
-    <div th:replace="fragments/footer :: footer"></div>
+<form th:action="@{/login}" method="POST">
+    <!-- Username -->
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input name="username" id="username" class="form-control" type="text" />
+    </div>
+    <!-- Password -->
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input name="password" id="password" class="form-control" type="password" />
+    </div>
+    <button class="btn" type="submit">Login</button>
+</form>
 
+<div th:replace="fragments/footer :: footer"></div>
 
 </body>
 

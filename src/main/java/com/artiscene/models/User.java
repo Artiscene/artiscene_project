@@ -21,7 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     @NotBlank(message = "Enter a username")
     private String username;
 
@@ -36,10 +36,11 @@ public class User {
     @JsonIgnore
     private String password;
 
-    @Column(nullable = true, length = 100)
+    @Column( length = 100)
     private String phone;
 
-    @Column(nullable = false, length = 100)
+
+    @Column(nullable=true,length = 100)
     private String profile_pic;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
