@@ -1,10 +1,68 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/header :: header('Upload - ARTiScene')"></head>
-<body>
+<body class="form">
 <div th:replace="fragments/navbar :: navbar"></div>
 
+<div class="form-body">
+    <div class="form-header">
+        <h1 class="header">Artwork Upload</h1>
+    </div>
 
-<div th:replace="fragments/footer :: footer"></div>
+    <div id="upload-div">
+        <div id="upload-form-div">
+            <form class="form-horizontal">
+                <!-- Title -->
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="project-title">Title <span class="required-field">*</span></label>
+                    <input id="project-title" name="project-title" th:type="text" />
+                </div>
+                <!-- Medium -->
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="project-medium">Medium </label>
+                    <input id="project-medium" name="project-medium" th:type="text" />
+                </div>
+                <!-- Size -->
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="project-size">Size </label>
+                    <input id="project-size" name="project-size" th:type="text" />
+                </div>
+                <!-- Date -->
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="project-date">Date </label>
+                    <input id="project-date" name="project-date" th:type="text" />
+                </div>
+                <!-- Upload -->
+                <div class="form-group">
+                    <label class="col-sm-10" for="file">Upload <span class="required-field">*</span></label>
+                    <input id="file" name="image_file" type="file" />
+                </div>
+                <!-- For Sale -->
+                <div class="checkbox">
+                    <label class="control-label col-sm-4"><input id="for-sale-checkbox" type="checkbox" value="for-sale" />For Sale</label>
+                </div>
+                <!-- Price if For Sale is checked -->
+                <div id="price-div" class="form-group">
+                    <label class="control-label col-sm-2" for="project-price">Price <span class="required-field">*</span></label>
+                    <input id="project-price" name="project-price" th:type="text" />
+                </div>
+            </form>
+        </div><!-- end of upload form div -->
+
+        <div id="preview-image">
+            <img class="thumbnail" src="" />
+        </div>
+    </div> <!-- end of upload div -->
+
+    <div class="buttons">
+        <input id="add-artwork-btn" class="btn" type="submit" value=" Add Artwork " />
+        <input id="upload-artwork-btn" class="btn" type="submit" value=" Upload " />
+    </div>
+</div><!-- end of form body -->
+
+
+<div th:include="fragments/footer :: footer"></div>
+<script src="/scripts/upload.js"></script> <!-- upload specific js -->
 </body>
 </html>
+
