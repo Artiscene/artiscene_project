@@ -21,7 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     @NotBlank(message = "Enter a username")
     private String username;
 
@@ -36,21 +36,35 @@ public class User {
     @JsonIgnore
     private String password;
 
-    @Column(nullable = true, length = 100)
+    @Column( length = 100)
     private String phone;
 
-    @Column(nullable = false, length = 100)
+
+    @Column(nullable=true,length = 100)
     private String profile_pic;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Favorite> favorites;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Posts> post;
 
 
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
 
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
 
+    public List<Posts> getPost() {
+        return post;
+    }
 
-
+    public void setPost(List<Posts> post) {
+        this.post = post;
+    }
 
     public User(){}
 
@@ -102,16 +116,14 @@ public class User {
         this.profile_pic = profile_pic;
     }
 
-
-
-    public User(User user) {
-        this.id = user.id;
-        this.username = user.username;
-        this.email = user.email;
-        this.password = user.password;
-        this.phone = user.phone;
-        this.profile_pic = user.profile_pic;
-
+    public User(String username, String email, String password, String phone, String profile_pic, List<Favorite> favorites, List<Posts> post) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.profile_pic = profile_pic;
+        this.favorites = favorites;
+        this.post = post;
     }
 
 }

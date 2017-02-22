@@ -17,10 +17,10 @@ public class Role {
     @Column(nullable = false, length=25)
     private String role;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    @JsonManagedReference
-    private User user;
+
+
+    @Column(name = "user_id")
+    private long userId;
 
     public Role(){}
 
@@ -40,18 +40,13 @@ public class Role {
         this.role = role;
     }
 
-    public User getUser() {
-        return user;
+
+
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
-
-    public Role(String role, User user) {
-        this.role = role;
-        this.user = user;
-    }
-
-
 }

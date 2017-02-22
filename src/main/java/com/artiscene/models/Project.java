@@ -34,7 +34,17 @@ public class Project {
     @Column(nullable = false, length = 100)
     private String img_url;
 
+    @Column(length = 100)
+    private String size;
 
+    @Column(length= 200)
+    private String medium;
+
+    @Column(length = 100)
+    private String date;
+
+    @Column(length = 50)
+    private String price;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<Favorite> favorites;
@@ -48,10 +58,58 @@ public class Project {
             joinColumns={@JoinColumn(name="tag_id")},
             inverseJoinColumns={@JoinColumn(name="project_id")}
     )
+
     private List<Tag> tags;
 
     public Project(){}
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getMedium() {
+        return medium;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getId() {
         return this.id;
@@ -102,14 +160,18 @@ public class Project {
     }
 
 
-
-    public Project(Project project) {
-        this.title = project.title;
-        this.forSale = project.forSale;
-        this.views = project.views;
-        this.img_url = project.img_url;
-        this.tags = project.tags;
-
+    public Project(String title, Boolean forSale, int views, String img_url, String size, String medium, String date, String price, List<Favorite> favorites, User user, List<Tag> tags) {
+        this.title = title;
+        this.forSale = forSale;
+        this.views = views;
+        this.img_url = img_url;
+        this.size = size;
+        this.medium = medium;
+        this.date = date;
+        this.price = price;
+        this.favorites = favorites;
+        this.user = user;
+        this.tags = tags;
     }
 
 }
