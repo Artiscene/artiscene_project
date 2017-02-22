@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Page, Not Found</title>
+</head>
+<body>
+<th:block th:switch="${error}">
+    <div th:case="'Not Found'">
+        <h1>Page not found!!</h1>
+    </div>
+    <div th:case="'Forbidden'">
+        <h1>You don't have permission to view this page.</h1>
+    </div>
+    <div th:case="'Bad Request'">
+        <h1>We cannot find this ad. Try the search form...</h1>
+    </div>
+
+    <p th:text="${error}"/>
+</th:block>
+<iframe
+        src="//giphy.com/embed/13HgwGsXF0aiGY"
+        width="480"
+        height="270"
+        frameBorder="0"
+        class="giphy-embed"
+        allowfullscreen="allowfullscreen"
+>
+</iframe>
+
+</body>
+</html>
