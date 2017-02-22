@@ -4,30 +4,32 @@
 <head th:replace="fragments/header :: header('Login - ARTiScene')"></head>
 
 <body>
-<div th:replace="fragments/navbar :: navbar"></div>
+    <div th:replace="fragments/navbar :: navbar"></div>
 
-<form th:action="@{/forms/login}" method="POST" th:object="">
-    <!-- Username -->
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input name="username" id="username" class="form-control" />
+    <div class="form-body">
+        <div class="form-header">
+            <h1 class="header">Login</h1>
+        </div>
 
-        <input name="username" id="username" class="form-control" />
+        <div class="container">
+            <form th:action="@{/forms/login}" method="POST">
+                <!-- Username -->
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input name="username" id="username" class="form-control" />
+                </div>
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input name="password" id="password" class="form-control" />
+                </div>
+                <button class="btn" type="submit">Login</button>
+            </form>
+        </div><!-- end of container -->
+    </div><!-- end of form body -->
 
-    </div>
-    <!-- Password -->
-    <div class="form-group">
-        <label for="password">Password</label>
+    <div th:replace="fragments/footer :: footer"></div>
 
-        <input name="password" id="password" class="form-control" />
-
-        <input name="password" id="password" class="form-control" />
-
-    </div>
-    <button class="btn" type="submit">Register</button>
-</form>
-
-<div th:replace="fragments/footer :: footer"></div>
 
 </body>
 
