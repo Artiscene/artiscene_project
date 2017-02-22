@@ -83,6 +83,8 @@ a:hover {
     padding: 10em 0 16em 0;
 }
 
+/* Portfolio Page */
+
 #portfolio-header-block {
     background-image: url('../img/nebula.jpeg');
     background-attachment: fixed;
@@ -177,6 +179,8 @@ a:hover {
 
 }
 
+/* Gallery Page */
+
 #gallery-header-block {
     background-image: url('../img/streetart.jpeg');
     background-size: cover;
@@ -196,6 +200,42 @@ a:hover {
     margin: 0 auto;
     width: 80%;
 
+}
+
+/* Forum Page */
+
+#forum-header-div {
+    background-image: url('../img/paintbrushes.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 8em 0 8em 0;
+    text-align: center;
+    color: white;
+}
+
+#forum-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.forum-category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px dashed white;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+    width: 20%;
+}
+
+.category-header {
+    color: white;
+    text-align: center;
+    text-decoration: double;
 }
 
 /* Form styling */
