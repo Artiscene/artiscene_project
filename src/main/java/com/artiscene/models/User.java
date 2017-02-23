@@ -116,14 +116,14 @@ public class User {
         this.profile_pic = profile_pic;
     }
 
-    public User(String username, String email, String password, String phone, String profile_pic, List<Favorite> favorites, List<Posts> post) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.profile_pic = profile_pic;
-        this.favorites = favorites;
-        this.post = post;
+    public User(User user) {
+        this.username = user.username;
+        this.email = user.email;
+        this.password = user.password;
+        this.phone = user.phone;
+        this.profile_pic = user.profile_pic;
+        this.favorites = user.favorites;
+        this.post = user.post;
     }
 
 }
