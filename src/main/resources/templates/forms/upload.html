@@ -1,16 +1,17 @@
 <!DOCTYPE html >
 <html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/header :: header('Upload - ARTiScene')"></head>
-<body class="form">
+<body class="form" id="upload-form">
 <div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="form-body">
+
     <div class="form-header">
         <h1 class="header">Artwork Upload</h1>
     </div>
 
     <div id="upload-div">
-        <div id="upload-form-div">
+        <div id="upload-form-div" class="container">
             <form class="form-horizontal">
                 <!-- Title -->
                 <div class="form-group">

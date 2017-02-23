@@ -1,17 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat');
 
-/* Classes for different page & form backgrounds */
+/* ------------------------------------------------- Classes for different page & form backgrounds */
 
 .page {
     background-color: black;
 }
 
 .form {
+    background-color: #333333;
+}
+
+#upload-form {
     background: url('../img/roller_bg.jpg') no-repeat center fixed;
     background-size: cover;
 }
 
-/* General Styling */
+#login-form {
+    background: url('../img/paper.jpeg') no-repeat bottom fixed;
+    background-size: cover;
+}
+
+#register-form {
+    background: url('../img/painted-wall.jpeg') no-repeat bottom fixed;
+    background-size: cover;
+}
+
+/* ------------------------------------------------- General Styling */
 
 p{
     font-family: 'Roboto', sans-serif;
@@ -30,8 +44,9 @@ a:hover {
     text-decoration: none;
 }
 
-
-
+.btn {
+    font-family: 'Walter Turncoat', cursive;
+}
 
 .main-header{
     font-family: 'Walter Turncoat', cursive;
@@ -74,6 +89,8 @@ a:hover {
     margin: 5px;
 }
 
+/* ------------------------------------------------- Home Page */
+
 #homepage-header-block {
     background-image: url('../img/block-background.jpg');
     background-attachment: fixed;
@@ -83,7 +100,7 @@ a:hover {
     padding: 10em 0 16em 0;
 }
 
-/* Portfolio Page */
+/* ------------------------------------------------- Portfolio Page */
 
 #portfolio-header-block {
     background-image: url('../img/nebula.jpeg');
@@ -179,7 +196,7 @@ a:hover {
 
 }
 
-/* Gallery Page */
+/* ------------------------------------------------- Gallery Page */
 
 #gallery-header-block {
     background-image: url('../img/streetart.jpeg');
@@ -202,7 +219,7 @@ a:hover {
 
 }
 
-/* Forum Page */
+/* ------------------------------------------------- Forum Page */
 
 #forum-header-div {
     background-image: url('../img/paintbrushes.jpeg');
@@ -238,17 +255,57 @@ a:hover {
     text-decoration: double;
 }
 
-/* Form styling */
+/* ------------------------------------------------- Modal Styling */
+
+.modal-content {
+    background-color: black;
+    border: 1px solid white;
+    box-shadow: 3px 3px 5px #002c00;
+}
+
+.modal-title {
+    font-family: 'Walter Turncoat', cursive;
+    font-size: 2em;
+    color: #97bb2b;
+}
+
+.close {
+    display: inline;
+    float: right;
+}
+
+.modal-body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    color: #587c24;
+    letter-spacing: 1px;
+}
+
+#category-dropdown {
+    margin: 0 auto;
+    background-color: black;
+    text-align: center;
+
+    color: black;
+}
+
+/* ------------------------------------------------- Form styling */
+
+form {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+form > button {
+    margin: 0 auto;
+}
 
 .form-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 90%;
     background-color: rgba(0, 0, 0, .8);
     border-radius: 10px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 .form-header {
@@ -260,28 +317,23 @@ a:hover {
     letter-spacing: 3px;
 }
 
+.error-text {
+    color: red;
+    text-align: center;
+}
+
 #upload-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     font-family: 'Roboto', sans-serif;
     color: white;
     background-color: black;
     border-radius: 10px;
     border: 1px dashed white;
     padding: 20px;
-    width: 80%;
+    /*width: 100;*/
 }
 
 .required-field {
     color: red;
-}
-
-.buttons > .btn {
-    padding: 10px;
-    font-family: 'Walter Turncoat', cursive;
-    margin:10px;
 }
 
 #price-div {
