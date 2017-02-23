@@ -19,7 +19,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false, unique=true)
     @NotBlank(message = "Enter a username")
@@ -36,8 +36,7 @@ public class User {
     @JsonIgnore
     private String password;
 
-    @Column( length = 100)
-    private String phone;
+
 
 
     @Column(nullable=true,length = 100)
@@ -48,6 +47,8 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Posts> post;
+
+
 
 
     public List<Favorite> getFavorites() {
@@ -68,11 +69,11 @@ public class User {
 
     public User(){}
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -100,13 +101,7 @@ public class User {
         this.password = password;
     }
 
-    public String getPhone() {
-        return this.phone;
-    }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getProfile_pic() {
         return this.profile_pic;
@@ -117,10 +112,12 @@ public class User {
     }
 
     public User(User user) {
+
+        this.id=user.id;
         this.username = user.username;
         this.email = user.email;
         this.password = user.password;
-        this.phone = user.phone;
+
         this.profile_pic = user.profile_pic;
         this.favorites = user.favorites;
         this.post = user.post;
