@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -30,11 +31,6 @@ public class FormsController {
 
     @GetMapping("/login")
     public String loginPage(Model model) {
-
-
-   
-
-
         return "forms/login";
     }
 
@@ -45,7 +41,12 @@ public class FormsController {
     }
 
     @PostMapping("/forms/register")
-    public String registerUser(@Valid User user, Errors validation, Model model) {
+    public String registerUser(@Valid User user, Errors validation, Model model, @RequestParam(name="password_confirm") String passwordConfirmation) {
+
+        if (!passwordConfirmation.equals(user.getPassword())) {
+            validation.rejectValue("password", "user.password", "Your passwords do not match");
+        }
+
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("user", user);
@@ -58,8 +59,6 @@ public class FormsController {
 
     }
 
-    @GetMapping("forms/upload")
-    public String uploadPage() { return "forms/upload"; }
 
     @GetMapping("forms/purchase")
     public String purchasePage(Model model) { return "forms/purchase"; }
