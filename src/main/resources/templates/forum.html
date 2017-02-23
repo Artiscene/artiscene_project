@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/header :: header('Gallery - ARTiScene')"></head>
+<body class="page">
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div id="forum-header-div" class="header-block">
+    <h1 class="header">ARTiScene Forum</h1>
+    <p>Welcome to our forum where artists and art lovers alike can <br />
+        share experience, offer advice, post services, share events, and more!</p>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#post-modal"> Create a Post </button>
+
+    <!-- Create a Post Modal -->
+    <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Model Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="post-modal-label">Create a Post</h5>
+                </div> <!-- end of modal header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="post-title" class="form-control-label">Title:</label>
+                            <input type="text" class="form-control" id="post-title" />
+                        </div>
+                        <div class="form-group">
+                            <label for="post-body" class="form-control-label">Description:</label>
+                            <textarea class="form-control" id="post-body"></textarea>
+                        </div>
+                    </form>
+                    <h4>Choose category: </h4>
+                    <div id="category-dropdown" class="input-group">
+                        <select>
+                            <option value="critique">Critique</option>
+                            <option value="discuss">Discuss</option>
+                            <option value="services">Services</option>
+                            <option value="events">Events</option>
+                            <option value="misc">Misc</option>
+                        </select>
+                    </div><!-- /input-group -->
+                </div> <!-- end of modal body -->
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Submit Post</button>
+                </div> <!-- end of modal footer -->
+            </div> <!-- end of modal content -->
+        </div> <!-- end of "modal dialog" -->
+    </div> <!-- end of main modal div -->
+</div> <!-- end of forum header div-->
+
+<div id="forum-body">
+    <div id="critique" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Critique</h2>
+        </div><!-- end of category header-->
+        <div id="critique-posts" class="post-group">
+
+        </div>
+    </div><!-- end of critique -->
+    <div id="discuss" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Discuss</h2>
+        </div><!-- end of category header-->
+        <div id="discuss-posts" class="post-group">
+
+        </div>
+    </div><!-- end of discuss -->
+    <div id="services" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Services</h2>
+        </div><!-- end of category header-->
+        <div id="services-posts" class="post-group">
+
+        </div>
+    </div> <!-- end of services -->
+    <div id="events" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Events</h2>
+        </div><!-- end of category header-->
+        <div id="events-posts" class="post-group">
+
+        </div>
+    </div> <!-- end of events -->
+    <div id="misc" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Misc</h2>
+        </div><!-- end of category header-->
+        <div id="misc-posts" class="post-group">
+
+        </div>
+    </div><!-- end of misc -->
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

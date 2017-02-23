@@ -28,9 +28,9 @@ public class FormsController {
         this.encoder=encoder;
     }
 
-
     @GetMapping("/login")
     public String loginPage(Model model) {
+      
         return "forms/login";
     }
 
@@ -59,6 +59,10 @@ public class FormsController {
 
     }
 
+    @GetMapping("/post")
+    public String createPostPage() {
+        return "forms/post";
+    }
 
     @GetMapping("forms/purchase")
     public String purchasePage(Model model) { return "forms/purchase"; }
