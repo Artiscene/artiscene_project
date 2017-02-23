@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false, length = 300)
     @NotBlank(message = "Enter a Post Title")
@@ -36,11 +36,11 @@ public class Posts {
 
     public Posts(){}
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

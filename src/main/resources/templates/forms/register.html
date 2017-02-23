@@ -55,11 +55,42 @@
             </div> <!-- end of confirm password group-->
 
 
-            <button class="btn btn-lg btn-primary center-block" type="submit">Register</button>
-            <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
-        </form>
-    </div>
-</div><!-- end of form body -->
+
+    <form th:action="@{/forms/register}" method="POST" th:object="${user}">
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" th:field="*{username}" />
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
+
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+
+            <input name="email" id="email" class="form-control" th:field="*{email}"/>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password">Password</label>
+
+            <input name="password" type="password" id="password" class="form-control" th:field="*{password}"/>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+        </div>
+        <!--Confirm Password -->
+        <div class="form-group">
+            <label for="password_confirm">Confirm your password</label>
+            <input type="password" class="form-control" name="password_confirm" id="password_confirm"/>
+        </div>
+
+
+        <button class="btn" type="submit">Register</button>
+        <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
+    </form>
+</div>
+
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>

@@ -14,7 +14,10 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
 
+
+                    <li class="active"><a th:href="@{/}">Home</a></li>
                     <li><a th:href="@{/gallery}">Gallery</a></li>
+                  
                     <li><a th:href="@{/forum}">Forum</a></li>
                     <span sec:authorize="isAuthenticated()" class="nav navbar-nav navbar-right">
                  <li>
@@ -22,6 +25,7 @@
                          <button>Logout</button>
                      </form>
                  </li>
+
              </span>
                     <span sec:authorize="!isAuthenticated()" class="nav navbar-nav navbar-right">
                         <li><a th:href="@{/login}">Login</a></li>
