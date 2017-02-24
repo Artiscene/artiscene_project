@@ -31,16 +31,13 @@ import java.util.List;
  */
 @Controller
 public class ProjectController {
-    private final UserRepository userRepository;
+
     @Value("${file-upload-path}")
     private String uploadPath;
-    private ProjectService service;
-
     @Autowired
-    public ProjectController(ProjectService service, UserRepository userRepository){
-        this.service=service;
-        this.userRepository=userRepository;
-    }
+    private ProjectService service;
+    @Autowired
+    private UserRepository userRepository;
 
 
     @GetMapping("/gallery")
@@ -83,7 +80,6 @@ public class ProjectController {
                 uploadedFile.transferTo(new File(destinationPath));
 
                 User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user);
                 project.setUser(userRepository.findOne(user.getId()));
                 project.setImg_url(filename);
                 service.save(project);
@@ -118,11 +114,4 @@ public class ProjectController {
         model.addAttribute("project", project);
         return "redirect:/portfolio";
     }
-
-
-
-
-
-
-
 }

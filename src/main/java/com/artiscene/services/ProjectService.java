@@ -1,6 +1,7 @@
 package com.artiscene.services;
 
 import com.artiscene.models.Project;
+import com.artiscene.models.User;
 import com.artiscene.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,10 @@ public class ProjectService {
 
     public void update(Project project){
         repository.save(project);
+    }
+
+    //gets list of projects by user
+    public List<Project> findByUser(User user){
+        return (List<Project>) repository.findByUser(user);
     }
 }

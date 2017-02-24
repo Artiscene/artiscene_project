@@ -6,17 +6,16 @@
         url: '/gallery.json'
     });
 
-    request.done(function (ads) {  // the HTTP response -> an array of JSON objects -> ads
+    request.done(function (project) {  // the HTTP response -> an array of JSON objects -> ads
         var i, html = '';
 
-        for (i = 0; i < ads.length; i++) {
+        for (i = 0; i < project.length; i++) {
             html += '<div><h2>'
-                + ads[i].title + '</h2><p>'
-                + ads[i].description +  '</p>'
-                + '<img src="/ads/image/' + ads[i].image + '" alt="No image"/>'
+                + project[i].title + '</h2>'
+                + '<img src="/uploads/' + project[i].img_url + '" alt="No image"/>'
                 + '</div>';
         }
 
-        $('#load-ads').html(html);
+        $('#load-projects').html(html);
     });
 })();
