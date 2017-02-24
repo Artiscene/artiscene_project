@@ -31,16 +31,12 @@ import java.util.List;
  */
 @Controller
 public class ProjectController {
-    private final UserRepository userRepository;
+
     @Value("${file-upload-path}")
     private String uploadPath;
+    @Autowired
     private ProjectService service;
 
-    @Autowired
-    public ProjectController(ProjectService service, UserRepository userRepository){
-        this.service=service;
-        this.userRepository=userRepository;
-    }
 
 
     @GetMapping("/gallery")
@@ -60,35 +56,6 @@ public class ProjectController {
         return "forms/show";
     }
 
-    @GetMapping("/forms/upload")
-    public String showCreateProjectForm(@ModelAttribute Project project, Model model){
-        model.addAttribute("project", project);
-        return "forms/upload";
-    }
-
-    @PostMapping("/forms/upload")
-    public String saveProject(
-            @Valid Project project,
-            Errors validation,
-            Model model,
-            @RequestParam(name="file") MultipartFile uploadedFile) throws IOException{
-                if(validation.hasErrors()){
-                    model.addAttribute("errors", validation);
-                    model.addAttribute("project", project);
-                    return "forms/upload";
-                }
-
-                String filename = uploadedFile.getOriginalFilename();
-                String destinationPath = Paths.get(uploadsFolder(), filename).toString();
-                uploadedFile.transferTo(new File(destinationPath));
-
-                User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user);
-                project.setUser(userRepository.findOne(user.getId()));
-                project.setImg_url(filename);
-                service.save(project);
-                return "redirect:/portfolio";
-    }
 
     @GetMapping("/projects/image/{filename:.+")
     public HttpEntity<byte[]> showProjectImage(@PathVariable String filename) throws IOException{
@@ -118,11 +85,4 @@ public class ProjectController {
         model.addAttribute("project", project);
         return "redirect:/portfolio";
     }
-
-
-
-
-
-
-
 }

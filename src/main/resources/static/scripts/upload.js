@@ -16,7 +16,7 @@
     });
 
     $('#add-artwork-btn').click(function(){
-        $("#upload-div").clone().appendTo('#upload-div  ');
+        $("#upload-div").clone().appendTo('#upload-div');
     });
 
 
