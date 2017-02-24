@@ -15,6 +15,7 @@ target/
 *.iml
 *.ipr
 application.properties
+resources/stripe.ini
 
 ### NetBeans ###
 nbproject/private/
