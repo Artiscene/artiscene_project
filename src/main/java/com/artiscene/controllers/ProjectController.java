@@ -69,21 +69,21 @@ public class ProjectController {
             Errors validation,
             Model model,
             @RequestParam(name="file") MultipartFile uploadedFile) throws IOException{
-                if(validation.hasErrors()){
-                    model.addAttribute("errors", validation);
-                    model.addAttribute("project", project);
-                    return "forms/upload";
-                }
+        if(validation.hasErrors()){
+            model.addAttribute("errors", validation);
+            model.addAttribute("project", project);
+            return "forms/upload";
+        }
 
-                String filename = uploadedFile.getOriginalFilename();
-                String destinationPath = Paths.get(uploadsFolder(), filename).toString();
-                uploadedFile.transferTo(new File(destinationPath));
+        String filename = uploadedFile.getOriginalFilename();
+        String destinationPath = Paths.get(uploadsFolder(), filename).toString();
+        uploadedFile.transferTo(new File(destinationPath));
 
-                User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-                project.setUser(userRepository.findOne(user.getId()));
-                project.setImg_url(filename);
-                service.save(project);
-                return "redirect:/portfolio";
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        project.setUser(userRepository.findOne(user.getId()));
+        project.setImg_url(filename);
+        service.save(project);
+        return "redirect:/portfolio";
     }
 
     @GetMapping("/projects/image/{filename:.+")

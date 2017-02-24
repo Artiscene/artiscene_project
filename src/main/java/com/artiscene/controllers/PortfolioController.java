@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 /**
@@ -34,7 +35,7 @@ public class PortfolioController {
 
     @GetMapping("/portfolio")
     public String portfolioPage(@ModelAttribute Project project, Model model){
-        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("projects", repository.findByUser(user));
         model.addAttribute("project", project);
         return "portfolio";
@@ -46,6 +47,8 @@ public class PortfolioController {
         model.addAttribute("projects", repository.findByUserId(id));
         return "portfolio";
     }
+
+
 //    @GetMapping("/portfolio")
 //    public String uploadModal(@ModelAttribute Project project, Model model) {
 //        model.addAttribute("project", project);
