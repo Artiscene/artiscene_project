@@ -68,6 +68,9 @@
 <script>
     "use strict";
 
+//    Stripe.apiKey = "sk_test_kUyFKcQWcsRYKDohJ6bPDm3F";
+//    Stripe.apiVersion = "2017-02-14";
+
     (function() {
 
         $('#buy').on("click",function (e) {
@@ -77,6 +80,8 @@
         });
 
         Stripe.setPublishableKey('pk_test_JKbmxAoOv4rgoznSpQ9RMgjF');
+//        Stripe.setPublishableKey(Stripe.apiKey);
+
 
     // Event Listeners
     $('#payment-form').on('submit', generateToken);

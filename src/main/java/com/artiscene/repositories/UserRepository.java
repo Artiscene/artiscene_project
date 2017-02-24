@@ -1,6 +1,7 @@
 package com.artiscene.repositories;
 
 import com.artiscene.models.User;
+import com.sun.tools.javac.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
     public User findByUsername(String username);
+//    List<User> findByUserName(String UserName);
 }
