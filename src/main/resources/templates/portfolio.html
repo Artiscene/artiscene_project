@@ -1,13 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/header :: header('Portfolio')"></head>
-<body>
+<head th:replace="fragments/header :: header('Profile - ARTiScene')"></head>
+<body class="page">
 <div th:replace="fragments/navbar :: navbar"></div>
 
-    <div id="portfolio-header-block" class="container-fluid">
+    <div id="portfolio-header-block" class="header-block container-fluid">
         <h1 id="profile-header" class="header">Welcome User!</h1>
-        <button id="profile-edit-btn" class="btn">Edit Profile</button>
-    </div>
+        <button id="upload-artwork-btn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#upload-modal">Upload Artwork</button>
+        <button id="profile-edit-btn" class="btn btn-default btn-sm">Edit Profile</button>
+
+        <!-- Modal -->
+        <div id="upload-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <!--<form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" action="/fileupload" enctype="multipart/form-data">-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Upload Artwork</h4>
+                    </div> <!-- end of modal header -->
+                    <div class="modal-body">
+                        <form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" action="/fileupload" enctype="multipart/form-data">
+                            <!-- Artwork Title -->
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="artwork-title">Title <span class="required-field">*</span> </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="artwork-title" name="artwork-title" th:field="*{title}" />
+                                </div>
+                            </div> <!-- end of artwork title -->
+                            <!-- Artwork Medium -->
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="artwork-medium">Medium </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="artwork-medium" name="artwork-medium" th:field="*{medium}" />
+                                </div>
+                            </div> <!-- end of artwork medium -->
+                            <!-- Artwork Size -->
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="artwork-size">Size </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="artwork-size" name="artwork-size" th:field="*{size}"/>
+                                </div>
+                            </div> <!-- end of artwork size-->
+                            <!-- Artwork Date -->
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="artwork-date">Date </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="artwork-date" name="artwork-date" th:field="*{date}"/>
+                                </div>
+                            </div> <!-- end of artwork date -->
+                            <!-- For Sale -->
+                            <div class="checkbox">
+                                <label class="control-label col-sm-4"><input id="for-sale-checkbox" type="checkbox" value="for-sale" />For Sale </label>
+                            </div> <!-- end of for sale checkbox-->
+                            <!-- Price if For Sale is checked -->
+                            <div id="price-div" class="form-group">
+                                <label class="control-label col-sm-2" for="artwork-price">Price <span class="required-field">*</span></label>
+                                <input id="artwork-price" name="artwork-price" type="text" th:field="*{price}"/>
+                            </div><!-- end of artwork price -->
+                            <div class="form-group">
+                                <label for="file" class="col-sm-10" >Upload <span class="required-field">*</span></label>
+                                <input id="file" name="file" type="file" accept="image/*" onchange="loadFile(event)" />
+                                <img id="output"/>
+                            </div><!-- end of upload file -->
+                            <input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />
+                        </form>
+                    </div> <!-- end of modal body -->
+                    <div class="modal-footer">
+                        <!--<input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />-->
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> <!-- end of modal footer -->
+                </div> <!-- end of modal content -->
+                <!--</form>-->
+
+            </div> <!-- end of modal dialog -->
+        </div> <!-- end of modal-->
+    </div><!-- end of portfolio header block -->
 
     <div id="profile-body">
 
@@ -64,10 +132,17 @@
                     <img class="thumbnail" src="" />
                     <img class="thumbnail" src="" />
                 </div>
-            </div>
+            </div><!-- end of favorites div -->
         </div><!-- end of profile main column -->
     </div><!-- end of profile body -->
 
     <div th:replace="fragments/footer :: footer"></div>
+    <script src="/scripts/upload.js"></script>
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
 </body>
 </html>

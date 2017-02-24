@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat');
 
-/*@-ms-viewport{*/
-    /*width: device-width;*/
-/*}*/
+/* ----------------------------------------------- Classes for different page & form backgrounds */
 
-body{
+.page {
     background-color: black;
 }
+
+.form {
+    background: url('../img/roller_bg.jpg') no-repeat center fixed;
+    background-size: cover;
+}
+
+/* ----------------------------------------------- General Styling */
 
 p{
     font-family: 'Roboto', sans-serif;
@@ -66,25 +71,31 @@ a:hover {
     margin: 5px;
 }
 
-#homepage-header-block {
-    background-image: url('../img/block-background.jpg');
+.header-block {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+#homepage-header-block {
+    background-image: url('../img/block-background.jpg');
     padding: 10em 0 16em 0;
 }
 
 #portfolio-header-block {
     background-image: url('../img/nebula.jpeg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     padding: .2em;
     text-align: center;
     color: white;
     font-size: 3em;
+}
+
+#forum-header-block {
+    background-image: url('../img/paint-brushes.jpeg');
+    padding: 8em 0 8em 0;
+    text-align: center;
+    color: white;
 }
 
 #profile-header {
@@ -92,14 +103,14 @@ a:hover {
 }
 
 #profile-edit-btn {
-    display: flex;
     float: right;
-    margin: 10px;
-    padding: 10px;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: 1px 2px 2px black;
-    color: black;
+    margin:3px;
+}
+
+#upload-artwork-btn{
+    float: right;
+    margin:3px;
+
 }
 
 #profile-body{
@@ -166,5 +177,114 @@ a:hover {
 #favorites-div > .artwork-div > .thumbnail {
     max-width: 150px;
     max-height: 150px;
+
 }
 
+/* ----------------------------------------------- Gallery styling */
+
+
+#gallery-header-block {
+    background-image: url('../img/streetart.jpeg');
+    padding: 8em 0 8em 0;
+    text-align: center;
+    color: white;
+}
+
+#gallery-header-block > h1 {
+    font-size: 4em;
+}
+
+#gallery-search-div {
+    margin: 0 auto;
+    width: 80%;
+
+}
+
+/* ----------------------------------------------- Form styling */
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    background-color: rgba(0, 0, 0, .8);
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.form-header {
+    text-align: center;
+    color: white;
+}
+
+.form-header > .header {
+    letter-spacing: 3px;
+}
+
+#upload-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    border: 1px dashed white;
+    padding: 20px;
+    width: 80%;
+}
+
+.required-field {
+    color: red;
+}
+
+.buttons > .btn {
+    padding: 10px;
+    font-family: 'Walter Turncoat', cursive;
+    margin:10px;
+}
+
+#price-div {
+    display: none;
+}
+
+/* ----------------------------------------------- Modal Styling */
+
+.modal-content {
+    background-color: black;
+}
+
+.modal-title {
+    font-family: 'Walter Turncoat', cursive;
+    color: #587c24;
+    font-size: 28px;
+}
+
+.modal-body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.forum-category {
+    border: 1px dashed white;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+label {
+    font-size: 16px;
+}
+
+.category-header {
+    text-align: center;
+    font-family: 'Walter Turncoat', cursive;
+    color: white;
+}
+
+#category-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

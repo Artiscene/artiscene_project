@@ -19,9 +19,9 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     @NotBlank(message = "Enter a username")
     private String username;
 
@@ -36,29 +36,44 @@ public class User {
     @JsonIgnore
     private String password;
 
-    @Column(nullable = true, length = 100)
-    private String phone;
 
-    @Column(nullable = false, length = 100)
+
+
+    @Column(nullable=true,length = 100)
     private String profile_pic;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Favorite> favorites;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Posts> post;
 
 
 
 
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
 
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
 
+    public List<Posts> getPost() {
+        return post;
+    }
+
+    public void setPost(List<Posts> post) {
+        this.post = post;
+    }
 
     public User(){}
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -86,13 +101,7 @@ public class User {
         this.password = password;
     }
 
-    public String getPhone() {
-        return this.phone;
-    }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getProfile_pic() {
         return this.profile_pic;
@@ -102,16 +111,14 @@ public class User {
         this.profile_pic = profile_pic;
     }
 
-
-
     public User(User user) {
-        this.id = user.id;
+        this.id=user.id;
         this.username = user.username;
         this.email = user.email;
         this.password = user.password;
-        this.phone = user.phone;
         this.profile_pic = user.profile_pic;
-
+        this.favorites = user.favorites;
+        this.post = user.post;
     }
 
 }

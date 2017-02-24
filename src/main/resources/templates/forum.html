@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/header :: header('Forum - ARTiScene')"></head>
+<body class="page">
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div id="forum-header-block" class="header-block container-fluid">
+    <h1 id="forum-header" class="header">ARTiScene Forum</h1>
+
+    <!-- Modal Button -->
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#post-modal">Create a Post</button>
+
+    <!-- Modal -->
+    <div id="post-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create A Post</h4>
+                </div> <!-- end of modal header -->
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <!-- Post Title -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="post-title">Title <span class="required-field">*</span> </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="post-title" name="post-title"/>
+                            </div>
+                        </div> <!-- end of post title -->
+                        <!-- Post Body -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="post-body">Body <span class="required-field">*</span> </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="post-body" name="post-body"/>
+                            </div>
+                        </div> <!-- end of post body -->
+                        <!-- Post Location -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="post-location">Location </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="post-location" name="post-location"/>
+                            </div>
+                        </div> <!-- end of post location-->
+                    </form>
+                </div> <!-- end of modal body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Upload</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> <!-- end of modal footer -->
+            </div> <!-- end of modal content -->
+        </div> <!-- end of modal dialog -->
+    </div> <!-- end of modal-->
+</div> <!-- end of forum header block -->
+
+<div id="forum-body">
+    <div id="category-group" class="center-block">
+        <div id="critique-category" class="forum-category col-sm-2">
+            <h3 class="category-header">Critique</h3>
+        </div>
+        <div id="discuss-category" class="forum-category col-sm-2">
+            <h3 class="category-header">Discuss</h3>
+        </div>
+        <div id="services-category" class="forum-category col-sm-2">
+            <h3 class="category-header">Services</h3>
+        </div>
+        <div id="events-category" class="forum-category col-sm-2">
+            <h3 class="category-header">Events</h3>
+        </div>
+        <div id="misc-category" class="forum-category col-sm-2">
+            <h3 class="category-header">Misc</h3>
+        </div>
+    </div> <!-- end of category group -->
+</div> <!-- end of forum body -->
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
