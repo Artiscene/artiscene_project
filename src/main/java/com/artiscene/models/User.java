@@ -36,19 +36,27 @@ public class User {
     @JsonIgnore
     private String password;
 
-
-
-
     @Column(nullable=true,length = 100)
     private String profile_pic;
+
+
+    @Column(nullable = true, length=100)
+    private String accessToken;
+
+    @Column(nullable = true, length = 100)
+    private String refreshToken;
+
+    @Column(nullable = true, length = 100)
+    private String stripePublishableKey;
+
+    @Column(nullable = true, length = 100)
+    private String stripeUserId;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Favorite> favorites;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Posts> post;
-
-
 
 
     public List<Favorite> getFavorites() {
@@ -101,8 +109,6 @@ public class User {
         this.password = password;
     }
 
-
-
     public String getProfile_pic() {
         return this.profile_pic;
     }
@@ -110,6 +116,39 @@ public class User {
     public void setProfile_pic(String profile_pic) {
         this.profile_pic = profile_pic;
     }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public String getStripePublishableKey() {
+        return stripePublishableKey;
+    }
+
+    public void setStripePublishableKey(String stripePublishableKey) {
+        this.stripePublishableKey = stripePublishableKey;
+    }
+
+    public String getStripeUserId() {
+        return stripeUserId;
+    }
+
+    public void setStripeUserId(String stripeUserId) {
+        this.stripeUserId = stripeUserId;
+    }
+
 
     public User(User user) {
         this.id=user.id;
@@ -119,6 +158,25 @@ public class User {
         this.profile_pic = user.profile_pic;
         this.favorites = user.favorites;
         this.post = user.post;
+        this.accessToken = user.accessToken;
+        this.refreshToken = user.refreshToken;
+        this.stripePublishableKey = user.stripePublishableKey;
+        this.stripeUserId = user.stripeUserId;
     }
 
+    public void setaccessToken(String access_token) {
+        accessToken = access_token;
+    }
+
+    public void setrefreshToken(String refresh_token) {
+        refreshToken = refresh_token;
+    }
+
+    public void setstripePublishableKey(String stripe_publishable_key) {
+        stripePublishableKey = stripe_publishable_key;
+    }
+
+    public void setstripeUserId(String stripe_user_id) {
+        stripeUserId = stripe_user_id;
+    }
 }

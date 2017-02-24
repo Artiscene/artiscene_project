@@ -1,5 +1,7 @@
 package com.artiscene.controllers;
 
+import com.artiscene.models.User;
+import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.PaymentService;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -11,6 +13,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.ini4j.Ini;
 import org.ini4j.IniPreferences;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,14 +34,23 @@ import java.util.Map;
 public class StripeOauthController {
     public static final String TOKEN_URI = "https://connect.stripe.com/oauth/token";
 
+    private UserRepository repository;
+
+    @Autowired
+    public StripeOauthController(UserRepository repository) {
+        this.repository = repository;
+    }
+
     @GetMapping("/oauth")
-    public String oauthCallback(@RequestParam(name="code") String code, Model viewModel) throws IOException {
+    public String oauthCallback(
+            @RequestParam(name="code") String code, Model viewModel) throws IOException {
 
         ClassLoader classLoader = PaymentService.class.getClassLoader();
         File keyFile = new File(classLoader.getResource("stripe.ini").getFile());
         IniPreferences prefs = new IniPreferences(new Ini(keyFile));
         final String clientId = prefs.node("stripe").get("client_id", null);
         final String apiKey = prefs.node("stripe").get("api_key", null);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         try {
             CloseableHttpClient httpClient
@@ -59,6 +72,18 @@ public class StripeOauthController {
             Type t = new TypeToken<Map<String, String>>() { }.getType();
             Map<String, String> map = new GsonBuilder().create().fromJson(bodyAsString, t);
             String accountId = map.get("stripe_user_id");
+
+
+
+            // get the currently logged in user from the security context
+            // update the stripe fields, using your users repository
+            user.setaccessToken(map.get("access_token")); //refresh_token
+            user.setrefreshToken(map.get("refresh_token"));
+            user.setstripePublishableKey(map.get("stripe_publishable_key"));
+            user.setstripeUserId(map.get("stripe_user_id"));
+
+             repository.save(new User(user));
+
 
             viewModel.addAttribute("account_id", accountId);
             viewModel.addAttribute("raw_body", bodyAsString);
