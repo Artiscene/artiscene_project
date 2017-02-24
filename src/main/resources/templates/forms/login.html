@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
-
 <head th:replace="fragments/header :: header('Login - ARTiScene')"></head>
-
-<body>
-
+<body class="form" id="login-form">
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
 
-<form th:action="@{/login}" method="POST">
-    <!-- Username -->
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input name="username" id="username" class="form-control" type="text" />
+<div class="form-body">
+    <div class="form-header">
+        <h1 class="header">Login</h1>
+    </div> <!-- end of form header div -->
+
+    <!-- Logged Out Text -->
+    <div th:if="${param.logout}" class="error-text">
+        You have been logged out.
     </div>
-    <!-- Password -->
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input name="password" id="password" class="form-control" type="password" />
-    </div>
-    <button class="btn" type="submit">Login</button>
-</form>
+
+    <!-- Login Form -->
+    <div id="login-form-container" class="containter">
+        <form class="form-horizontal" th:action="@{/login}" method="POST">
+            <!-- Username -->
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="username">Username</label>
+                <div class="col-sm-6">
+                    <input name="username" id="username" class="form-control" type="text" />
+                </div> <!-- end of username input -->
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="password">Password</label>
+                <div class="col-sm-6">
+                    <input name="password" id="password" class="form-control" type="password" />
+                </div> <!-- end of password input -->
+            </div>
+            <!-- Username / Password Error Text -->
+            <div th:if="${param.error}" class="error-text">
+                Invalid Username and Password.
+            </div>
+            <button class="btn btn-primary btn-lg center-block" type="submit">Login</button>
+        </form>
+    </div> <!-- end of login form container -->
+</div> <!-- end of form body -->
 
 <div th:replace="fragments/footer :: footer"></div>
 
