@@ -12,24 +12,18 @@ import javax.persistence.*;
 @Table(name="favorites")
 public class Favorite {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
-
-    public Favorite(User user, Project project) {
-        this.user = user;
-        this.project = project;
-
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="project_id")
+    @JoinColumn(name = "project_id")
     private Project project;
 
-    public Favorite(){}
+    public Favorite() {}
 
     public User getUser() {
         return user;
@@ -47,12 +41,17 @@ public class Favorite {
         this.project = project;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
-}
 
+    public Favorite(User user, Project project) {
+        this.user = user;
+        this.project = project;
+
+    }
+}

@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat');
 
-/*@-ms-viewport{*/
-    /*width: device-width;*/
-/*}*/
+/* Classes for different page & form backgrounds */
 
-body{
+.page {
     background-color: black;
 }
+
+.form {
+    background: url('../img/roller_bg.jpg') no-repeat center fixed;
+    background-size: cover;
+}
+
+/* General Styling */
 
 p{
     font-family: 'Roboto', sans-serif;
@@ -24,6 +29,9 @@ a:hover {
     color: #97bb2b;
     text-decoration: none;
 }
+
+
+
 
 .main-header{
     font-family: 'Walter Turncoat', cursive;
@@ -166,5 +174,77 @@ a:hover {
 #favorites-div > .artwork-div > .thumbnail {
     max-width: 150px;
     max-height: 150px;
+
+}
+
+#gallery-header-block {
+    background-image: url('../img/streetart.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 8em 0 8em 0;
+    text-align: center;
+    color: white;
+}
+
+#gallery-header-block > h1 {
+    font-size: 4em;
+}
+
+#gallery-search-div {
+    margin: 0 auto;
+    width: 80%;
+
+}
+
+/* Form styling */
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    background-color: rgba(0, 0, 0, .8);
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.form-header {
+    text-align: center;
+    color: white;
+}
+
+.form-header > .header {
+    letter-spacing: 3px;
+}
+
+#upload-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    border: 1px dashed white;
+    padding: 20px;
+    width: 80%;
+}
+
+.required-field {
+    color: red;
+}
+
+.buttons > .btn {
+    padding: 10px;
+    font-family: 'Walter Turncoat', cursive;
+    margin:10px;
+}
+
+#price-div {
+    display: none;
 }
 

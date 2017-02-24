@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
@@ -10,14 +10,26 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">ARTiScene</a>
+                    <a class="navbar-brand" th:href="@{/}">ARTiScene</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Gallery</a></li>
+
+                    <li class="active"><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/gallery}">Gallery</a></li>
                     <li><a href="#">Forum</a></li>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Log-In</a></li>
+
+            <span sec:authorize="isAuthenticated()" class="nav navbar-nav navbar-right">
+                     <li>
+                        <form th:action="@{/logout}" th:method="POST">
+                        <button>Logout</button>
+                        </form>
+                </li>
+             </span>
+                    <span sec:authorize="!isAuthenticated()" class="nav navbar-nav navbar-right">
+                        <li><a th:href="@{/login}">Login</a></li>
+                        <li><a th:href="@{/register}">Register</a></li>
+             </span>
+
                 </ul>
             </div>
         </nav>

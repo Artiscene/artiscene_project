@@ -17,29 +17,38 @@ import java.util.List;
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     @NotBlank(message = "Title cannot be empty")
     private String title;
 
 
-    @Column(name="for_sale", nullable = false)
+    @Column(name="for_sale")
     @Type(type="org.hibernate.type.NumericBooleanType")
     private Boolean forSale;
 
-    @Column(nullable = false)
-    private int views;
 
     @Column(nullable = false, length = 100)
     private String img_url;
 
+    @Column(length = 100)
+    private String size;
 
+    @Column(length= 200)
+    private String medium;
+
+    @Column(length = 100)
+    private String date;
+
+    @Column(length = 50)
+    private String price;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<Favorite> favorites;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -48,16 +57,64 @@ public class Project {
             joinColumns={@JoinColumn(name="tag_id")},
             inverseJoinColumns={@JoinColumn(name="project_id")}
     )
+
     private List<Tag> tags;
 
     public Project(){}
 
+    public String getSize() {
+        return size;
+    }
 
-    public int getId() {
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getMedium() {
+        return medium;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,14 +134,6 @@ public class Project {
         this.forSale = forSale;
     }
 
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
-    }
-
     public String getImg_url() {
         return img_url;
     }
@@ -102,14 +151,17 @@ public class Project {
     }
 
 
-
-    public Project(Project project) {
-        this.title = project.title;
-        this.forSale = project.forSale;
-        this.views = project.views;
-        this.img_url = project.img_url;
-        this.tags = project.tags;
-
+    public Project(String title, Boolean forSale, String img_url, String size, String medium, String date, String price, List<Favorite> favorites, User user, List<Tag> tags) {
+        this.title = title;
+        this.forSale = forSale;
+        this.img_url = img_url;
+        this.size = size;
+        this.medium = medium;
+        this.date = date;
+        this.price = price;
+        this.favorites = favorites;
+        this.user = user;
+        this.tags = tags;
     }
 
 }
