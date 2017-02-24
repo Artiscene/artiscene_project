@@ -83,7 +83,6 @@ public class ProjectController {
                 uploadedFile.transferTo(new File(destinationPath));
 
                 User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user);
                 project.setUser(userRepository.findOne(user.getId()));
                 project.setImg_url(filename);
                 service.save(project);
