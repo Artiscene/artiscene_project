@@ -15,7 +15,7 @@
                 <h4 class="modal-title">Register</h4>
             </div>
             <div class="modal-body">
-                <form th:action="@{forms/register}" method="POST" th:object="${user}">
+                <form th:action="@{/register}" method="POST" th:object="${user}">
                 <!--<form th:action="@{forms/register}" method="POST">-->
                     <!-- Username -->
                     <div class="form-group">
@@ -50,10 +50,10 @@
                     <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
                 </form>
             </div> <!-- end of modal body -->
-            <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn">Close</a>
-                <button class="btn btn-primary" type="submit">Login</button>
-            </div><!-- end of modal footer -->
+            <!--<div class="modal-footer">-->
+                <!--<a href="#" data-dismiss="modal" class="btn">Close</a>-->
+                <!--<button class="btn btn-primary" type="submit">Login</button>-->
+            <!--</div>&lt;!&ndash; end of modal footer &ndash;&gt;-->
         </div><!-- end of modal content -->
     </div><!-- end of modal dialog -->
 </div><!-- end of register modal -->

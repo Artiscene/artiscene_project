@@ -10,12 +10,16 @@
 <div th:fragment="login-modal" class="modal fade" id="login-modal">
     <div class="modal-dialog">
         <div class="modal-content">
+            <form  th:action="@{/}" method="POST">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Log-in</h4>
             </div>
             <div class="modal-body">
-                <form th:action="@{/login}" method="POST">
+                <div th:if="${param.error}">
+                    Invalid Username and Password.
+                </div>
+
                     <!-- Username -->
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -26,12 +30,13 @@
                         <label for="password">Password</label>
                         <input name="password" id="password" class="form-control" type="password" />
                     </div> <!-- end of password group -->
-                </form>
+
             </div> <!-- end of modal body -->
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn">Close</a>
                 <button class="btn btn-primary" type="submit">Login</button>
             </div><!-- end of modal footer -->
+            </form>
         </div><!-- end of modal content -->
     </div><!-- end of modal dialog -->
 </div><!-- end of login modal -->

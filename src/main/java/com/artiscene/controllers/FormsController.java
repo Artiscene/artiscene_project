@@ -29,35 +29,35 @@ public class FormsController {
     }
 
 
-    @GetMapping("/login")
-    public String loginPage(Model model) {
-        return "forms/login";
-    }
+//    @GetMapping("/login")
+//    public String loginPage(Model model) {
+//        return "forms/login";
+//    }
 
-    @GetMapping("/register")
-    public String registerPage(Model model) {
-        model.addAttribute("user", new User());
-        return "forms/register";
-    }
-
-    @PostMapping("/forms/register")
-    public String registerUser(@Valid User user, Errors validation, Model model, @RequestParam(name="password_confirm") String passwordConfirmation) {
-
-        if (!passwordConfirmation.equals(user.getPassword())) {
-            validation.rejectValue("password", "user.password", "Your passwords do not match");
-        }
-
-        if (validation.hasErrors()) {
-            model.addAttribute("errors", validation);
-            model.addAttribute("user", user);
-            return "forms/register";
-        }
-        String hashedPassword = encoder.encode(user.getPassword());
-        user.setPassword(hashedPassword);
-        repository.save(user);
-        return "redirect:/login";
-
-    }
+//    @GetMapping("/register")
+//    public String registerPage(Model model) {
+//        model.addAttribute("user", new User());
+//        return "forms/register";
+//    }
+//
+//    @PostMapping("/forms/register")
+//    public String registerUser(@Valid User user, Errors validation, Model model, @RequestParam(name="password_confirm") String passwordConfirmation) {
+//
+//        if (!passwordConfirmation.equals(user.getPassword())) {
+//            validation.rejectValue("password", "user.password", "Your passwords do not match");
+//        }
+//
+//        if (validation.hasErrors()) {
+//            model.addAttribute("errors", validation);
+//            model.addAttribute("user", user);
+//            return "forms/register";
+//        }
+//        String hashedPassword = encoder.encode(user.getPassword());
+//        user.setPassword(hashedPassword);
+//        repository.save(user);
+//        return "redirect:/login";
+//
+//    }
 
 
     @GetMapping("forms/purchase")
