@@ -51,6 +51,7 @@ public class PortfolioController {
         User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("projects", repository.findByUser(user));
         model.addAttribute("project", project);
+        model.addAttribute("user", new User());
         return "portfolio";
     }
     private String uploadsFolder() throws IOException {
