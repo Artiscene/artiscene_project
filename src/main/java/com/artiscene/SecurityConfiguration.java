@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .formLogin()
-                    .loginPage("/login")
+                    .loginPage("/")
                     .defaultSuccessUrl("/")
                     .permitAll()
                 .and()
@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                     .logout()
-                    .logoutSuccessUrl("/login?logout")
+                    .logoutSuccessUrl("/")
                 .and()
                     .authorizeRequests()
                     .antMatchers("/projects/create")

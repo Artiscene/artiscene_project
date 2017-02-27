@@ -51,6 +51,7 @@ public class PortfolioController {
         User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("projects", repository.findByUser(user));
         model.addAttribute("project", project);
+        model.addAttribute("user", new User());
         return "portfolio";
     }
     private String uploadsFolder() throws IOException {
@@ -80,10 +81,13 @@ public class PortfolioController {
         return "redirect:/portfolio";
     }
 
-    @GetMapping("/portolio/{id}")
-    public String userPortfolioPage(Model model, @PathVariable Long id){
+    @GetMapping("/portfolio/{id}")
+    public String userPortfolioPage(Model model, @PathVariable Long id, User user, Project project){
         repository.findByUserId(id);
         model.addAttribute("projects", repository.findByUserId(id));
+        model.addAttribute("projects", repository.findByUser(user));
+        model.addAttribute("project", project);
+        model.addAttribute("user", new User());
         return "portfolio";
     }
 }

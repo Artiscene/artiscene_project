@@ -41,6 +41,7 @@ public class ProjectController {
 
     @GetMapping("/gallery")
     public String showAllProjects(Model model){
+        model.addAttribute("user", new User());
         model.addAttribute("projects", Collections.emptyList());
         return "/gallery";
     }
