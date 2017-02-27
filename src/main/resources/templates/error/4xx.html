@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Ooops, Not Found</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/error-pages.css" />
 </head>
 <body>
+
 <th:block th:switch="${error}">
     <div th:case="'Not Found'">
-        <h1>Page not found!!</h1>
+        <h1 class="error-header">Page not found!!</h1>
     </div>
     <div th:case="'Forbidden'">
-        <h1>You don't have permission to view this page.</h1>
+        <h1 class="error-header">You don't have permission to view this page.</h1>
     </div>
     <div th:case="'Bad Request'">
-        <h1>We cannot find this ad. Try the search form...</h1>
+        <h1 class="error-header">We cannot find this ad. Try the search form...</h1>
     </div>
 
     <p th:text="${error}"/>
@@ -23,11 +26,13 @@
         src="//giphy.com/embed/ybtzNdsjtKQMg"
         width="480"
         height="300"
+        align="middle"
         frameBorder="0"
         class="giphy-embed"
         allowFullScreen="allowfullscreen"
->
-</iframe>
+></iframe>
+
+<a th:href="@{/}"><h1 class="error-header">Return to ARTiScene</h1></a>
 
 </body>
 </html>
