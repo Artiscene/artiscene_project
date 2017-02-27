@@ -5,7 +5,7 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 
     <div id="portfolio-header-block" class="header-block container-fluid">
-        <h1 id="profile-header" class="header">Welcome User!</h1>
+        <h1 id="profile-header" class="header"> <span th:text="${loggedInUser.username}"></span>'s profile!</h1>
         <button id="upload-artwork-btn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#upload-modal">Upload Artwork</button>
         <button id="profile-edit-btn" class="btn btn-default btn-sm">Edit Profile</button>
 
@@ -17,46 +17,28 @@
 
         <div id="profile-info-div">
             <img class="thumbnail" src="" />
-            <h3 class="sub-header">Username</h3>
+            <h3 class="sub-header" th:text="${loggedInUser.username}"></h3>
             <h4>Location</h4>
-            <h6>emailaddress@email.com</h6>
+            <h6><span th:text="${loggedInUser.email}"></span></h6>
             <h6>Member since : MM/YYYY</h6>
         </div> <!-- end of profile info div -->
 
         <div id="profile-main-column">
             <div id="profile-about-me">
-                <h3 class="sub-header">About Username</h3>
-                <p>Nulla suscipit molestie tempor. Mauris quis egestas mi.
-                    In molestie diam orci, posuere dictum eros tincidunt a.
-                    Cras ac orci velit. Nunc eget neque malesuada, pulvinar magna ac,
-                    pharetra mauris. Integer ornare nisi tortor, nec ultrices diam
-                    auctor sit amet. Vestibulum faucibus, neque et commodo volutpat,
-                    nisl diam porttitor nunc, sed pretium tortor erat nec lectus.
-
-                    Nullam nisl eros, feugiat vitae sem et, ornare pharetra nunc.
-                    Aliquam non tristique risus. Proin semper aliquam nunc at blandit.
-                    Donec mollis justo venenatis, tempus orci id, accumsan nulla.
-                    In massa eros, pellentesque et pharetra non, tincidunt eu metus.
-                    Integer euismod lectus ante, ac venenatis libero malesuada ac.
-                    Suspendisse fringilla libero vitae felis pharetra, ac porttitor orci semper.
+                <h3 class="sub-header">About <span th:text="${loggedInUser.username}"></span></h3>
+                <p>Click the "Edit Profile" button and let us know all about you!
                 </p>
             </div><!-- end of profile about me -->
 
             <div id="portfolio-div">
-                <h3 class="sub-header">Username's Portfolio</h3>
-                <div class="artwork-div">
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
+                <h3 class="sub-header"><span th:text="${loggedInUser.username}"></span>'s Portfolio</h3>
+                <div class="artwork-div" id="load-portfolio">
+
                 </div> <!-- end of portfolio artwork div-->
             </div><!-- end of portfolio div -->
 
             <div id="favorites-div">
-                <h3 class="sub-header">Username's Favorites</h3>
+                <h3 class="sub-header"><span th:text="${loggedInUser.username}"></span>'s Favorites</h3>
                 <div class="artwork-div">
                     <img class="thumbnail" src="" />
                     <img class="thumbnail" src="" />
@@ -73,12 +55,15 @@
     </div><!-- end of profile body -->
 
     <div th:replace="fragments/footer :: footer"></div>
+    <input type ="hidden" id="user_id" th:value="${loggedInUser.id}" />
     <script src="/scripts/upload.js"></script>
+    <script src="/scripts/portfolio-list.js"></script>
     <script>
         var loadFile = function(event) {
             var output = document.getElementById('output');
             output.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
+
 </body>
 </html>
