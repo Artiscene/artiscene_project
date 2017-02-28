@@ -49,6 +49,7 @@ public class Project {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
