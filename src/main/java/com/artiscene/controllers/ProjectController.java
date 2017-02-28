@@ -39,10 +39,7 @@ public class ProjectController {
     private String uploadPath;
     @Autowired
     private ProjectService service;
-    @Autowired
-    private TagRepository tagDao;
-    @Autowired
-    private usersSvc usersSvc;
+
 
 
 
@@ -92,22 +89,6 @@ public class ProjectController {
         model.addAttribute("project", project);
         return "redirect:/portfolio";
     }
-    @GetMapping("/project/create")
-    public String showCreate(Model model){
-        model.addAttribute("project", new Project());
-        model.addAttribute("tags", tagDao.findAll());
-//        ? get current form for uploading projects
-//          modal in fragments named upload-modal
-        return "fragments/upload-modal";
-    }
 
-
-    @PostMapping("/project/create")
-    public String createProjects(@Valid Project projectCreated,Model model) {
-        projectCreated.setTags((List<Tag>) tagDao.findAll());
-        projectCreated.setUser(usersSvc.loggedInUser());
-        usersSvc.save(projectCreated);
-        return "redirect:/portfolio";
-    }
 
 }

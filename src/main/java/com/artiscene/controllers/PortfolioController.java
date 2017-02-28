@@ -1,10 +1,13 @@
 package com.artiscene.controllers;
 
 import com.artiscene.models.Project;
+import com.artiscene.models.Tag;
 import com.artiscene.models.User;
 import com.artiscene.repositories.ProjectRepository;
+import com.artiscene.repositories.TagRepository;
 import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.ProjectService;
+import com.artiscene.services.usersSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -46,6 +49,10 @@ public class PortfolioController {
     private ProjectService projectService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private TagRepository tagDao;
+    @Autowired
+    private com.artiscene.services.usersSvc usersSvc;
 
     @GetMapping("/portfolio")
     public String portfolioPage(@ModelAttribute Project project, Model model){
@@ -99,5 +106,23 @@ public class PortfolioController {
     @ResponseBody
     public List<Project> retrieveUserProjects(@RequestParam Long id){
         return projectService.findByUser(userRepository.findOne(id));
+    }
+
+    @GetMapping("/portfolio/create")
+    public String showCreate(Model model){
+        model.addAttribute("project", new Project());
+        model.addAttribute("tags", tagDao.findAll());
+//        ? get current form for uploading projects
+//          modal in fragments named upload-modal
+        return "fragments/upload-modal";
+    }
+
+
+    @PostMapping("/portfolio/create")
+    public String createProjects(@Valid Project projectCreated,Model model) {
+        projectCreated.setTags((List<Tag>) tagDao.findAll());
+        projectCreated.setUser(usersSvc.loggedInUser());
+        projectService.save(projectCreated);
+        return "redirect:/portfolio";
     }
 }
