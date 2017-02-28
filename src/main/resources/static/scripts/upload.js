@@ -19,6 +19,7 @@
         $("#upload-div").clone().appendTo('#upload-div');
     });
 
+    $("#tag-select").select2();
 
 })();
 
