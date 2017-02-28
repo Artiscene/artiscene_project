@@ -7,12 +7,14 @@
     <div id="portfolio-header-block" class="header-block container-fluid">
         <h1 id="profile-header" class="header"> <span th:text="${loggedInUser.username}"></span>'s profile!</h1>
         <button id="upload-artwork-btn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#upload-modal">Upload Artwork</button>
-        <button id="profile-edit-btn" class="btn btn-default btn-sm">Edit Profile</button>
+        <button id="profile-edit-btn" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit-profile-modal">Edit Profile</button>
 
-        <!-- Modal -->
+
     </div><!-- end of portfolio header block -->
 
+    <!-- Modal Fragments -->
     <div th:replace="fragments/upload-modal :: upload-modal"></div>
+    <div th:replace="fragments/edit-profile-modal :: edit-profile-modal"></div>
 
     <div id="profile-body">
 
@@ -21,7 +23,9 @@
             <h3 class="sub-header" th:text="${loggedInUser.username}"></h3>
             <h4>Location</h4>
             <h6><span th:text="${loggedInUser.email}"></span></h6>
-            <h6>Member since : MM/YYYY</h6>
+            <h4><span th:text="${loggedInUser.username}"></span>'s Interests</h4>
+            <div id="profile-interest">
+                <p>Click the "Edit Profile" button and let us know what you're interested in!</p></div>
         </div> <!-- end of profile info div -->
 
         <div id="profile-main-column">
