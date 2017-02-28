@@ -26,6 +26,9 @@
         <input name="password" id="password" class="form-control" type="password" />
     </div>
     <button class="btn" type="submit">Login</button>
+    <a th:href="@{/forgot-password}"
+       th:text="#{message.resetPassword}">reset</a>
+
 </form>
 
 <div th:replace="fragments/footer :: footer"></div>
@@ -33,3 +36,8 @@
 </body>
 
 </html>
+
+<!--//2-27-17-->
+<!--link to forgotPassword.html-->
+<!--<a th:href="@{/forgetPassword.html}"-->
+   <!--th:text="#{message.resetPassword}">reset</a>-->

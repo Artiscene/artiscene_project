@@ -1,9 +1,12 @@
 package com.artiscene.controllers;
 
 import com.artiscene.models.Project;
+import com.artiscene.models.Tag;
 import com.artiscene.models.User;
+import com.artiscene.repositories.TagRepository;
 import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.ProjectService;
+import com.artiscene.services.usersSvc;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +39,10 @@ public class ProjectController {
     private String uploadPath;
     @Autowired
     private ProjectService service;
+    @Autowired
+    private TagRepository tagDao;
+    @Autowired
+    private usersSvc usersSvc;
 
 
 
@@ -80,9 +87,27 @@ public class ProjectController {
 
     @PostMapping("/project/{id}/edit")
     @PreAuthorize("@projectOwnerExpression.isOwner(principal, #project.id)")
-    public String updateProject(@ModelAttribute Project project, Model model){
+    public String updateProject(@ModelAttribute Project project, @ModelAttribute List<Tag> tags, Model model){
         service.update(project);
         model.addAttribute("project", project);
         return "redirect:/portfolio";
     }
+    @GetMapping("/project/create")
+    public String showCreate(Model model){
+        model.addAttribute("project", new Project());
+        model.addAttribute("tags", tagDao.findAll());
+//        ? get current form for uploading projects
+//          modal in fragments named upload-modal
+        return "fragments/upload-modal";
+    }
+
+
+    @PostMapping("/project/create")
+    public String createProjects(@Valid Project projectCreated,Model model) {
+        projectCreated.setTags((List<Tag>) tagDao.findAll());
+        projectCreated.setUser(usersSvc.loggedInUser());
+        usersSvc.save(projectCreated);
+        return "redirect:/portfolio";
+    }
+
 }
