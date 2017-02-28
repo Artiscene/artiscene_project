@@ -52,7 +52,7 @@ public class PortfolioController {
 
     @GetMapping("/portfolio")
     public String portfolioPage(@ModelAttribute Project project, Model model){
-        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user=userSvc.loggedInUser();
         model.addAttribute("projects", projectRepository.findByUser(user));
         model.addAttribute("project", project);
         model.addAttribute("user", new User());
@@ -90,12 +90,14 @@ public class PortfolioController {
     }
 
     @GetMapping("/portfolio/{id}")
-    public String userPortfolioPage(Model model, @PathVariable Long id){
+    public String userPortfolioPage(Model model, @PathVariable Long id, User user){
         projectRepository.findByUserId(id);
         model.addAttribute("projects", projectRepository.findByUserId(id));
         model.addAttribute("project", new Project());
         model.addAttribute("user", new User());
         model.addAttribute("loggedInUser", userRepository.findOne(id));
+        model.addAttribute("showEditControls", userSvc.isLoggedIn() && user.getUsername() == userSvc.loggedInUser().getUsername());
+
 
         return "portfolio";
     }
