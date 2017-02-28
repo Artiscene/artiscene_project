@@ -5,6 +5,7 @@ import com.artiscene.models.User;
 import com.artiscene.repositories.ProjectRepository;
 import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.ProjectService;
+import com.artiscene.services.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -46,6 +47,8 @@ public class PortfolioController {
     private ProjectService projectService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserSvc userSvc;
 
     @GetMapping("/portfolio")
     public String portfolioPage(@ModelAttribute Project project, Model model){
@@ -54,6 +57,8 @@ public class PortfolioController {
         model.addAttribute("project", project);
         model.addAttribute("user", new User());
         model.addAttribute("loggedInUser", user);
+        model.addAttribute("showEditControls", userSvc.isLoggedIn() && user.getUsername() == userSvc.loggedInUser().getUsername());
+
 
         return "portfolio";
     }

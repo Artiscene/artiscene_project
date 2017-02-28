@@ -6,8 +6,11 @@
 
     <div id="portfolio-header-block" class="header-block container-fluid">
         <h1 id="profile-header" class="header"> <span th:text="${loggedInUser.username}"></span>'s profile!</h1>
-        <button id="upload-artwork-btn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#upload-modal">Upload Artwork</button>
-        <button id="profile-edit-btn" class="btn btn-default btn-sm">Edit Profile</button>
+
+        <div th:if="${showEditControls}">
+            <button id="upload-artwork-btn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#upload-modal">Upload Artwork</button>
+            <button id="profile-edit-btn" class="btn btn-default btn-sm">Edit Profile</button>
+        </div>
 
         <!-- Modal -->
     </div><!-- end of portfolio header block -->
