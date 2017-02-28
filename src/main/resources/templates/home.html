@@ -7,10 +7,14 @@
 
     <div id="homepage-header-block" class="header-block container-fluid">
         <h1 class="main-header">ARTiScene</h1>
+        <h2 class="sub-header"> A community for Artists and Art Lovers</h2>
     </div> <!-- end of homepage-header-block -->
 
-    <div id="homepage-art-block" class="container">
-        <a href=""><h3 class="header">Featured Artwork</h3></a>
+    <div class="homepage-header">
+        <h3 class="header">Featured Artwork</h3>
+    </div>
+    <!--<h3 class="header homepage-header offset-sm-2">Featured Artwork</h3>-->
+    <div id="homepage-art-block" class="container-fluid">
         <div class="container scroll-block">
             <img class="thumbnail" src="" />
             <img class="thumbnail" src="" />
@@ -22,8 +26,8 @@
         </div>
     </div> <!-- end of homepage-art-block -->
 
-    <div id="homepage-post-block" class="container">
-        <a href=""><h3 class="header">Featured Posts</h3></a>
+    <h3 class="header homepage-header">Featured Posts</h3>
+    <div id="homepage-post-block" class="container-fluid">
         <div class="container scroll-block">
             <img class="thumbnail" src="" />
             <img class="thumbnail" src="" />
@@ -36,6 +40,7 @@
     </div> <!-- end of homepage-post-block -->
 
     <div th:replace="fragments/footer :: footer"></div>
+    <script src="/scripts/home.js"></script>
 
 </body>
 </html>

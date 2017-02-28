@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat');
+
+body {
+    background-color: black;
+}
+
+iframe {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px double white;
+}
+
+.error-header, p {
+    font-family: 'Walter Turncoat', cursive;
+    text-align: center;
+    color: white;
+}

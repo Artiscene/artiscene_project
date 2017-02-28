@@ -15,27 +15,23 @@
                 <h4 class="modal-title">Register</h4>
             </div>
             <div class="modal-body">
-                <form th:action="@{forms/register}" method="POST" th:object="${user}">
+                <form th:action="@{/register}" method="POST" th:object="${user}">
                 <!--<form th:action="@{forms/register}" method="POST">-->
                     <!-- Username -->
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" name="username" id="username" class="form-control" th:field="*{username}" />
                         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
-
                     </div>
                     <!-- Email -->
                     <div class="form-group">
                         <label for="email">Email</label>
-
                         <input name="email" id="email" class="form-control" th:field="*{email}"/>
                         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
-
                     </div>
                     <!-- Password -->
                     <div class="form-group">
                         <label for="password">Password</label>
-
                         <input name="password" type="password" id="password" class="form-control" th:field="*{password}"/>
                         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
                     </div>
@@ -50,10 +46,10 @@
                     <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
                 </form>
             </div> <!-- end of modal body -->
-            <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn">Close</a>
-                <button class="btn btn-primary" type="submit">Login</button>
-            </div><!-- end of modal footer -->
+            <!--<div class="modal-footer">-->
+                <!--<a href="#" data-dismiss="modal" class="btn">Close</a>-->
+                <!--<button class="btn btn-primary" type="submit">Login</button>-->
+            <!--</div>&lt;!&ndash; end of modal footer &ndash;&gt;-->
         </div><!-- end of modal content -->
     </div><!-- end of modal dialog -->
 </div><!-- end of register modal -->
