@@ -10,9 +10,8 @@
         var i, html = '';
 
         for (i = 0; i < project.length; i++) {
-            html += '<div><h2>'
-                + project[i].title + '</h2>'
-                + '<img src="/uploads/' + project[i].img_url + '" alt="No image"/>'
+            html += '<div>'
+                + '<a href="/view/' + project[i].id + '"><img src="/uploads/' + project[i].img_url + '" alt="No image"/></a>'
                 + '</div>';
         }
 
