@@ -24,6 +24,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * Created by HKoehler on 2/17/17.
@@ -33,25 +34,27 @@ import java.nio.file.Paths;
 public class PortfolioController {
 
     @Autowired
-    public PortfolioController(ProjectRepository repository) {
-        this.repository = repository;
+    public PortfolioController(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
     }
 
-    private ProjectRepository repository;
+    private ProjectRepository projectRepository;
 
     @Value("${file-upload-path}")
     private String uploadPath;
     @Autowired
-    private ProjectService service;
+    private ProjectService projectService;
     @Autowired
     private UserRepository userRepository;
 
     @GetMapping("/portfolio")
     public String portfolioPage(@ModelAttribute Project project, Model model){
         User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("projects", repository.findByUser(user));
+        model.addAttribute("projects", projectRepository.findByUser(user));
         model.addAttribute("project", project);
         model.addAttribute("user", new User());
+        model.addAttribute("loggedInUser", user);
+
         return "portfolio";
     }
     private String uploadsFolder() throws IOException {
@@ -77,17 +80,24 @@ public class PortfolioController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         project.setUser(userRepository.findOne(user.getId()));
         project.setImg_url(filename);
-        service.save(project);
+        projectService.save(project);
         return "redirect:/portfolio";
     }
 
     @GetMapping("/portfolio/{id}")
-    public String userPortfolioPage(Model model, @PathVariable Long id, User user, Project project){
-        repository.findByUserId(id);
-        model.addAttribute("projects", repository.findByUserId(id));
-        model.addAttribute("projects", repository.findByUser(user));
-        model.addAttribute("project", project);
+    public String userPortfolioPage(Model model, @PathVariable Long id){
+        projectRepository.findByUserId(id);
+        model.addAttribute("projects", projectRepository.findByUserId(id));
+        model.addAttribute("project", new Project());
         model.addAttribute("user", new User());
+        model.addAttribute("loggedInUser", userRepository.findOne(id));
+
         return "portfolio";
+    }
+
+    @GetMapping("/getportfolio.json")
+    @ResponseBody
+    public List<Project> retrieveUserProjects(@RequestParam Long id){
+        return projectService.findByUser(userRepository.findOne(id));
     }
 }
