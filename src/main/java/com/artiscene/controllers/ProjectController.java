@@ -51,12 +51,11 @@ public class ProjectController {
         return service.all();
     }
 
-    @GetMapping("/project/{id}")
+    @GetMapping("/view/{id}")
     public String showOneProject(@PathVariable Long id, Model model){
         model.addAttribute("project", service.findOneProject(id));
-        return "forms/show";
+        return "artwork/view";
     }
-
 
     @GetMapping("/projects/image/{filename:.+")
     public HttpEntity<byte[]> showProjectImage(@PathVariable String filename) throws IOException{

@@ -307,7 +307,7 @@ a:hover {
     font-size: 20px;
 }
 
-#load-projects > div > img{
+#load-projects > div > a > img {
     max-height: 200px;
     margin: 0 auto;
     padding: 10px;
@@ -382,7 +382,7 @@ a:hover {
     font-family: 'Roboto', sans-serif;
 }
 
-.modal-body > form > label {
+.modal-body > .form-group > label {
     font-size: 16px;
     color: white;
 }
@@ -404,4 +404,28 @@ a:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* ARTWORK / VIEW */
+
+#display-artwork-div {
+    width: 80%;
+    margin: 0 auto;
+    padding:10px;
+}
+
+#display-artwork-div > img {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#artwork-info {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+#btn-div {
+    margin: 0 auto;
+    padding: 40px;
 }
