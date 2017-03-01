@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/header :: header('ARTiScene')"></head>
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
 <body>
 
     <div th:fragment="navbar">
-        <nav class="navbar navbar-custom">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <div class="navbar-header navbar-custom">
+                <div class="navbar-header">
                     <a class="navbar-brand" th:href="@{/}">ARTiScene</a>
                 </div>
-                <ul class="nav navbar-nav navbar-right navbar-custom">
+                <ul class="nav navbar-nav navbar-right">
 
-                    <span sec:authorize="isAuthenticated()" class="nav navbar-nav navbar-right navbar-custom">
-                        <li><a th:href="@{/gallery}">Gallery</a></li>
-                        <li><a th:href="@{/forum}">Forum</a></li>
 
-                        <li><a th:href="@{/portfolio}">Portfolio</a></li>
-                        <li>
-                            <form th:action="@{/logout}" th:method="POST">
-                                <button class="btn-link">Logout</button>
-                            </form>
-                        </li>
-                    </span>
-                    <span sec:authorize="!isAuthenticated()" class="nav navbar-nav navbar-right navbar-custom">
-                        <li><a th:href="@{/gallery}">Gallery</a></li>
-                        <li><a th:href="@{/forum}">Forum</a></li>
-                        <li><a href="#login-modal" data-toggle="modal" data-target="#login-modal">Log-in</a></li>
+                    <li class="active"><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/gallery}">Gallery</a></li>
+                  
+                    <li><a th:href="@{/forum}">Forum</a></li>
+                    <span sec:authorize="isAuthenticated()" class="nav navbar-nav navbar-right">
+                 <li>
+                     <form th:action="@{/logout}" th:method="POST">
+                         <button>Logout</button>
+                     </form>
+                 </li>
 
-                        <!--<li><a th:href="@{/register}">Register</a></li>-->
-                        <li><a href="#register-modal" data-toggle="modal" data-target="#register-modal">Register</a></li>
+             </span>
+                    <span sec:authorize="!isAuthenticated()" class="nav navbar-nav navbar-right">
+                        <li><a th:href="@{/login}">Login</a></li>
+                        <li><a th:href="@{/register}">Register</a></li>
              </span>
 
                 </ul>
             </div>
         </nav>
-
-
-        <div th:replace="fragments/login-modal :: login-modal"></div>
-
-        <div th:replace="fragments/register-modal :: register-modal"></div>
-
-
-    </div><!-- end of fragment div -->
-    <div th:replace="fragments/footer :: footer"></div>
+    </div>
 
 </body>
 </html>

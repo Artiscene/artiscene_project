@@ -47,7 +47,7 @@ public class Project {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<Favorite> favorites;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     @JsonManagedReference
     private User user;
@@ -58,8 +58,7 @@ public class Project {
             joinColumns={@JoinColumn(name="project_id")},
             inverseJoinColumns={@JoinColumn(name="tag_id")}
     )
-
-
+    @JsonBackReference
     private List<Tag> tags;
 
     public Project(){}

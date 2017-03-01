@@ -1,5 +1,8 @@
 package com.artiscene.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,7 +21,9 @@ public class Tag {
     private String tag_name;
 
     @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Project> projects;
+
 
     public Tag(){}
 

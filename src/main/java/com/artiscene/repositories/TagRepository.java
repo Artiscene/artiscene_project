@@ -13,6 +13,7 @@ import java.util.List;
  */
 @Repository
 public interface TagRepository extends CrudRepository<Tag, Long>  {
+//    @Query("select * from project pro, tag_projects tp where tp.tag_id ")
 
     }
 
