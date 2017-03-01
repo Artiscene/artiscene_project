@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="fragments/header :: header('Upload Modal')"></head>
 <body>
 
@@ -14,7 +15,9 @@
                 <h4 class="modal-title">Upload Artwork</h4>
             </div> <!-- end of modal header -->
             <div class="modal-body">
-                <!--<form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" action="/fileupload" enctype="multipart/form-data">-->
+
+                <form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" enctype="multipart/form-data">
+
                     <!-- Artwork Title -->
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="artwork-title">Title <span class="required-field">*</span> </label>
@@ -45,7 +48,10 @@
                     </div> <!-- end of artwork date -->
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="tag-select">Choose tags</label>
-                        <div th:include="fragments/tags-list :: tags-list"></div>
+                        <select id="tag-select" class="form-control" multiple="multiple" name="tags">
+                            <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.tag_name}" ></option>
+                        </select>
+
                     </div>
                     <!-- For Sale -->
                     <div class="from-group checkbox">
@@ -64,6 +70,9 @@
                         <img id="output"/>
                     </div><!-- end of upload file -->
 
+                    <input type="hidden" th:attr="name=${_csrf.parameterName}, value=${_csrf.token}" />
+                    <input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />
+              </form>
             </div> <!-- end of modal body -->
             <div class="modal-footer">
                 <input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />
