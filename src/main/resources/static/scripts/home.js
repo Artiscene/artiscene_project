@@ -20,4 +20,22 @@
 
     $('#homepage-header-block').css('background-image', backgroundImage);
 
+    // call
+    var request = $.ajax({
+        url: '/home.json'
+    });
+
+    // populate featured art div
+    request.done(function (project){
+        var i, html = '';
+
+        for (i = 0; i < 6; i++) {
+            html += '<div>'
+                + '<a href="/view/' + project[i].id + '"><img src="/uploads/' + project[i].img_url + '" alt="No image"/></a>'
+                + '</div>';
+        }
+
+        $('#homepage-load-artwork').html(html);
+    })
+
 })();

@@ -9,15 +9,11 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" action="/fileupload" enctype="multipart/form-data">
-
             <div class="modal-header">
                 <h4 class="modal-title">Upload Artwork</h4>
             </div> <!-- end of modal header -->
             <div class="modal-body">
-
                 <form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" enctype="multipart/form-data">
-
                     <!-- Artwork Title -->
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="artwork-title">Title <span class="required-field">*</span> </label>
@@ -54,30 +50,27 @@
 
                     </div>
                     <!-- For Sale -->
-                    <div class="from-group checkbox">
-                        <label class="control-label col-sm-2">For Sale </label>
-                        <input id="for-sale-checkbox" class="checkbox®" type="checkbox" value="for-sale" />
+                    <div class="checkbox">
+                        <label class="control-label col-sm-4"><input id="for-sale-checkbox" type="checkbox" value="for-sale" />For Sale </label>
                     </div> <!-- end of for sale checkbox-->
                     <!-- Price if For Sale is checked -->
                     <div id="price-div" class="form-group">
                         <label class="control-label col-sm-2" for="artwork-price">Price <span class="required-field">*</span></label>
-                        <input id="artwork-price" class="form-control" name="artwork-price" type="text" th:field="*{price}"/>
+                        <input id="artwork-price" name="artwork-price" type="text" th:field="*{price}"/>
                     </div><!-- end of artwork price -->
-                    <!-- Upload File -->
                     <div class="form-group">
-                        <label for="file" class=" control-label col-sm-2" >Upload <span class="required-field">*</span></label>
+                        <label for="file" class="col-sm-10" >Upload <span class="required-field">*</span></label>
                         <input id="file" name="file" type="file" accept="image/*" onchange="loadFile(event)" />
                         <img id="output"/>
                     </div><!-- end of upload file -->
-
                     <input type="hidden" th:attr="name=${_csrf.parameterName}, value=${_csrf.token}" />
                     <input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />
-              </form>
+                </form>
             </div> <!-- end of modal body -->
             <div class="modal-footer">
+
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div> <!-- end of modal footer -->
-            </form>
         </div> <!-- end of modal content -->
         <!--</form>-->
 

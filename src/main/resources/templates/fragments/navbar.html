@@ -13,7 +13,7 @@
 
                     <span sec:authorize="isAuthenticated()" class="nav navbar-nav navbar-right navbar-custom">
                         <li><a th:href="@{/gallery}">Gallery</a></li>
-                        <li><a th:href="@{/forum}">Forum</a></li>
+                        <!--<li><a th:href="@{/forum}">Forum</a></li>-->
 
                         <li><a th:href="@{/portfolio}">Portfolio</a></li>
                         <li>
@@ -24,7 +24,7 @@
                     </span>
                     <span sec:authorize="!isAuthenticated()" class="nav navbar-nav navbar-right navbar-custom">
                         <li><a th:href="@{/gallery}">Gallery</a></li>
-                        <li><a th:href="@{/forum}">Forum</a></li>
+                        <!--<li><a th:href="@{/forum}">Forum</a></li>-->
                         <li><a href="#login-modal" data-toggle="modal" data-target="#login-modal">Log-in</a></li>
 
                         <!--<li><a th:href="@{/register}">Register</a></li>-->
