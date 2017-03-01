@@ -65,7 +65,7 @@ public class PortfolioController {
         model.addAttribute("showEditControls", userSvc.isLoggedIn() && user.getUsername() == userSvc.loggedInUser().getUsername());
 
 
-        model.addAttribute("loggedInUser", user);
+        //model.addAttribute("loggedInUser", user);
         model.addAttribute("tags", tagDao.findAll());
         return "portfolio";
     }
