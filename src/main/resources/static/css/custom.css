@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat|Finger+Paint');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat');
 
 /* ----------------------------------------------- Classes for different page & form backgrounds */
 
@@ -54,7 +54,7 @@ p{
 }
 
 nav {
-    font-family:'Walter Turncoat', cursive;
+    font-family: 'Walter Turncoat', cursive;
 }
 
 a {
@@ -70,64 +70,42 @@ a:hover {
     display: inline;
     position: relative;
     text-align: center;
-    font: 20px 'Walter Turncoat', cursive;
-    font-size: 10vw;
+    font: 10vw 'Walter Turncoat', cursive;
     letter-spacing: 5px;
     color: rgba(0, 255, 8, 0.5);
 }
 
 .main-header:after {
     content: "ARTiScene";
-    position: absolute; left: 1px; top: -4px;
+    position: absolute; left: 6px; top: 5px;
     color: rgba(0, 151, 225, 0.5);
     text-shadow: 1px 1px rgba(0, 0, 0, .5);
 }
 
 .header {
     display: block;
-    font-family:'Walter Turncoat', cursive;
+    font-family: 'Walter Turncoat', cursive;
     padding: 10px;
     font-size: 40px;
 }
 
-#featured-artwork-div {
+.homepage-header {
     color: #d4eab6;
-    background: rgba(0, 69, 0, .8); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, rgba(0, 69, 0, .8), rgba(151, 187, 43, .7)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, rgba(0, 69, 0, .8), rgba(151, 187, 43, .7)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, rgba(0, 69, 0, .8), rgba(151, 187, 43, .7)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, rgba(0, 69, 0, .8), rgba(151, 187, 43, .7)); /* Standard syntax */
+    background: #004500; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #004500, #97bb2b); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #004500, #97bb2b); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #004500, #97bb2b); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #004500, #97bb2b); /* Standard syntax */
 }
 
-.homepage-header > .header {
-    margin-left: 40px;
-}
-
-.artwork-div .homepage-header > h3 {
-    font-size: 10vw;
+.artwork-divhomepage-header > h3 {
     margin-left: 40px;
 }
 
 .sub-header {
-    font: 20px 'Walter Turncoat', cursive;
+    font-family: 'Walter Turncoat', cursive;
     padding:5px;
     font-size: 26px;
-    color: #d4eab6;
-}
-
-#featured-artwork-div > .header > span {
-    display: block;
-    float: right;
-    font-size: 14px;
-    color: #d4eab6;
-    margin: 10px;
-    border: 1px solid white;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-#featured-artwork-div > .header > span > a {
-    font-size: 14px;
     color: #d4eab6;
 }
 
@@ -141,15 +119,6 @@ a:hover {
     overflow-y: hidden;
     width: 100%;
     height: 225px;
-}
-
-#homepage-load-artwork {
-    margin-bottom: 50px;
-}
-
-#homepage-load-artwork > div > a > img {
-    max-height: 200px;
-    margin: 5px;
 }
 
 .thumbnail {
@@ -169,7 +138,8 @@ a:hover {
 }
 
 #homepage-header-block {
-    padding: 8em 0 12em 0;
+    /*background-image: url('../img/block-background.jpg');*/
+    padding: 10em 0 16em 0;
 }
 
 #homepage-header-block > .sub-header {
@@ -476,12 +446,6 @@ a:hover {
 }
 
 #edit-profile-modal > .modal-dialog > .modal-content > .modal-body > form > .form-group > label {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    color: white;
-}
-
-#register-modal > .modal-dialog > .modal-content > .modal-body > form > .form-group > label {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: white;
