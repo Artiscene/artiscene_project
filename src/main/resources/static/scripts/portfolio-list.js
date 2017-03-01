@@ -5,7 +5,7 @@
     var user_id=$("#user_id").val();
     var request = $.ajax({
 
-        url: '/getportfolio.json',
+        url: '/portfolio.json',
         data:{id:user_id}
     });
     console.log("JS portfolio is working");
@@ -13,9 +13,8 @@
         var i, html = '';
 
         for (i = 0; i < projects.length; i++) {
-            html += '<div><h2>'
-                + projects[i].title + '</h2>'
-                + '<img src="/uploads/' + projects[i].img_url + '" alt="No image"/>'
+            html += '<div>'
+                + '<a href="/view/' + projects[i].id + '"><img src="/uploads/' + projects[i].img_url + '" alt="No image"/></a>'
                 + '</div>';
         }
 

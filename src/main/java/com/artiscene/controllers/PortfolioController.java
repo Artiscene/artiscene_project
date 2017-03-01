@@ -1,8 +1,10 @@
 package com.artiscene.controllers;
 
 import com.artiscene.models.Project;
+import com.artiscene.models.Tag;
 import com.artiscene.models.User;
 import com.artiscene.repositories.ProjectRepository;
+import com.artiscene.repositories.TagRepository;
 import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.ProjectService;
 import com.artiscene.services.UserSvc;
@@ -49,6 +51,9 @@ public class PortfolioController {
     private UserRepository userRepository;
     @Autowired
     private UserSvc userSvc;
+    @Autowired
+    private TagRepository tagDao;
+
 
     @GetMapping("/portfolio")
     public String portfolioPage(@ModelAttribute Project project, Model model){
@@ -60,6 +65,8 @@ public class PortfolioController {
         model.addAttribute("showEditControls", userSvc.isLoggedIn() && user.getUsername() == userSvc.loggedInUser().getUsername());
 
 
+        model.addAttribute("loggedInUser", user);
+        model.addAttribute("tags", tagDao.findAll());
         return "portfolio";
     }
     private String uploadsFolder() throws IOException {
@@ -71,8 +78,9 @@ public class PortfolioController {
             @Valid Project project,
             Errors validation,
             Model model,
-            @RequestParam(name="file") MultipartFile uploadedFile) throws IOException {
-        if(validation.hasErrors()){
+            @RequestParam(name="file") MultipartFile uploadedFile,
+            @RequestParam(name="tags") List<Tag> tags) throws IOException {
+        if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("project", project);
             return "portfolio";
@@ -85,11 +93,10 @@ public class PortfolioController {
         User user = userSvc.loggedInUser();
         project.setUser(userRepository.findOne(user.getId()));
         project.setImg_url(filename);
+        project.setTags(tags);
         projectService.save(project);
         return "redirect:/portfolio";
     }
-
-
 
     @GetMapping("/portfolio/{id}")
     public String userPortfolioPage(Model model, @PathVariable Long id, User user){
@@ -98,6 +105,7 @@ public class PortfolioController {
         model.addAttribute("project", new Project());
         model.addAttribute("user", new User());
         model.addAttribute("loggedInUser", userRepository.findOne(id));
+
         return "portfolio";
     }
 

@@ -8,7 +8,13 @@
     <h1 class="header">ARTiScene Gallery</h1>
     <form>
         <div id="gallery-search-div" class="input-group">
-            <input type="text" class="form-control" placeholder="Search artwork by tags or username" />
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="tag-select">Search by tag</label>
+                <select id="tag-select" class="form-control" multiple="multiple" name="tags">
+                    <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.tag_name}" ></option>
+                </select>
+
+            </div>
             <div class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                     <i class="glyphicon glyphicon-search"></i>

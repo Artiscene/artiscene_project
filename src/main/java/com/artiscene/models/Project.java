@@ -47,18 +47,18 @@ public class Project {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<Favorite> favorites;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     @JsonManagedReference
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name="tag_projects",
-            joinColumns={@JoinColumn(name="tag_id")},
-            inverseJoinColumns={@JoinColumn(name="project_id")}
+            joinColumns={@JoinColumn(name="project_id")},
+            inverseJoinColumns={@JoinColumn(name="tag_id")}
     )
-
+    @JsonBackReference
     private List<Tag> tags;
 
     public Project(){}
@@ -150,6 +150,8 @@ public class Project {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
+
+
 
 
     public Project(String title, Boolean forSale, String img_url, String size, String medium, String date, String price, List<Favorite> favorites, User user, List<Tag> tags) {

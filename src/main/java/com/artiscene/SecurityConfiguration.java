@@ -47,6 +47,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/projects/create")
                     .authenticated();
+//                .and()
+//                .antMatchers("/user/updatePassword*",
+//                        "/user/savePassword*",
+//                        "/updatePassword*")
+//                .hasAuthority("CHANGE_PASSWORD_PRIVILEGE");
     }
 
     @Override
