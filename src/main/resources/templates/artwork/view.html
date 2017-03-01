@@ -4,21 +4,23 @@
 </head>
 <body class="page">
 
-<div id="btn-div">
-    <!--<p>Visit <span th:text="${project.user.username}"></span>'s full portfolio!</p>--><!--<p>Visit <span th:text="${project.user.username}"></span>'s full portfolio!</p>-->
-    <button type="button" VALUE="Back" class="btn btn-primary" onClick="history.go(-1);return true;">Go Back</button>
-    <button type="button" class="btn btn-custom">Vist <span th:text="${project.user.username}"></span>'s Portfolio </button>
-</div> <!-- end of btn-group -->
+<div id="btn-block" class="container-fluid">
+    <div class="text-center" id="btn-div">
+        <button type="button" VALUE="Back" class="btn btn-primary" onClick="history.go(-1);return true;">Go Back</button>
+        <button type="button" class="btn btn-custom">Vist <span th:text="${project.user.username}"></span>'s Portfolio </button>
+    </div> <!-- end of btn-div -->
+</div> <!-- end of container -->
 
 <div id="display-artwork-div">
     <img class="center-block" th:attr="src=${'/uploads/' + project.img_url}" />
 </div> <!-- end of display artwork -->
 
 <div id="artwork-info">
-    <p><span th:text="${project.title}"></span></p>
-    <p><span th:text="${project.medium}"></span></p>
-    <p><span th:text="${project.size}"></span></p>
-    <p><span th:text="${project.date}"></span></p>
+    <p><span id="view-title" th:text="${project.title}"></span></p>
+    <p><span id="view-medium" th:text="${project.medium}"></span></p>
+    <p><span id="view-size" th:text="${project.size}"></span></p>
+    <p><span id="view-date" th:text="${project.date}"></span></p>
+    <p><span id="view-tags" th:text="${project.tags}"></span></p>
 </div> <!-- end of artwork info -->
 
 
