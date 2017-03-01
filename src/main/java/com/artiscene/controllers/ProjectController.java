@@ -4,9 +4,7 @@ import com.artiscene.models.Project;
 import com.artiscene.models.Tag;
 import com.artiscene.models.User;
 import com.artiscene.repositories.TagRepository;
-import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.ProjectService;
-import com.artiscene.services.usersSvc;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +13,12 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,16 +32,27 @@ public class ProjectController {
     private String uploadPath;
     @Autowired
     private ProjectService service;
-
-
+    @Autowired
+    private TagRepository tagDao;
 
 
     @GetMapping("/gallery")
-    public String showAllProjects(Model model){
+    public String showAllProjects(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("projects", Collections.emptyList());
+        model.addAttribute("tags", tagDao.findAll());
         return "/gallery";
     }
+
+    @PostMapping("/gallery")
+    public String searchByTags(
+            Model model){
+
+        return  "redirect:/gallery";
+    }
+
+
+
 
     @GetMapping("/gallery.json")
     public @ResponseBody List<Project> retrieveAllProjects(){

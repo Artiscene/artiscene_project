@@ -55,7 +55,7 @@ INSERT into tags (tag_name) VALUES ("graphic design");
 INSERT into tags (tag_name) VALUES ("performance");
 INSERT into tags (tag_name) VALUES ("photoshop");
 INSERT into tags (tag_name) VALUES ("collage");
-INSERT into tags (tag_name) VALUES ("amatur");
+INSERT into tags (tag_name) VALUES ("amateur");
 INSERT into tags (tag_name) VALUES ("professional");
 INSERT into tags (tag_name) VALUES ("graffiti");
 INSERT into tags (tag_name) VALUES ("mural");

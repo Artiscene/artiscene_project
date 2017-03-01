@@ -7,7 +7,7 @@ import com.artiscene.repositories.ProjectRepository;
 import com.artiscene.repositories.TagRepository;
 import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.ProjectService;
-import com.artiscene.services.usersSvc;
+import com.artiscene.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -52,16 +52,16 @@ public class PortfolioController {
     @Autowired
     private TagRepository tagDao;
     @Autowired
-    private com.artiscene.services.usersSvc usersSvc;
+    private UsersService usrsvc;
 
     @GetMapping("/portfolio")
     public String portfolioPage(@ModelAttribute Project project, Model model){
-        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usrsvc.loggedInUser();
         model.addAttribute("projects", projectRepository.findByUser(user));
         model.addAttribute("project", project);
         model.addAttribute("user", new User());
         model.addAttribute("loggedInUser", user);
-
+        model.addAttribute("tags", tagDao.findAll());
         return "portfolio";
     }
     private String uploadsFolder() throws IOException {
@@ -73,8 +73,9 @@ public class PortfolioController {
             @Valid Project project,
             Errors validation,
             Model model,
-            @RequestParam(name="file") MultipartFile uploadedFile) throws IOException {
-        if(validation.hasErrors()){
+            @RequestParam(name="file") MultipartFile uploadedFile,
+            @RequestParam(name="tags") List<Tag> tags) throws IOException {
+        if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("project", project);
             return "portfolio";
@@ -84,11 +85,15 @@ public class PortfolioController {
         String destinationPath = Paths.get(uploadsFolder(), filename).toString();
         uploadedFile.transferTo(new File(destinationPath));
 
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        project.setUser(userRepository.findOne(user.getId()));
+//        User user = new User();
+//        user.setId(usrsvc.loggedInUser().getId());
+
+        project.setUser(usrsvc.loggedInUser());
         project.setImg_url(filename);
+        project.setTags(tags);
         projectService.save(project);
         return "redirect:/portfolio";
+
     }
 
     @GetMapping("/portfolio/{id}")
@@ -102,27 +107,19 @@ public class PortfolioController {
         return "portfolio";
     }
 
-    @GetMapping("/getportfolio.json")
-    @ResponseBody
-    public List<Project> retrieveUserProjects(@RequestParam Long id){
+    @GetMapping("/portfolio.json")
+    public @ResponseBody List<Project> retrieveUserProjects(@RequestParam Long id){
         return projectService.findByUser(userRepository.findOne(id));
     }
 
-    @GetMapping("/portfolio/create")
-    public String showCreate(Model model){
-        model.addAttribute("project", new Project());
-        model.addAttribute("tags", tagDao.findAll());
-//        ? get current form for uploading projects
-//          modal in fragments named upload-modal
-        return "fragments/upload-modal";
-    }
+//    @GetMapping("/portfolio/create")
+//    public String showCreate(Model model){
+//        model.addAttribute("project", new Project());
+//        model.addAttribute("tags", tagDao.findAll());
+////        ? get current form for uploading projects
+////          modal in fragments named upload-modal
+//        return "fragments/upload-modal";
+//    }
 
 
-    @PostMapping("/portfolio/create")
-    public String createProjects(@Valid Project projectCreated,Model model) {
-        projectCreated.setTags((List<Tag>) tagDao.findAll());
-        projectCreated.setUser(usersSvc.loggedInUser());
-        projectService.save(projectCreated);
-        return "redirect:/portfolio";
-    }
 }

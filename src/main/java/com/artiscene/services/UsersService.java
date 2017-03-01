@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * Created by vanessamnoble on 2/28/17.
  */
 @Service("usersSvc")
-public class usersSvc {
+public class UsersService {
 
     public boolean isLoggedIn() {
         boolean isAnonymousUser =
