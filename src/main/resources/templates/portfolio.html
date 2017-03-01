@@ -26,18 +26,22 @@
             <img id="profile-picture" class="thumbnail" th:src="${'/uploads/' + loggedInUser.profile_pic}"  />
             <h3 class="sub-header" th:text="${loggedInUser.username}"></h3>
             <h4>Location</h4>
-            <span th:text="${loggedInUser.location}"></span>
+            <h5 th:if="${loggedInUser.location}" th:text="${loggedInUser.location}"></h5>
+            <h5 th:if="!${loggedInUser.location}">CLick "Edit Profile" and tell us where you are from!</h5>
             <h6><span th:text="${loggedInUser.email}"></span></h6>
             <h6 id="interest-header"><span th:text="${loggedInUser.username}"></span>'s Interests</h6>
+
             <div id="profile-interest">
-                <p th:text="${loggedInUser.interests}">Click the "Edit Profile" button and let us know what you're interested in!</p></div>
+                <p th:if="${loggedInUser.interests}"   th:text="${loggedInUser.interests}"></p>
+                <p th:if="!${loggedInUser.interests}" >Click on the "Edit Profile" button and let everyone know what interests you!</p>
+            </div>
         </div> <!-- end of profile info div -->
 
         <div id="profile-main-column">
             <div id="profile-about-me">
                 <h3 class="sub-header">About <span th:text="${loggedInUser.username}"></span></h3>
-                <p th:text="${loggedInUser.bio}">Click the "Edit Profile" button and let us know all about you!
-                </p>
+                <p th:if="${loggedInUser.bio}" th:text="${loggedInUser.bio}"></p>
+                <p th:if="!${loggedInUser.bio}">Click the "Edit Profile" button!  Tell us about you!</p>
             </div><!-- end of profile about me -->
 
             <div id="portfolio-div">
@@ -71,8 +75,8 @@
     <script src="/scripts/portfolio-list.js"></script>
     <script>
         var loadFile = function(event) {
-            var output = document.getElementById('output');
-            output.src = URL.createObjectURL(event.target.files[0]);
+            var output = $(event.target).siblings('img').first();
+            output.attr('src', URL.createObjectURL(event.target.files[0]));
         };
     </script>
 
