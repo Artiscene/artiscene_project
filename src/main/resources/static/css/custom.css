@@ -104,7 +104,7 @@ a:hover {
 
 .sub-header {
     font-family: 'Walter Turncoat', cursive;
-    padding:10px;
+    padding:5px;
     font-size: 26px;
     color: #d4eab6;
 }
@@ -186,6 +186,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     float:left;
+    text-align: center;
     padding: 10px;
     border-radius: 10px;
     margin: 20px;
@@ -198,6 +199,10 @@ a:hover {
     color:black;
 }
 
+#profile-picture {
+    max-width: 200px;
+}
+
 #profile-info-div > img {
     border-radius: 10px;
     box-shadow: 2px 2px 3px black;
@@ -208,6 +213,19 @@ a:hover {
     color: #d4eab6;
     text-shadow: 1px 1px 1px black;
     font-size: 30px;
+}
+
+#interest-header {
+    font: 20px 'Walter Turncoat', cursive;
+    color: #d4eab6;
+    text-shadow: 1px 1px 1px black;
+}
+
+#profile-interest {
+    background-color: #d4eab6;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
 }
 
 #profile-main-column {
@@ -227,15 +245,16 @@ a:hover {
 }
 
 #profile-about-me > .sub-header {
-    font: 10vw 'Walter Turncoat', cursive;
     color: black;
     font-size: 30px;
+    text-align: center;
 }
 
 #portfolio-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 }
 
 #portfolio-div > .sub-header{
@@ -245,7 +264,7 @@ a:hover {
 .artwork-div {
     display:flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -263,6 +282,20 @@ a:hover {
     max-width: 150px;
     max-height: 150px;
 
+}
+
+#load-portfolio > div > a > img {
+    max-height: 200px;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #f8dbb1;
+    border-radius: 10px;
+}
+
+#output {
+    margin: 0 auto;
+    max-height: 200px;
+    max-width: 500px;
 }
 
 /* ----------------------------------------------- Gallery styling */
@@ -406,17 +439,29 @@ a:hover {
     flex-wrap: wrap;
 }
 
+#upload-modal > .modal-dialog > .modal-content > .modal-body > form > .form-group > label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+#edit-profile-modal > .modal-dialog > .modal-content > .modal-body > form > .form-group > label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
 /* ARTWORK / VIEW */
 
 #display-artwork-div {
     width: 80%;
     margin: 0 auto;
-    padding:10px;
 }
 
 #display-artwork-div > img {
     max-width: 100%;
     margin: 0 auto;
+    padding: 20px;
 }
 
 #artwork-info {
@@ -425,7 +470,14 @@ a:hover {
     color: white;
 }
 
+#btn-block {
+    background:  rgba(31, 134, 116, .5); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* Standard syntax */
+}
+
 #btn-div {
-    margin: 0 auto;
-    padding: 40px;
+    margin: 10px;
 }
