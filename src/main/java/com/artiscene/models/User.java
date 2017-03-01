@@ -59,6 +59,39 @@ public class User {
     private List<Posts> post;
 
 
+    @Column(length = 2000)
+    private String bio;
+
+    @Column(length = 300)
+    private String location;
+
+    @Column(length=200)
+    private String interests;
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getInterests() {
+        return interests;
+    }
+
+    public void setInterests(String interests) {
+        this.interests = interests;
+    }
+
     public List<Favorite> getFavorites() {
         return favorites;
     }
@@ -164,6 +197,9 @@ public class User {
         this.refreshToken = user.refreshToken;
         this.stripePublishableKey = user.stripePublishableKey;
         this.stripeUserId = user.stripeUserId;
+        this.bio=user.bio;
+        this.location=user.location;
+        this.interests=user.interests;
     }
 
     public void setaccessToken(String access_token) {

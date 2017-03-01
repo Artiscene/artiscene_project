@@ -15,47 +15,48 @@
                 <h4 class="modal-title">Edit Profile</h4>
             </div>
             <div class="modal-body">
-                <form th:action="@{/edit}" method="POST" th:object="${user}">
+                <form th:action="@{/profile/edit}" method="POST" th:object="${loggedInUser}" enctype="multipart/form-data">
                     <!-- Email -->
                     <div class="form-group">
                         <label for="edit-email">Email Address </label>
-                        <input type="text" name="edit-email" id="edit-email" class="form-control" />
-                        <!--<p th:if="${#fields.hasErrors('edit-email')}" th:errors="*{email}" />-->
+                        <input  type="text" name="edit-email" id="edit-email" class="form-control" th:field="*{email}" />
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
                     </div>
                     <!-- Location -->
                     <div class="form-group">
-                        <label for="edit-location">Location</label>
-                        <input name="edit-location" id="edit-location" class="form-control"/>
-                        <!--<p th:if="${#fields.hasErrors('edit-location')}" th:errors="*{location}" />-->
+                        <label for="location">Location</label>
+                        <input name="location" id="location" class="form-control" th:field="*{location}"/>
+                        <p th:if="${#fields.hasErrors('location')}" th:errors="*{location}" />
                     </div>
                     <!-- Interests -->
                     <div class="form-group">
                         <label for="edit-interests">Interests</label>
-                        <textarea name="edit-interests" id="edit-interests" class="form-control"></textarea>
-                        <!--<p th:if="${#fields.hasErrors('password')}" th:errors="*{interests}" />-->
+                        <textarea name="edit-interests" id="edit-interests" class="form-control" th:field="*{interests}"></textarea>
+                        <p th:if="${#fields.hasErrors('interests')}" th:errors="*{interests}" />
                     </div>
                     <!-- About Me -->
                     <div class="form-group">
                         <label for="edit-bio">About Me</label>
-                        <textarea class="form-control" name="edit-bio" id="edit-bio"></textarea>
+                        <textarea class="form-control" name="edit-bio" id="edit-bio" th:field="*{bio}"></textarea>
                     </div>
                     <!-- Profile Picture -->
                     <div class="form-group">
-                        <label for="file" class="col-sm-10" >Profile Picture
-                            <span class="required-field">*</span></label>
-                        <input id="file" name="file" type="file" accept="image/*" onchange="loadFile(event)" />
+                        <label for="profile_pic" class="col-sm-10" >Upload <span class="required-field">*</span></label>
+                        <input id="profile_pic" name="profile_pic" type="file" accept="image/*" onchange="loadFile(event)" />
                         <img id="output"/>
                     </div>
-                    <!--<button class="btn" type="submit">Save Changes</button>-->
-                    <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
+                    <input type="hidden" th:field="*{id}" />
+                    <button class="btn" type="submit">Save Changes</button>
+                    <!--<input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />-->
                 </form>
             </div> <!-- end of modal body -->
             <div class="modal-footer">
             <a href="#" data-dismiss="modal" class="btn">Close</a>
-            <button class="btn btn-custom" type="submit">Save Changes</button>
+            <!--<button class="btn btn-primary" type="submit">Save Changes</button>-->
             </div><!-- end of modal footer -->
         </div><!-- end of modal content -->
     </div><!-- end of modal dialog -->
 </div><!-- end of register modal -->
+
 </body>
 </html>
