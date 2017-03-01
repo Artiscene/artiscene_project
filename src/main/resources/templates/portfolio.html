@@ -6,7 +6,7 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 
     <div id="portfolio-header-block" class="header-block container-fluid">
-        <h1 id="profile-header" class="header"> <span th:text="${loggedInUser.username}"></span>'s profile!</h1>
+        <h1 id="profile-header" class="header"> Welcome <span th:text="${loggedInUser.username}"></span></h1>
         <button id="upload-artwork-btn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#upload-modal">Upload Artwork</button>
         <button id="profile-edit-btn" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit-profile-modal">Edit Profile</button>
 
@@ -20,11 +20,11 @@
     <div id="profile-body">
 
         <div id="profile-info-div">
-            <img class="thumbnail" src="" />
+            <img id="profile-picture" class="thumbnail" src="" />
             <h3 class="sub-header" th:text="${loggedInUser.username}"></h3>
             <h4>Location</h4>
             <h6><span th:text="${loggedInUser.email}"></span></h6>
-            <h4><span th:text="${loggedInUser.username}"></span>'s Interests</h4>
+            <h6 id="interest-header"><span th:text="${loggedInUser.username}"></span>'s Interests</h6>
             <div id="profile-interest">
                 <p>Click the "Edit Profile" button and let us know what you're interested in!</p></div>
         </div> <!-- end of profile info div -->
@@ -44,20 +44,20 @@
                 </div> <!-- end of portfolio artwork div-->
             </div><!-- end of portfolio div -->
 
-            <div id="favorites-div">
-                <h3 class="sub-header"><span th:text="${loggedInUser.username}"></span>'s Favorites</h3>
-                <div class="artwork-div">
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                    <img class="thumbnail" src="" />
-                </div>
-            </div><!-- end of favorites div -->
+            <!--<div id="favorites-div">-->
+                <!--<h3 class="sub-header"><span th:text="${loggedInUser.username}"></span>'s Favorites</h3>-->
+                <!--<div class="artwork-div">-->
+                    <!--<img class="thumbnail" src="" />-->
+                    <!--<img class="thumbnail" src="" />-->
+                    <!--<img class="thumbnail" src="" />-->
+                    <!--<img class="thumbnail" src="" />-->
+                    <!--<img class="thumbnail" src="" />-->
+                    <!--<img class="thumbnail" src="" />-->
+                    <!--<img class="thumbnail" src="" />-->
+                    <!--<img class="thumbnail" src="" />-->
+                    <!--<img class="thumbnail" src="" />-->
+                <!--</div>-->
+            <!--</div>&lt;!&ndash; end of favorites div &ndash;&gt;-->
         </div><!-- end of profile main column -->
     </div><!-- end of profile body -->
 
