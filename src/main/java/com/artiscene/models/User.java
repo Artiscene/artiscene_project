@@ -59,7 +59,6 @@ public class User {
     private List<Posts> post;
 
 
-
     @Column(length = 2000)
     private String bio;
 

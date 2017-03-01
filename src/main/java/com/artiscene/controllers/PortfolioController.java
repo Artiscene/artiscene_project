@@ -56,7 +56,7 @@ public class PortfolioController {
         model.addAttribute("projects", projectRepository.findByUser(user));
         model.addAttribute("project", project);
         model.addAttribute("user", new User());
-        model.addAttribute("loggedInUser", user);
+        model.addAttribute("loggedInUser", userRepository.findOne(user.getId()));
         model.addAttribute("showEditControls", userSvc.isLoggedIn() && user.getUsername() == userSvc.loggedInUser().getUsername());
 
 
@@ -82,12 +82,14 @@ public class PortfolioController {
         String destinationPath = Paths.get(uploadsFolder(), filename).toString();
         uploadedFile.transferTo(new File(destinationPath));
 
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userSvc.loggedInUser();
         project.setUser(userRepository.findOne(user.getId()));
         project.setImg_url(filename);
         projectService.save(project);
         return "redirect:/portfolio";
     }
+
+
 
     @GetMapping("/portfolio/{id}")
     public String userPortfolioPage(Model model, @PathVariable Long id, User user){
@@ -96,9 +98,6 @@ public class PortfolioController {
         model.addAttribute("project", new Project());
         model.addAttribute("user", new User());
         model.addAttribute("loggedInUser", userRepository.findOne(id));
-        model.addAttribute("showEditControls", userSvc.isLoggedIn() && user.getUsername() == userSvc.loggedInUser().getUsername());
-
-
         return "portfolio";
     }
 
