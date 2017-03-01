@@ -1,6 +1,7 @@
 /**
  * Created by Brian on 2/23/17.
  */
+
 (function () {
     var request = $.ajax({
         url: '/gallery.json'
