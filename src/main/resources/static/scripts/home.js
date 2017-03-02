@@ -40,20 +40,4 @@
         $('#homepage-load-artwork').html(html);
     });
 
-    // random profile button -----------------------------------------------------------
-
-    var usersRequest = $.ajax({
-        url: '/portfolio.json'
-    });
-
-    usersRequest.done(function (users){
-
-        var i;
-        var randomPortfolio = Math.floor(Math.random() * users.length);
-
-        $('#random-portfolio-btn').onclick(function(){
-
-        });
-    });
-
 })();
