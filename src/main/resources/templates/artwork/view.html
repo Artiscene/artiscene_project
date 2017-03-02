@@ -7,7 +7,9 @@
 <div id="btn-block" class="container-fluid">
     <div class="text-center" id="btn-div">
         <button type="button" VALUE="Back" class="btn btn-primary" onClick="history.go(-1);return true;">Go Back</button>
-        <button type="button" class="btn btn-custom">Vist <span th:text="${project.user.username}"></span>'s Portfolio </button>
+        <form th:action="${'/portfolio/' + project.user.id}">
+        <button class="btn btn-custom"  >Visit <span th:text="${project.user.username}"></span>'s Portfolio </button>
+        </form>
     </div> <!-- end of btn-div -->
 </div> <!-- end of container -->
 
@@ -25,6 +27,12 @@
         <p id="view-tags" th:each="tag:${project.tags}"> | <span th:text="${tag.tag_name}"></span> | </p>
     </div><!-- end of view tags div -->
 </div> <!-- end of artwork info -->
+
+<form th:if="${showDeleteControls}" th:method="POST" th:action="@{/project/delete}">
+    <input type="hidden" name="id" th:value="${project.id}" />
+    <!--<a class="btn btn-primary" th:href="@{'/project/'+ ${id} +'/edit' }">Edit</a>-->
+    <button class="btn deep-orange darken-4">Delete</button>
+</form>
 
 
 

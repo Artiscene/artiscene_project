@@ -3,8 +3,11 @@ package com.artiscene.controllers;
 import com.artiscene.models.Project;
 import com.artiscene.models.Tag;
 import com.artiscene.models.User;
+import com.artiscene.repositories.ProjectRepository;
 import com.artiscene.repositories.TagRepository;
+import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.ProjectService;
+import com.artiscene.services.UserSvc;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Brian on 2/23/17.
@@ -34,6 +38,13 @@ public class ProjectController {
     private ProjectService service;
     @Autowired
     private TagRepository tagDao;
+    @Autowired
+    private ProjectRepository projectDao;
+    @Autowired
+    private UserSvc userSvc;
+    @Autowired
+    UserRepository userRepository;
+
 
 
     @GetMapping("/gallery")
@@ -61,7 +72,16 @@ public class ProjectController {
 
     @GetMapping("/view/{id}")
     public String showOneProject(@PathVariable Long id, Model model){
-        model.addAttribute("project", service.findOneProject(id));
+        Project project = service.findOneProject(id);
+        model.addAttribute("project", project);
+        User user;
+        if (userSvc.isLoggedIn()) {
+            user = userSvc.loggedInUser();
+        } else {
+            user = new User();
+        }
+        model.addAttribute("loggedInUser", userRepository.findOne(user.getId()));
+        model.addAttribute("showDeleteControls", userSvc.isLoggedIn() && Objects.equals(project.getUser().getUsername(), userSvc.loggedInUser().getUsername()));
         return "artwork/view";
     }
 
@@ -91,6 +111,15 @@ public class ProjectController {
     public String updateProject(@ModelAttribute Project project, @ModelAttribute List<Tag> tags, Model model){
         service.update(project);
         model.addAttribute("project", project);
+        return "redirect:/portfolio";
+    }
+
+
+    @PostMapping("/project/delete")
+    public String deleteProject(@ModelAttribute Project project, Model model ){
+
+
+        projectDao.delete(service.findOneProject(project.getId()));
         return "redirect:/portfolio";
     }
 

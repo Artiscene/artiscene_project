@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by HKoehler on 2/17/17.
@@ -62,7 +63,7 @@ public class PortfolioController {
         model.addAttribute("project", project);
         model.addAttribute("user", new User());
         model.addAttribute("loggedInUser", userRepository.findOne(user.getId()));
-        model.addAttribute("showEditControls", userSvc.isLoggedIn() && user.getUsername() == userSvc.loggedInUser().getUsername());
+        model.addAttribute("showEditControls", userSvc.isLoggedIn() && Objects.equals(user.getUsername(), userSvc.loggedInUser().getUsername()));
 
 
         //model.addAttribute("loggedInUser", user);
