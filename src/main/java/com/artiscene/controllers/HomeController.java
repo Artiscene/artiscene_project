@@ -71,4 +71,10 @@ public class HomeController {
     List<Project> retrieveAllProjects(){
         return service.all();
     }
+
+
+//    @GetMapping("/home/random")
+//    public @ResponseBody
+
 }
+

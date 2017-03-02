@@ -10,12 +10,12 @@
 <div th:fragment="register-modal" class="modal fade" id="register-modal">
     <div class="modal-dialog">
         <div class="modal-content">
+            <form th:action="@{/register}" method="POST" th:object="${user}">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Register</h4>
             </div>
             <div class="modal-body">
-                <form th:action="@{/register}" method="POST" th:object="${user}">
                 <!--<form th:action="@{forms/register}" method="POST">-->
                     <!-- Username -->
                     <div class="form-group">
@@ -40,14 +40,15 @@
                         <label for="password_confirm">Confirm Password<span class="required-field"> * </span></label>
                         <input type="password" class="form-control" name="password_confirm" id="password_confirm"/>
                     </div>
+                    <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
 
-                </form>
             </div> <!-- end of modal body -->
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn">Close</a>
                 <button class="btn btn-custom" type="submit">Register</button>
-                <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
+
             </div><!-- end of modal footer -->
+            </form>
         </div><!-- end of modal content -->
     </div><!-- end of modal dialog -->
 </div><!-- end of register modal -->

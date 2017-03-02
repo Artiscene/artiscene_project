@@ -14,7 +14,7 @@
 /* ----------------------------------------------- Custom Bootstrap Button Color */
 
 .btn-custom {
-    background-color: hsl(110, 56%, 16%) !important;
+    background-color: hsl(110, 56%, 16%);
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#398f28", endColorstr="#193f11");
     background-image: -moz-linear-gradient(top, #398f28, #193f11);
@@ -177,7 +177,7 @@ a:hover {
 }
 
 #portfolio-header-block {
-    background-image: url('../img/nebula.jpeg');
+    background-image: url('../img/two-pencils.jpg');
     padding: .2em;
     text-align: center;
     color: white;
@@ -263,6 +263,7 @@ a:hover {
     flex-direction: column;
     padding: 20px;
     margin: 20px;
+    width:90%;
 }
 
 #profile-about-me{
@@ -485,35 +486,4 @@ a:hover {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: white;
-}
-
-/* ARTWORK / VIEW */
-
-#display-artwork-div {
-    width: 80%;
-    margin: 0 auto;
-}
-
-#display-artwork-div > img {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-#artwork-info {
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    color: white;
-}
-
-#btn-block {
-    background:  rgba(31, 134, 116, .5); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* Standard syntax */
-}
-
-#btn-div {
-    margin: 10px;
 }
