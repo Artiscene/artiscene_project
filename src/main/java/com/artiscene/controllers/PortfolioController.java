@@ -7,7 +7,7 @@ import com.artiscene.repositories.ProjectRepository;
 import com.artiscene.repositories.TagRepository;
 import com.artiscene.repositories.UserRepository;
 import com.artiscene.services.ProjectService;
-import com.artiscene.services.UsersService;
+import com.artiscene.services.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -50,17 +50,22 @@ public class PortfolioController {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private TagRepository tagDao;
+    private UserSvc userSvc;
     @Autowired
-    private UsersService usrsvc;
+    private TagRepository tagDao;
+
 
     @GetMapping("/portfolio")
     public String portfolioPage(@ModelAttribute Project project, Model model){
-        User user = usrsvc.loggedInUser();
+        User user=userSvc.loggedInUser();
         model.addAttribute("projects", projectRepository.findByUser(user));
         model.addAttribute("project", project);
         model.addAttribute("user", new User());
-        model.addAttribute("loggedInUser", user);
+        model.addAttribute("loggedInUser", userRepository.findOne(user.getId()));
+        model.addAttribute("showEditControls", userSvc.isLoggedIn() && user.getUsername() == userSvc.loggedInUser().getUsername());
+
+
+        //model.addAttribute("loggedInUser", user);
         model.addAttribute("tags", tagDao.findAll());
         return "portfolio";
     }
@@ -85,19 +90,16 @@ public class PortfolioController {
         String destinationPath = Paths.get(uploadsFolder(), filename).toString();
         uploadedFile.transferTo(new File(destinationPath));
 
-//        User user = new User();
-//        user.setId(usrsvc.loggedInUser().getId());
-
-        project.setUser(usrsvc.loggedInUser());
+        User user = userSvc.loggedInUser();
+        project.setUser(userRepository.findOne(user.getId()));
         project.setImg_url(filename);
         project.setTags(tags);
         projectService.save(project);
         return "redirect:/portfolio";
-
     }
 
     @GetMapping("/portfolio/{id}")
-    public String userPortfolioPage(Model model, @PathVariable Long id){
+    public String userPortfolioPage(Model model, @PathVariable Long id, User user){
         projectRepository.findByUserId(id);
         model.addAttribute("projects", projectRepository.findByUserId(id));
         model.addAttribute("project", new Project());
@@ -107,19 +109,9 @@ public class PortfolioController {
         return "portfolio";
     }
 
-    @GetMapping("/portfolio.json")
-    public @ResponseBody List<Project> retrieveUserProjects(@RequestParam Long id){
+    @GetMapping("/getportfolio.json")
+    @ResponseBody
+    public List<Project> retrieveUserProjects(@RequestParam Long id){
         return projectService.findByUser(userRepository.findOne(id));
     }
-
-//    @GetMapping("/portfolio/create")
-//    public String showCreate(Model model){
-//        model.addAttribute("project", new Project());
-//        model.addAttribute("tags", tagDao.findAll());
-////        ? get current form for uploading projects
-////          modal in fragments named upload-modal
-//        return "fragments/upload-modal";
-//    }
-
-
 }

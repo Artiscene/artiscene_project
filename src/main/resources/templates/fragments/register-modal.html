@@ -40,13 +40,14 @@
                         <label for="password_confirm">Confirm Password<span class="required-field"> * </span></label>
                         <input type="password" class="form-control" name="password_confirm" id="password_confirm"/>
                     </div>
+                    <button class="btn btn-custom" type="submit">Register</button>
+                    <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
 
                 </form>
             </div> <!-- end of modal body -->
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn">Close</a>
-                <button class="btn btn-custom" type="submit">Register</button>
-                <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />
+
             </div><!-- end of modal footer -->
         </div><!-- end of modal content -->
     </div><!-- end of modal dialog -->

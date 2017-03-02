@@ -89,6 +89,7 @@ public class UserController {
             // user.setUser(userRepository.findOne(user.getId()));
             userToUpdated.setEmail(user.getEmail());
             userToUpdated.setBio(user.getBio());
+            userToUpdated.setLocation(user.getLocation());
             userToUpdated.setInterests(user.getInterests());
 
             userRepository.save(userToUpdated);

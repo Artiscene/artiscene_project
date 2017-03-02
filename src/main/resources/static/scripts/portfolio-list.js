@@ -5,7 +5,7 @@
     var user_id=$("#user_id").val();
     var request = $.ajax({
 
-        url: '/portfolio.json',
+        url: '/getportfolio.json',
         data:{id:user_id}
     });
     console.log("JS portfolio is working");
