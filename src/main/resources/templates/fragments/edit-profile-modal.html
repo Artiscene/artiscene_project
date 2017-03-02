@@ -24,8 +24,8 @@
                     </div>
                     <!-- Location -->
                     <div class="form-group">
-                        <label for="edit-location">Location</label>
-                        <input name="edit-location" id="edit-location" class="form-control" th:field="*{location}"/>
+                        <label for="location">Location</label>
+                        <input name="location" id="location" class="form-control" th:field="*{location}"/>
                         <p th:if="${#fields.hasErrors('location')}" th:errors="*{location}" />
                     </div>
                     <!-- Interests -->

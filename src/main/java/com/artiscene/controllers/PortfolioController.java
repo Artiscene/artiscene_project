@@ -96,6 +96,7 @@ public class PortfolioController {
         project.setTags(tags);
         projectService.save(project);
         return "redirect:/portfolio";
+
     }
 
     @GetMapping("/portfolio/{id}")

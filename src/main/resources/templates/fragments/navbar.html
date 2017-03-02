@@ -3,13 +3,13 @@
 <head th:replace="fragments/header :: header('ARTiScene')"></head>
 <body>
 
-    <div th:fragment="navbar">
-        <nav class="navbar navbar-custom">
-            <div class="container-fluid">
-                <div class="navbar-header navbar-custom">
-                    <a class="navbar-brand" th:href="@{/}">ARTiScene</a>
-                </div>
-                <ul class="nav navbar-nav navbar-right navbar-custom">
+<div th:fragment="navbar">
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header navbar-custom">
+                <a class="navbar-brand" th:href="@{/}">ARTiScene</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right navbar-custom">
 
                     <span sec:authorize="isAuthenticated()" class="nav navbar-nav navbar-right navbar-custom">
                         <li><a th:href="@{/gallery}">Gallery</a></li>
@@ -22,27 +22,27 @@
                             </form>
                         </li>
                     </span>
-                    <span sec:authorize="!isAuthenticated()" class="nav navbar-nav navbar-right navbar-custom">
+                <span sec:authorize="!isAuthenticated()" class="nav navbar-nav navbar-right navbar-custom">
                         <li><a th:href="@{/gallery}">Gallery</a></li>
-                        <!--<li><a th:href="@{/forum}">Forum</a></li>-->
+                    <!--<li><a th:href="@{/forum}">Forum</a></li>-->
                         <li><a href="#login-modal" data-toggle="modal" data-target="#login-modal">Log-in</a></li>
 
-                        <!--<li><a th:href="@{/register}">Register</a></li>-->
+                    <!--<li><a th:href="@{/register}">Register</a></li>-->
                         <li><a href="#register-modal" data-toggle="modal" data-target="#register-modal">Register</a></li>
              </span>
 
-                </ul>
-            </div>
-        </nav>
+            </ul>
+        </div>
+    </nav>
 
 
-        <div th:replace="fragments/login-modal :: login-modal"></div>
+    <div th:replace="fragments/login-modal :: login-modal"></div>
 
-        <div th:replace="fragments/register-modal :: register-modal"></div>
+    <div th:replace="fragments/register-modal :: register-modal"></div>
 
 
-    </div><!-- end of fragment div -->
-    <div th:replace="fragments/footer :: footer"></div>
+</div><!-- end of fragment div -->
+<div th:replace="fragments/footer :: footer"></div>
 
 </body>
 </html>

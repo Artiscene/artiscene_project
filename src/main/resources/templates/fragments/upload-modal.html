@@ -9,11 +9,11 @@
 
         <!-- Modal content-->
         <div class="modal-content">
+            <form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" enctype="multipart/form-data">
             <div class="modal-header">
                 <h4 class="modal-title">Upload Artwork</h4>
             </div> <!-- end of modal header -->
             <div class="modal-body">
-                <form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" enctype="multipart/form-data">
                     <!-- Artwork Title -->
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="artwork-title">Title <span class="required-field">*</span> </label>
@@ -63,12 +63,10 @@
                         <input id="file" name="file" type="file" accept="image/*" onchange="loadFile(event)" />
                         <img id="output"/>
                     </div><!-- end of upload file -->
-                    <input type="hidden" th:attr="name=${_csrf.parameterName}, value=${_csrf.token}" />
-                    <input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />
-                </form>
             </div> <!-- end of modal body -->
             <div class="modal-footer">
-
+                <input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />
+                <input type="hidden" th:attr="name=${_csrf.parameterName}, value=${_csrf.token}" />
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div> <!-- end of modal footer -->
         </div> <!-- end of modal content -->
@@ -76,6 +74,5 @@
 
     </div> <!-- end of modal dialog -->
 </div> <!-- end of modal-->
-
 </body>
 </html>

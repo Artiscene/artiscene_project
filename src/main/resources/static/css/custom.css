@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat|Finger+Paint');
 
 /* ----------------------------------------------- Classes for different page & form backgrounds */
 
@@ -14,7 +14,7 @@
 /* ----------------------------------------------- Custom Bootstrap Button Color */
 
 .btn-custom {
-    background-color: hsl(110, 56%, 16%) !important;
+    background-color: hsl(110, 56%, 16%);
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#398f28", endColorstr="#193f11");
     background-image: -moz-linear-gradient(top, #398f28, #193f11);
@@ -54,7 +54,7 @@ p{
 }
 
 nav {
-    font-family: 'Walter Turncoat', cursive;
+    font-family:'Walter Turncoat', cursive;
 }
 
 a {
@@ -70,42 +70,64 @@ a:hover {
     display: inline;
     position: relative;
     text-align: center;
-    font: 10vw 'Walter Turncoat', cursive;
+    font: 20px 'Walter Turncoat', cursive;
+    font-size: 10vw;
     letter-spacing: 5px;
     color: rgba(0, 255, 8, 0.5);
 }
 
 .main-header:after {
     content: "ARTiScene";
-    position: absolute; left: 6px; top: 5px;
+    position: absolute; left: 1px; top: -4px;
     color: rgba(0, 151, 225, 0.5);
     text-shadow: 1px 1px rgba(0, 0, 0, .5);
 }
 
 .header {
     display: block;
-    font-family: 'Walter Turncoat', cursive;
+    font-family:'Walter Turncoat', cursive;
     padding: 10px;
     font-size: 40px;
 }
 
-.homepage-header {
+#featured-artwork-div {
     color: #d4eab6;
-    background: #004500; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #004500, #97bb2b); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #004500, #97bb2b); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #004500, #97bb2b); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #004500, #97bb2b); /* Standard syntax */
+    background: rgba(0, 69, 0, .8); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, rgba(0, 69, 0, .8), rgba(151, 187, 43, .7)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, rgba(0, 69, 0, .8), rgba(151, 187, 43, .7)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, rgba(0, 69, 0, .8), rgba(151, 187, 43, .7)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, rgba(0, 69, 0, .8), rgba(151, 187, 43, .7)); /* Standard syntax */
 }
 
-.artwork-divhomepage-header > h3 {
+.homepage-header > .header {
+    margin-left: 40px;
+}
+
+.artwork-div .homepage-header > h3 {
+    font-size: 10vw;
     margin-left: 40px;
 }
 
 .sub-header {
-    font-family: 'Walter Turncoat', cursive;
+    font: 20px 'Walter Turncoat', cursive;
     padding:5px;
     font-size: 26px;
+    color: #d4eab6;
+}
+
+#featured-artwork-div > .header > span {
+    display: block;
+    float: right;
+    font-size: 14px;
+    color: #d4eab6;
+    margin: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#featured-artwork-div > .header > span > a {
+    font-size: 14px;
     color: #d4eab6;
 }
 
@@ -119,6 +141,15 @@ a:hover {
     overflow-y: hidden;
     width: 100%;
     height: 225px;
+}
+
+#homepage-load-artwork {
+    margin-bottom: 50px;
+}
+
+#homepage-load-artwork > div > a > img {
+    max-height: 200px;
+    margin: 5px;
 }
 
 .thumbnail {
@@ -138,8 +169,7 @@ a:hover {
 }
 
 #homepage-header-block {
-    /*background-image: url('../img/block-background.jpg');*/
-    padding: 10em 0 16em 0;
+    padding: 8em 0 12em 0;
 }
 
 #homepage-header-block > .sub-header {
@@ -147,7 +177,7 @@ a:hover {
 }
 
 #portfolio-header-block {
-    background-image: url('../img/nebula.jpeg');
+    background-image: url('../img/two-pencils.jpg');
     padding: .2em;
     text-align: center;
     color: white;
@@ -233,6 +263,7 @@ a:hover {
     flex-direction: column;
     padding: 20px;
     margin: 20px;
+    width:90%;
 }
 
 #profile-about-me{
@@ -451,33 +482,8 @@ a:hover {
     color: white;
 }
 
-/* ARTWORK / VIEW */
-
-#display-artwork-div {
-    width: 80%;
-    margin: 0 auto;
-}
-
-#display-artwork-div > img {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-#artwork-info {
+#register-modal > .modal-dialog > .modal-content > .modal-body > form > .form-group > label {
     font-family: 'Roboto', sans-serif;
-    text-align: center;
+    font-size: 16px;
     color: white;
-}
-
-#btn-block {
-    background:  rgba(31, 134, 116, .5); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* Standard syntax */
-}
-
-#btn-div {
-    margin: 10px;
 }
