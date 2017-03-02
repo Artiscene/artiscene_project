@@ -41,14 +41,19 @@ public class ProjectController {
         model.addAttribute("user", new User());
         model.addAttribute("projects", Collections.emptyList());
         model.addAttribute("tags", tagDao.findAll());
-        return "/gallery";
+        return "gallery";
     }
 
     @PostMapping("/gallery")
-    public String searchByTags(
-            Model model){
-
-        return  "redirect:/gallery";
+    public String searchByTags(@RequestParam(name = "tags") long tag,
+                               @ModelAttribute Project project,
+                               Model model){
+        //tag = "%" + tag + "%"; // Save this result in a variable
+        model.addAttribute("tags", tagDao.findAll());
+        model.addAttribute("user", new User());
+        List<Project> matchingProjects = tagDao.projectWithTag(tag);
+        model.addAttribute("projects", matchingProjects);
+        return  "gallery";
     }
 
 
