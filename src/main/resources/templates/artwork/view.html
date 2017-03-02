@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/header :: header('View - ARTiScene')">
+<head th:include="fragments/header :: header('View - ARTiScene')">
 </head>
 <body class="page">
 
@@ -20,8 +20,12 @@
     <p><span id="view-medium" th:text="${project.medium}"></span></p>
     <p><span id="view-size" th:text="${project.size}"></span></p>
     <p><span id="view-date" th:text="${project.date}"></span></p>
-    <p><span id="view-tags" th:text="${project.tags}"></span></p>
+    <div id="view-tags-div" class="container">
+        <h5>Tags for this piece:</h5>
+        <p id="view-tags" th:each="tag:${project.tags}"> | <span th:text="${tag.tag_name}"></span> | </p>
+    </div><!-- end of view tags div -->
 </div> <!-- end of artwork info -->
+
 
 
 

@@ -8,8 +8,9 @@
     <div id="homepage-header-block" class="header-block container-fluid">
         <h1 class="main-header">ARTiScene</h1>
         <h2 class="sub-header"> A community for Artists and Art Lovers</h2>
-        <button class="btn btn-lg btn-custom">Gallery</button>
-        <button class="btn btn-lg btn-custom">Random Profile</button>
+        <button class="btn btn-lg btn-custom" onclick="location.href='/gallery'">Gallery</button>
+        <button id="random-portfolio-btn" class="btn btn-lg btn-custom">Random Portfolio</button>
+        <a th:href="@{/portfolio}"></a>
     </div> <!-- end of homepage-header-block -->
 
     <div id="featured-artwork-div" class="homepage-header">
@@ -20,19 +21,6 @@
         <!-- artwork populated here from home.js -->
         </div>
     </div> <!-- end of homepage-art-block -->
-
-    <!--<h3 class="header homepage-header">Featured Posts</h3>-->
-    <!--<div id="homepage-post-block" class="container-fluid">-->
-        <!--<div class="container scroll-block">-->
-            <!--<img class="thumbnail" src="" />-->
-            <!--<img class="thumbnail" src="" />-->
-            <!--<img class="thumbnail" src="" />-->
-            <!--<img class="thumbnail" src="" />-->
-            <!--<img class="thumbnail" src="" />-->
-            <!--<img class="thumbnail" src="" />-->
-            <!--<a href="">View More...</a>-->
-        <!--</div>-->
-    <!--</div> &lt;!&ndash; end of homepage-post-block &ndash;&gt;-->
 
     <div th:replace="fragments/footer :: footer"></div>
     <script src="/scripts/home.js"></script>

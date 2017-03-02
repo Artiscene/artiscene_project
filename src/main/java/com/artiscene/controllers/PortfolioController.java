@@ -114,4 +114,8 @@ public class PortfolioController {
     public List<Project> retrieveUserProjects(@RequestParam Long id){
         return projectService.findByUser(userRepository.findOne(id));
     }
+
+//    @GetMapping("/portfolio.json")
+//    @ResponseBody
+//    public List<Users>
 }
