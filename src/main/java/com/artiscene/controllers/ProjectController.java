@@ -74,7 +74,12 @@ public class ProjectController {
     public String showOneProject(@PathVariable Long id, Model model){
         Project project = service.findOneProject(id);
         model.addAttribute("project", project);
-        User user=userSvc.loggedInUser();
+        User user;
+        if (userSvc.isLoggedIn()) {
+            user = userSvc.loggedInUser();
+        } else {
+            user = new User();
+        }
         model.addAttribute("loggedInUser", userRepository.findOne(user.getId()));
         model.addAttribute("showDeleteControls", userSvc.isLoggedIn() && Objects.equals(project.getUser().getUsername(), userSvc.loggedInUser().getUsername()));
         return "artwork/view";
