@@ -3,6 +3,12 @@
  */
 
 (function () {
+
+    var html = $('#load-projects').html().trim();
+    if (html !== '') {
+        return;
+    }
+
     var request = $.ajax({
         url: '/gallery.json'
     });

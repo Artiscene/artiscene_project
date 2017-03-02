@@ -97,6 +97,7 @@ public class PortfolioController {
         project.setTags(tags);
         projectService.save(project);
         return "redirect:/portfolio";
+
     }
 
     @GetMapping("/portfolio/{id}")
@@ -115,8 +116,4 @@ public class PortfolioController {
     public List<Project> retrieveUserProjects(@RequestParam Long id){
         return projectService.findByUser(userRepository.findOne(id));
     }
-
-//    @GetMapping("/portfolio.json")
-//    @ResponseBody
-//    public List<Users>
 }
