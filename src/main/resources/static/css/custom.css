@@ -229,7 +229,7 @@ a:hover {
     color:black;
 }
 
-#profile-picture {
+.profile-picture {
     max-width: 200px;
 }
 

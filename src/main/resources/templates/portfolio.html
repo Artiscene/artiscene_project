@@ -23,7 +23,8 @@
     <div id="profile-body">
 
         <div id="profile-info-div">
-            <img id="profile-picture" class="thumbnail" th:src="${'/uploads/' + loggedInUser.profile_pic}"  />
+                <img th:if="${loggedInUser.profile_pic}"  class="thumbnail" th:src="${'/uploads/' + loggedInUser.profile_pic}"  />
+                <img th:if="!${loggedInUser.profile_pic}"  class="thumbnail" src="/img/default.jpeg" />
             <h3 class="sub-header" th:text="${loggedInUser.username}"></h3>
             <h4>Location</h4>
             <h5 th:if="${loggedInUser.location}" th:text="${loggedInUser.location}"></h5>
