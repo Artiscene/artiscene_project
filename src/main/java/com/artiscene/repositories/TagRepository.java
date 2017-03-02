@@ -1,5 +1,6 @@
 package com.artiscene.repositories;
 
+import com.artiscene.models.Project;
 import com.artiscene.models.Role;
 import com.artiscene.models.Tag;
 import org.springframework.data.jpa.repository.Query;
@@ -13,7 +14,8 @@ import java.util.List;
  */
 @Repository
 public interface TagRepository extends CrudRepository<Tag, Long>  {
-//    @Query("select * from project pro, tag_projects tp where tp.tag_id ")
-
-    }
-
+    @Query("select p\n" +
+            "from Project p join p.tags t\n" +
+            "WHERE  t.id = ?1")
+    public List<Project> projectWithTag(long tagId);
+}

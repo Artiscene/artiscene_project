@@ -6,7 +6,7 @@
 
 <div id="gallery-header-block" class="header-block container-fluid">
     <h1 class="header">ARTiScene Gallery</h1>
-    <form>
+    <form th:action="@{/gallery}" method="post">
         <div id="gallery-search-div" class="input-group">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="tag-select">Search by tag</label>
@@ -27,7 +27,13 @@
 <div id="gallery-body">
 
     <div class="artwork-div" id="load-projects">
-        <!-- artwork is populated here -->
+        <div th:each="project: ${projects}">
+            <div>
+                <a th:href="${'/view/' + project.id}">
+                    <img th:src="${'/uploads/' + project.img_url}" alt="No image"/>
+                </a>
+            </div>
+        </div>
     </div>
 
 

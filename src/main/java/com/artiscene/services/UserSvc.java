@@ -1,5 +1,6 @@
 package com.artiscene.services;
 
+import com.artiscene.models.Project;
 import com.artiscene.models.User;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,5 +23,9 @@ public class UserSvc {
             return null;
         }
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    public void save(Project projectCreated) {
+
     }
 }
