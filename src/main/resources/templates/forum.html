@@ -1,77 +1,99 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/header :: header('Forum - ARTiScene')"></head>
+<head th:replace="fragments/header :: header('Gallery - ARTiScene')"></head>
 <body class="page">
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div id="forum-header-block" class="header-block container-fluid">
-    <h1 id="forum-header" class="header">ARTiScene Forum</h1>
+<div id="forum-header-div" class="header-block">
+    <h1 class="header">ARTiScene Forum</h1>
+    <p>Welcome to our forum where artists and art lovers alike can <br />
+        share experience, offer advice, post services, share events, and more!</p>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#post-modal"> Create a Post </button>
 
-    <!-- Modal Button -->
-    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#post-modal">Create a Post</button>
-
-    <!-- Modal -->
-    <div id="post-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
+    <!-- Create a Post Modal -->
+    <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <!-- Model Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Create A Post</h4>
+                    <h5 class="modal-title" id="post-modal-label">Create a Post</h5>
                 </div> <!-- end of modal header -->
+                <!-- Modal Body -->
                 <div class="modal-body">
-                    <form class="form-horizontal">
-                        <!-- Post Title -->
+                    <form>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="post-title">Title <span class="required-field">*</span> </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="post-title" name="post-title"/>
-                            </div>
-                        </div> <!-- end of post title -->
-                        <!-- Post Body -->
+                            <label for="post-title" class="form-control-label">Title:</label>
+                            <input type="text" class="form-control" id="post-title" />
+                        </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="post-body">Body <span class="required-field">*</span> </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="post-body" name="post-body"/>
-                            </div>
-                        </div> <!-- end of post body -->
-                        <!-- Post Location -->
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="post-location">Location </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="post-location" name="post-location"/>
-                            </div>
-                        </div> <!-- end of post location-->
+                            <label for="post-body" class="form-control-label">Description:</label>
+                            <textarea class="form-control" id="post-body"></textarea>
+                        </div>
                     </form>
+                    <h4>Choose category: </h4>
+                    <div id="category-dropdown" class="input-group">
+                        <select>
+                            <option value="critique">Critique</option>
+                            <option value="discuss">Discuss</option>
+                            <option value="services">Services</option>
+                            <option value="events">Events</option>
+                            <option value="misc">Misc</option>
+                        </select>
+                    </div><!-- /input-group -->
                 </div> <!-- end of modal body -->
+                <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Upload</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Submit Post</button>
                 </div> <!-- end of modal footer -->
             </div> <!-- end of modal content -->
-        </div> <!-- end of modal dialog -->
-    </div> <!-- end of modal-->
-</div> <!-- end of forum header block -->
+        </div> <!-- end of "modal dialog" -->
+    </div> <!-- end of main modal div -->
+</div> <!-- end of forum header div-->
 
 <div id="forum-body">
-    <div id="category-group" class="center-block">
-        <div id="critique-category" class="forum-category col-sm-2">
-            <h3 class="category-header">Critique</h3>
+    <div id="critique" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Critique</h2>
+        </div><!-- end of category header-->
+        <div id="critique-posts" class="post-group">
+
         </div>
-        <div id="discuss-category" class="forum-category col-sm-2">
-            <h3 class="category-header">Discuss</h3>
+    </div><!-- end of critique -->
+    <div id="discuss" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Discuss</h2>
+        </div><!-- end of category header-->
+        <div id="discuss-posts" class="post-group">
+
         </div>
-        <div id="services-category" class="forum-category col-sm-2">
-            <h3 class="category-header">Services</h3>
+    </div><!-- end of discuss -->
+    <div id="services" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Services</h2>
+        </div><!-- end of category header-->
+        <div id="services-posts" class="post-group">
+
         </div>
-        <div id="events-category" class="forum-category col-sm-2">
-            <h3 class="category-header">Events</h3>
+    </div> <!-- end of services -->
+    <div id="events" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Events</h2>
+        </div><!-- end of category header-->
+        <div id="events-posts" class="post-group">
+
         </div>
-        <div id="misc-category" class="forum-category col-sm-2">
-            <h3 class="category-header">Misc</h3>
+    </div> <!-- end of events -->
+    <div id="misc" class="forum-category">
+        <div class="category-header">
+            <h2 class="sub-header">Misc</h2>
+        </div><!-- end of category header-->
+        <div id="misc-posts" class="post-group">
+
         </div>
-    </div> <!-- end of category group -->
-</div> <!-- end of forum body -->
+    </div><!-- end of misc -->
+</div>
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>

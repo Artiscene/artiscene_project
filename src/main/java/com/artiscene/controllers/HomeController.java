@@ -1,7 +1,9 @@
 package com.artiscene.controllers;
 
+import com.artiscene.models.Project;
 import com.artiscene.models.User;
 import com.artiscene.repositories.UserRepository;
+import com.artiscene.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -10,8 +12,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by HKoehler on 2/17/17.
@@ -21,6 +25,9 @@ import javax.validation.Valid;
 public class HomeController {
     private UserRepository repository;
     private PasswordEncoder encoder;
+
+    @Autowired
+    private ProjectService service;
 
     @Autowired
     public HomeController(UserRepository repository, PasswordEncoder encoder){
@@ -58,4 +65,16 @@ public class HomeController {
         return "redirect:/";
 
     }
+
+    @GetMapping("/home.json")
+    public @ResponseBody
+    List<Project> retrieveAllProjects(){
+        return service.all();
+    }
+
+
+//    @GetMapping("/home/random")
+//    public @ResponseBody
+
 }
+
