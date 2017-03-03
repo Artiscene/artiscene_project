@@ -2,7 +2,6 @@ package com.artiscene.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -42,7 +41,7 @@ public class Project {
     private String date;
 
     @Column(length = 50)
-    private String price;
+    private double price;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<Favorite> favorites;
@@ -87,11 +86,11 @@ public class Project {
         this.date = date;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -154,7 +153,7 @@ public class Project {
 
 
 
-    public Project(String title, Boolean forSale, String img_url, String size, String medium, String date, String price, List<Favorite> favorites, User user, List<Tag> tags) {
+    public Project(String title, Boolean forSale, String img_url, String size, String medium, String date, double price, List<Favorite> favorites, User user, List<Tag> tags) {
         this.title = title;
         this.forSale = forSale;
         this.img_url = img_url;
