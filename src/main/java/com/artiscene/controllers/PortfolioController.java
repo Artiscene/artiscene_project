@@ -70,9 +70,6 @@ public class PortfolioController {
         model.addAttribute("tags", tagDao.findAll());
         return "portfolio";
     }
-    private String uploadsFolder() throws IOException {
-        return String.format("%s/%s", new File(".").getCanonicalPath(), uploadPath);
-    }
 
     @PostMapping("/portfolio")
     public String saveProject(
@@ -88,7 +85,7 @@ public class PortfolioController {
         }
 
         String filename = uploadedFile.getOriginalFilename();
-        String destinationPath = Paths.get(uploadsFolder(), filename).toString();
+        String destinationPath = Paths.get(uploadPath, filename).toString();
         uploadedFile.transferTo(new File(destinationPath));
 
         User user = userSvc.loggedInUser();
