@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Walter+Turncoat|Finger+Paint');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Cabin+Sketch');
 
 /* ----------------------------------------------- Classes for different page & form backgrounds */
 
@@ -13,7 +13,12 @@
 
 /* ----------------------------------------------- Custom Bootstrap Button Color */
 
+.btn {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .btn-custom {
+    font-family: 'Open Sans', sans-serif;
     background-color: hsl(110, 56%, 16%);
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#398f28", endColorstr="#193f11");
@@ -34,35 +39,57 @@
 
 .navbar-custom {
     background-color: black;
-    color: #587c24;
+    color: #d4eab6;
+    font-size: 1.1em;
 }
 
 .navbar-custom > li > a:hover {
-    color: #d4eab6;
+    color: rgb(0, 255, 8);
 }
 
 .nav .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background-color: #002c00;
+    background-color: #0097e1;
+    color: black;
+}
+
+#brand {
+    color: #d4eab6;
+    font-size: 2.5em;
+}
+
+#collapse-icon {
     color: #d4eab6;
 }
 
+#logout-btn {
+    display:block;
+    color: #d4eab6;
+    background: transparent;
+    margin: 10px;
+    border: none;
+    font-size: 1em;
+}
+
+#collapse-btn {
+    border: 1px solid #d4eab6;
+}
 
 /* ----------------------------------------------- General Styling */
 
 p{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 nav {
-    font-family:'Walter Turncoat', cursive;
+    font-family: 'Cabin Sketch', cursive;
 }
 
 a {
-    color: #587c24;
+    color: #d4eab6;;
 }
 
 a:hover {
-    color: #97bb2b;
+    color: #d4eab6;
     text-decoration: none;
 }
 
@@ -70,22 +97,48 @@ a:hover {
     display: inline;
     position: relative;
     text-align: center;
-    font: 20px 'Walter Turncoat', cursive;
+    font-family: 'Cabin Sketch', cursive;
     font-size: 10vw;
     letter-spacing: 5px;
-    color: rgba(0, 255, 8, 0.5);
+    color: #00ff09;
+    animation-name: changingHeader;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
 }
 
-.main-header:after {
-    content: "ARTiScene";
-    position: absolute; left: 1px; top: -4px;
-    color: rgba(0, 151, 225, 0.5);
-    text-shadow: 1px 1px rgba(0, 0, 0, .5);
+@keyframes changingHeader {
+    0% {
+        color: #00ff09;
+        letter-spacing: 5px;
+    }
+    25% {
+        color: #0097e1;
+        letter-spacing: 6px;
+    }
+    50% {
+        color: #00ff09;
+        letter-spacing: 5px;
+    }
+    75% {
+        color: #0097e1;
+        letter-spacing: 6px;
+    }
+    100% {
+        color: #00ff09;
+        letter-spacing: 5px;
+    }
 }
+
+/*.main-header:after {*/
+    /*content: "ARTiScene";*/
+    /*position: absolute; left: 1px; top: 2px;*/
+    /*color: rgba(0, 151, 225, 0.5);*/
+    /*text-shadow: 1px 1px rgba(0, 0, 0, .5);*/
+/*}*/
 
 .header {
     display: block;
-    font-family:'Walter Turncoat', cursive;
+    font-family: 'Cabin Sketch', cursive;
     padding: 10px;
     font-size: 40px;
 }
@@ -109,7 +162,7 @@ a:hover {
 }
 
 .sub-header {
-    font: 20px 'Walter Turncoat', cursive;
+    font-family: 'Cabin Sketch', cursive;
     padding:5px;
     font-size: 26px;
     color: #d4eab6;
@@ -218,7 +271,7 @@ a:hover {
     float:left;
     max-width: 250px;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Karma', serif;
     color:black;
     padding: 10px;
     border-radius: 10px;
@@ -240,14 +293,15 @@ a:hover {
 }
 
 #profile-info-div > .sub-header {
-    font: 10vw 'Walter Turncoat', cursive;
+    font: 10vw 'Cabin Sketch', cursive;
     color: #d4eab6;
     text-shadow: 1px 1px 1px black;
     font-size: 30px;
 }
 
 #interest-header {
-    font: 20px 'Walter Turncoat', cursive;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 20px;
     color: #d4eab6;
     text-shadow: 1px 1px 1px black;
 }
@@ -271,7 +325,7 @@ a:hover {
     background-color: #d4eab6;
     color: black;
     font-size: 14px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     border-radius: 10px;
     padding: 10px;
 }
@@ -367,7 +421,7 @@ a:hover {
 }
 
 #load-projects > div > h2 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: white;
     font-size: 20px;
 }
@@ -408,7 +462,7 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: white;
     background-color: black;
     border-radius: 10px;
@@ -423,7 +477,7 @@ a:hover {
 
 .buttons > .btn {
     padding: 10px;
-    font-family: 'Walter Turncoat', cursive;
+    font-family: 'Cabin Sketch', cursive;
     margin:10px;
 }
 
@@ -438,13 +492,13 @@ a:hover {
 }
 
 .modal-title {
-    font-family: 'Walter Turncoat', cursive;
+    font-family: 'Cabin Sketch', cursive;
     color: #587c24;
     font-size: 28px;
 }
 
 .modal-body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .modal-body > .form-group > label {
@@ -461,7 +515,7 @@ a:hover {
 
 .category-header {
     text-align: center;
-    font-family: 'Walter Turncoat', cursive;
+    font-family: 'Cabin Sketch', cursive;
     color: white;
 }
 
@@ -472,19 +526,23 @@ a:hover {
 }
 
 #upload-modal > .modal-dialog > .modal-content > .modal-body > form > .form-group > label {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     color: white;
 }
 
 #edit-profile-modal > .modal-dialog > .modal-content > .modal-body > form > .form-group > label {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     color: white;
 }
 
 #register-modal > .modal-dialog > .modal-content > .modal-body > form > .form-group > label {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     color: white;
+}
+
+.error-text{
+    color: red;
 }
