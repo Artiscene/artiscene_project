@@ -26,7 +26,7 @@
         <h5>Tags for this piece:</h5>
         <p id="view-tags" th:each="tag:${project.tags}"> | <span th:text="${tag.tag_name}"></span> | </p>
     </div><!-- end of view tags div -->
-</div> <!-- end of artwork info -->
+    </div> <!-- end of artwork info -->
 
 <form th:if="${showDeleteControls}" th:method="POST" th:action="@{/project/delete}">
     <input type="hidden" name="id" th:value="${project.id}" />

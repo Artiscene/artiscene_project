@@ -6,11 +6,10 @@
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <div id="homepage-header-block" class="header-block container-fluid">
-        <h1 class="main-header">ARTiScene</h1>
-        <h2 class="sub-header"> A community for Artists and Art Lovers</h2>
+            <h1 class="main-header">ARTiScene</h1>
+            <h2 class="sub-header"> A community for Artists and Art Lovers</h2>
         <button class="btn btn-lg btn-custom" onclick="location.href='/gallery'">Gallery</button>
-        <button id="random-portfolio-btn" class="btn btn-lg btn-custom">Random Portfolio</button>
-        <a th:href="@{/portfolio}"></a>
+        <a th:href="@{/home/random}" id="random-portfolio-btn" class="btn btn-lg btn-custom">Random</a>
     </div> <!-- end of homepage-header-block -->
 
     <div id="featured-artwork-div" class="homepage-header">
