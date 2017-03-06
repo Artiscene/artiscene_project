@@ -10,10 +10,12 @@
         <!-- Modal content-->
         <div class="modal-content">
             <form class="form-horizontal" th:action="@{/portfolio}" method="POST" th:object="${project}" enctype="multipart/form-data">
-            <div class="modal-header">
-                <h4 class="modal-title">Upload Artwork</h4>
-            </div> <!-- end of modal header -->
-            <div class="modal-body">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Upload Artwork</h4>
+                </div> <!-- end of modal header -->
+
+                <div class="modal-body">
                     <!-- Artwork Title -->
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="artwork-title">Title <span class="required-field">*</span> </label>
@@ -52,8 +54,10 @@
                     </div> <!-- end of tag selection -->
                     <!-- For Sale -->
                     <div class="checkbox">
-                        <label class="control-label col-sm-4">For Sale </label>
+                        <label>
                         <input id="for-sale-checkbox" type="checkbox" value="for-sale" />
+                        For Sale
+                        </label>
                     </div> <!-- end of for sale checkbox-->
                     <!-- Price if For Sale is checked -->
                     <div id="price-div" class="form-group">
@@ -66,16 +70,16 @@
                         <img id="output"/>
                         <p class="error-text">Max file size is 10MB</p>
                     </div><!-- end of upload file -->
-            </div> <!-- end of modal body -->
-            <div class="modal-footer">
-                <input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />
-                <input type="hidden" th:attr="name=${_csrf.parameterName}, value=${_csrf.token}" />
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div> <!-- end of modal footer -->
-                </form>
-        </div> <!-- end of modal content -->
-        <!--</form>-->
+                </div> <!-- end of modal body -->
 
+                <div class="modal-footer">
+                    <input id="upload-btn" class="btn btn-success" type="submit" value=" Upload " />
+                    <input type="hidden" th:attr="name=${_csrf.parameterName}, value=${_csrf.token}" />
+                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                </div> <!-- end of modal footer -->
+
+            </form>
+        </div> <!-- end of modal content -->
     </div> <!-- end of modal dialog -->
 </div> <!-- end of modal-->
 </body>
