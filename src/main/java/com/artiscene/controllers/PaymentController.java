@@ -7,6 +7,7 @@ import com.stripe.Stripe;
 import com.stripe.exception.*;
 import com.stripe.model.Charge;
 import com.stripe.model.Transfer;
+import com.stripe.net.RequestOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,21 +59,28 @@ public class PaymentController {
         chargeParams.put("amount", (int) project.getPrice() * 100); //project price
         chargeParams.put("currency", "usd");
         chargeParams.put("source", token);
-        chargeParams.put("transfer_group", "ORDER42");
-        Charge charge = Charge.create(chargeParams);
+        chargeParams.put("application_fee", 123);
+        //chargeParams.put("transfer_group", "ORDER42");
+        RequestOptions requestOptions = RequestOptions
+            .builder()
+            .setStripeAccount(user.getStripeUserId())
+            .build()
+        ;
+
+        Charge charge = Charge.create(chargeParams, requestOptions);
 
 // Create a Transfer to the connected account (later): needs the artists stripe token
-        Map<String, Object> transferParams = new HashMap<>();
-        transferParams.put("amount", (int) project.getPrice() * 100 - 200);
-        transferParams.put("currency", "usd");
-        transferParams.put("destination", user.getStripeUserId()); // return the token
-        transferParams.put("transfer_group", "ORDER42");
- //future nav to thank you for payment page.
-        try {
-            Transfer transfer = Transfer.create(transferParams);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+//        Map<String, Object> transferParams = new HashMap<>();
+//        transferParams.put("amount", (int) project.getPrice() * 100 - 200);
+//        transferParams.put("currency", "usd");
+//        transferParams.put("destination", user.getStripeUserId()); // return the token
+//        transferParams.put("transfer_group", "ORDER42");
+// //future nav to thank you for payment page.
+//        try {
+//            Transfer transfer = Transfer.create(transferParams);
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
 
         return "redirect:/gallery";
     }
