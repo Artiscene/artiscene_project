@@ -20,7 +20,7 @@
     });
 
     $("#tag-select").select2({
-            theme: "bootstrap"
+            //theme: "bootstrap"
         });
 
 })();
