@@ -25,7 +25,7 @@ public class Project {
 
     @Column(name="for_sale")
     @Type(type="org.hibernate.type.NumericBooleanType")
-    private Boolean forSale;
+    private Boolean forSale = false;
 
 
     @Column(nullable = false, length = 100)
