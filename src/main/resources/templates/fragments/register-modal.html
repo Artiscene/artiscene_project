@@ -20,19 +20,19 @@
                     <div class="form-group">
                         <label for="username">Username<span class="required-field"> * </span></label>
                         <input type="text" name="username" id="username" class="form-control" th:field="*{username}" />
-                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
+                        <p class="error-text" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
                     </div>
                     <!-- Email -->
                     <div class="form-group">
                         <label for="email">Email<span class="required-field"> * </span></label>
                         <input name="email" id="email" class="form-control" th:field="*{email}"/>
-                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+                        <p class="error-text" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
                     </div>
                     <!-- Password -->
                     <div class="form-group">
                         <label for="password">Password<span class="required-field"> * </span></label>
                         <input name="password" type="password" id="password" class="form-control" th:field="*{password}"/>
-                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+                        <p class="error-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
                     </div>
                     <!--Confirm Password -->
                     <div class="form-group">

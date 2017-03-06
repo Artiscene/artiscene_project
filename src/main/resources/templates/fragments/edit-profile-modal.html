@@ -10,50 +10,52 @@
 <div th:fragment="edit-profile-modal" class="modal fade" id="edit-profile-modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Edit Profile</h4>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/profile/edit}" method="POST" th:object="${loggedInUser}" enctype="multipart/form-data">
-                    <!-- Email -->
+
+            <form th:action="@{/profile/edit}" method="POST" th:object="${loggedInUser}" enctype="multipart/form-data">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Edit Profile</h4>
+                </div> <!-- end of modal-header -->
+
+                <div class="modal-body">
+                        <!-- Email -->
                     <div class="form-group">
                         <label for="edit-email">Email Address </label>
                         <input  type="text" name="edit-email" id="edit-email" class="form-control" th:field="*{email}" />
                         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
-                    </div>
+                    </div> <!-- end of email-->
                     <!-- Location -->
                     <div class="form-group">
                         <label for="location">Location</label>
                         <input name="location" id="location" class="form-control" th:field="*{location}"/>
                         <p th:if="${#fields.hasErrors('location')}" th:errors="*{location}" />
-                    </div>
+                    </div> <!-- end of location-->
                     <!-- Interests -->
                     <div class="form-group">
                         <label for="edit-interests">Interests</label>
                         <textarea name="edit-interests" id="edit-interests" class="form-control" th:field="*{interests}"></textarea>
                         <p th:if="${#fields.hasErrors('interests')}" th:errors="*{interests}" />
-                    </div>
+                    </div><!-- end of interests-->
                     <!-- About Me -->
                     <div class="form-group">
                         <label for="edit-bio">About Me</label>
                         <textarea class="form-control" name="edit-bio" id="edit-bio" th:field="*{bio}"></textarea>
-                    </div>
+                    </div><!-- end of about-me -->
                     <!-- Profile Picture -->
                     <div class="form-group">
                         <label for="profile_pic" class="col-sm-10" >Upload <span class="required-field">*</span></label>
                         <input id="profile_pic" name="profile_pic" type="file" accept="image/*" onchange="loadFile(event)" />
                         <img id="output"/>
-                    </div>
+                    </div><!--end of profile picture -->
+                </div> <!-- end of modal body -->
+
+                <div class="modal-footer">
                     <input type="hidden" th:field="*{id}" />
                     <button class="btn" type="submit">Save Changes</button>
-                    <!--<input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}" />-->
-                </form>
-            </div> <!-- end of modal body -->
-            <div class="modal-footer">
-            <a href="#" data-dismiss="modal" class="btn">Close</a>
-            <!--<button class="btn btn-primary" type="submit">Save Changes</button>-->
-            </div><!-- end of modal footer -->
+                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                </div><!-- end of modal footer -->
+            </form>
         </div><!-- end of modal content -->
     </div><!-- end of modal dialog -->
 </div><!-- end of register modal -->
