@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.swing.*;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -73,8 +74,12 @@ public class HomeController {
     }
 
 
-//    @GetMapping("/home/random")
-//    public @ResponseBody
+    @GetMapping("/home/random")
+    public String currentUsers(){
+        User user = repository.randomUser();
+        return "redirect:/portfolio/"+ user.getId();
+
+    }
 
 }
 

@@ -12,15 +12,16 @@
         '../img/block-background.jpg',
         '../img/astronaut-containers.jpeg',
         '../img/female-sculpture.jpeg',
-        '../img/paint-palette.jpg',
-        '../img/painting.jpeg',
-        '../img/streetart-nightwalking.jpeg'
+        '../img/art-viewing.jpeg',
+        '../img/model-hand.jpeg',
+        '../img/hand-dust-flour-chalk.jpg'
     ];
 
     var randomNumber = Math.floor(Math.random() * images.length);
     var backgroundImage = 'url(' + images[randomNumber] + ')';
 
     $('#homepage-header-block').css('background-image', backgroundImage);
+
 
     // populate featured art div --------------------------------------------------------
 
@@ -38,22 +39,6 @@
         }
 
         $('#homepage-load-artwork').html(html);
-    });
-
-    // random profile button -----------------------------------------------------------
-
-    var usersRequest = $.ajax({
-        url: '/portfolio.json'
-    });
-
-    usersRequest.done(function (users){
-
-        var i;
-        var randomPortfolio = Math.floor(Math.random() * users.length);
-
-        $('#random-portfolio-btn').onclick(function(){
-
-        });
     });
 
 })();
