@@ -122,8 +122,6 @@ public class ProjectController {
 
     @PostMapping("/project/delete")
     public String deleteProject(@ModelAttribute Project project, Model model ){
-
-
         projectDao.delete(service.findOneProject(project.getId()));
         return "redirect:/portfolio";
     }
