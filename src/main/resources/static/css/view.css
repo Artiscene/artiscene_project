@@ -46,5 +46,10 @@
 }
 
 #view-tags > span {
-    color: #33ba43;
+    color: #888888;
+}
+
+#view-btns {
+    margin: auto 0;
+    padding: 15px;
 }

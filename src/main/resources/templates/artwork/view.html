@@ -28,11 +28,13 @@
     </div><!-- end of view tags div -->
 </div> <!-- end of artwork info -->
 
-<form th:if="${showDeleteControls}" th:method="POST" th:action="@{/project/delete}">
-    <input type="hidden" name="id" th:value="${project.id}" />
-    <!--<a class="btn btn-primary" th:href="@{'/project/'+ ${id} +'/edit' }">Edit</a>-->
-    <button class="btn deep-orange darken-4">Delete</button>
-</form>
+<div id="view-btns">
+    <form th:if="${showDeleteControls}" th:method="POST" th:action="@{/project/delete}">
+        <input type="hidden" name="id" th:value="${project.id}" />
+        <!--<a class="btn btn-primary" th:href="@{'/project/'+ ${id} +'/edit' }">Edit</a>-->
+        <button class="btn deep-orange darken-4">Delete</button>
+    </form>
+</div>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script
