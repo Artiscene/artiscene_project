@@ -369,9 +369,20 @@ a:hover {
     font-size: 4em;
 }
 
+#search-by-tags {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    size: 16px;
+}
+
 #gallery-search-div {
     margin: 0 auto;
     width: 80%;
+}
+
+#gallery-search-btn {
+    max-height: 32px;
+    margin-left: 2px;
 }
 
 #load-projects {
@@ -410,51 +421,47 @@ a:hover {
 
 /* ----------------------------------------------- Form styling */
 
-.form-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    background-color: rgba(0, 0, 0, .8);
-    margin: 0 auto;
-}
+/*.form-body {*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*width: 90%;*/
+    /*background-color: rgba(0, 0, 0, .8);*/
+    /*margin: 0 auto;*/
+/*}*/
 
-.form-header {
-    text-align: center;
-    color: white;
-}
+/*.form-header {*/
+    /*text-align: center;*/
+    /*color: white;*/
+/*}*/
 
-.form-header > .header {
-    letter-spacing: 3px;
-}
+/*.form-header > .header {*/
+    /*letter-spacing: 3px;*/
+/*}*/
 
-#upload-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    background-color: black;
-    border: 1px dashed white;
-    padding: 20px;
-    width: 80%;
-}
+/*#upload-div {*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*font-family: 'Open Sans', sans-serif;*/
+    /*color: white;*/
+    /*background-color: black;*/
+    /*border: 1px dashed white;*/
+    /*padding: 20px;*/
+    /*width: 80%;*/
+/*}*/
 
-.required-field {
-    color: red;
-}
+/*.buttons > .btn {*/
+    /*padding: 10px;*/
+    /*font-family: 'Cabin Sketch', cursive;*/
+    /*margin:10px;*/
+/*}*/
 
-.buttons > .btn {
-    padding: 10px;
-    font-family: 'Cabin Sketch', cursive;
-    margin:10px;
-}
-
-#price-div {
-    display: none;
-}
+/*#price-div {*/
+    /*display: none;*/
+/*}*/
 
 /* ----------------------------------------------- Modal Styling */
 
@@ -494,6 +501,11 @@ a:hover {
     font-size: 16px;
     color: white;
 }
+
+.required-field {
+    color: red;
+}
+
 
 #category-group {
     display: flex;
@@ -545,3 +557,4 @@ a:hover {
 #tag-required {
     margin-left: 90px;
 }
+
