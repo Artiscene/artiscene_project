@@ -19,15 +19,15 @@
 }
 
 #btn-block {
-    background:  rgba(31, 134, 116, .5); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right,  rgba(31, 134, 116, .5), rgba(56, 134, 89, .5)); /* Standard syntax */
+    background-color: #598B2C;
 }
 
 #btn-div {
     margin: 10px;
+}
+
+#btn-div > form {
+    display:inline;
 }
 
 #view-title {
@@ -46,5 +46,9 @@
 }
 
 #view-tags > span {
-    color: #33ba43;
+    color: #888888;
+}
+
+#view-btns > form > button {
+    margin: 20px 2px 20px 5px;
 }

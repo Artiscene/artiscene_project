@@ -26,10 +26,10 @@
                 <img th:if="${loggedInUser.profile_pic}"  class="profile-pic" th:src="${'/uploads/' + loggedInUser.profile_pic}"  />
                 <img th:if="!${loggedInUser.profile_pic}"  class="profile-pic" src="/img/default.jpeg" />
             <h3 class="sub-header" th:text="${loggedInUser.username}"></h3>
-            <h4>Location</h4>
-            <h5 th:if="${loggedInUser.location}" th:text="${loggedInUser.location}"></h5>
-            <h5 th:if="!${loggedInUser.location}">CLick "Edit Profile" and tell us where you are from!</h5>
-            <h6><span th:text="${loggedInUser.email}"></span></h6>
+            <h4 class="info-text">Location</h4>
+            <h5 class="info-text" th:if="${loggedInUser.location}" th:text="${loggedInUser.location}"></h5>
+            <h5 class="info-text" th:if="!${loggedInUser.location}">CLick "Edit Profile" and tell us where you are from!</h5>
+            <h6><span class="info-text" th:text="${loggedInUser.email}"></span></h6>
             <h6 id="interest-header"><span th:text="${loggedInUser.username}"></span>'s Interests</h6>
             <div id="profile-interest">
                 <p th:if="${loggedInUser.interests}"   th:text="${loggedInUser.interests}"></p>
