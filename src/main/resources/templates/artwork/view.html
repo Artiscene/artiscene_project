@@ -6,10 +6,12 @@
 
 <div id="btn-block" class="container-fluid">
     <div class="text-center" id="btn-div">
-        <button type="button" VALUE="Back" class="btn btn-primary" onClick="history.go(-1);return true;">Go Back</button>
-        <form th:action="${'/portfolio/' + project.user.id}">
-        <button class="btn btn-custom"  >Visit <span th:text="${project.user.username}"></span>'s Portfolio </button>
+        <button type="button" VALUE="Back" class="btn btn-deault" onClick="history.go(-1);return true;">Go Back</button>
+
+        <form id="visit-user-btn" th:action="${'/portfolio/' + project.user.id}">
+            <button class="btn btn-default"  >Visit <span th:text="${project.user.username}"></span>'s Portfolio </button>
         </form>
+
     </div> <!-- end of btn-div -->
 </div> <!-- end of container -->
 
@@ -22,26 +24,39 @@
     <p><span id="view-medium" th:text="${project.medium}"></span></p>
     <p><span id="view-size" th:text="${project.size}"></span></p>
     <p><span id="view-date" th:text="${project.date}"></span></p>
+    <p><span th:if="!${project.forSale}">Not for Sale</span></p>
+    <p th:if="${project.forSale}">Price: $<span id="view-price" th:text="${project.price}"></span></p>
+    <p>Artwork uploaded by : <span id="view-artist-username" th:text="${project.user.username}"></span></p>
     <div id="view-tags-div" class="container">
         <h5>Tags for this piece:</h5>
         <p id="view-tags" th:each="tag:${project.tags}"> | <span th:text="${tag.name}"></span> | </p>
     </div><!-- end of view tags div -->
 </div> <!-- end of artwork info -->
 
-<form th:if="${showDeleteControls}" th:method="POST" th:action="@{/project/delete}">
-    <input type="hidden" name="id" th:value="${project.id}" />
-    <!--<a class="btn btn-primary" th:href="@{'/project/'+ ${id} +'/edit' }">Edit</a>-->
-    <button class="btn deep-orange darken-4">Delete</button>
-</form>
+<div id="view-btns" class="container-fluid">
+    <form class="text-center" th:if="${showDeleteControls}" th:method="POST" th:action="@{/project/delete}">
+        <input type="hidden" name="id" th:value="${project.id}" />
+        <!--<a class="btn btn-primary" th:href="@{'/project/'+ ${id} +'/edit' }">Edit</a>-->
+        <button class="btn deep-orange darken-4">Delete</button>
+    </form>
+</div> <!-- end of bottom buttons div -->
+
+
+<div th:replace="fragments/footer :: footer"></div>
+
+
 
 <script th:if="${project.forSale}"  type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
 <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<form  th:action="@{'/forms/payment'}" method="POST">
+
+<form th:if="${project.forSale}" th:action="@{'/forms/payment'}" method="POST">
+
     <script
             src="https://checkout.stripe.com/checkout.js"
             class="stripe-button"
