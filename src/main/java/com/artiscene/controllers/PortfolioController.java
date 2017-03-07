@@ -66,7 +66,8 @@ public class PortfolioController {
 
 
         //model.addAttribute("loggedInUser", user);
-        model.addAttribute("tags", tagDao.findAll());
+        model.addAttribute("tags", tagDao.findAllByOrderByName());
+
         return "portfolio";
     }
 

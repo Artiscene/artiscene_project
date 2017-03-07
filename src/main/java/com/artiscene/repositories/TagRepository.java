@@ -17,5 +17,7 @@ public interface TagRepository extends CrudRepository<Tag, Long>  {
     @Query("select p\n" +
             "from Project p join p.tags t\n" +
             "WHERE  t.id = ?1")
-    public List<Project> projectWithTag(long tagId);
+    List<Project> projectWithTag(long tagId);
+
+    List<Tag> findAllByOrderByName();
 }

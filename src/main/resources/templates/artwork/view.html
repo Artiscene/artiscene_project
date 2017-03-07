@@ -24,7 +24,7 @@
     <p><span id="view-date" th:text="${project.date}"></span></p>
     <div id="view-tags-div" class="container">
         <h5>Tags for this piece:</h5>
-        <p id="view-tags" th:each="tag:${project.tags}"> | <span th:text="${tag.tag_name}"></span> | </p>
+        <p id="view-tags" th:each="tag:${project.tags}"> | <span th:text="${tag.name}"></span> | </p>
     </div><!-- end of view tags div -->
 </div> <!-- end of artwork info -->
 
