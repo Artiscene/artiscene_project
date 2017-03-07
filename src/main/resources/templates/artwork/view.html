@@ -34,14 +34,14 @@
     <button class="btn deep-orange darken-4">Delete</button>
 </form>
 
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script th:if="${project.forSale}"  type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<form th:if="${project.forSale}" th:action="@{'/forms/payment'}" method="POST">
+<form  th:action="@{'/forms/payment'}" method="POST">
     <script
             src="https://checkout.stripe.com/checkout.js"
             class="stripe-button"

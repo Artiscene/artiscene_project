@@ -34,9 +34,6 @@ public class UserController {
     @Value("${file-upload-path}")
     private String uploadPath;
 
-    @Autowired
-    private UserSvc userSvc;
-
     private String uploadsFolder() throws IOException {
         return String.format("%s/%s", new File(".").getCanonicalPath(), uploadPath);
     }
@@ -46,7 +43,7 @@ public class UserController {
         System.out.println("edit fx");
         User userToUpdated = userRepository.findOne(user.getId());
 
-
+        //matches id's to see if user owns profile, if so edit controls show up
         int errorCount = validation.getErrorCount();
         if (errorCount > 0) {
             if (validation.hasFieldErrors("username")) errorCount--;
@@ -66,11 +63,14 @@ public class UserController {
         }
 
 
+
+       //create a new upload path if none is present
         if(!uploadedFile.getOriginalFilename().isEmpty()){
 
             String filename = uploadedFile.getOriginalFilename().replace(" ", "_").toLowerCase();
             String filepath = Paths.get(uploadPath, filename).toString();
             File destinationFile = new File(filepath);
+
 
             // Try to save it in the server
             try {
@@ -84,9 +84,7 @@ public class UserController {
             //Save it in the DB
             userToUpdated.setProfile_pic(filename);
         }
-
-            //User loggedInUser = userSvc.loggedInUser();
-            // user.setUser(userRepository.findOne(user.getId()));
+            //updates email, bio, location and interests with edit profile button
             userToUpdated.setEmail(user.getEmail());
             userToUpdated.setBio(user.getBio());
             userToUpdated.setLocation(user.getLocation());
