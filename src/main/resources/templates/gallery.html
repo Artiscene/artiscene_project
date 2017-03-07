@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="tag-select">Search by tag</label>
                 <select id="tag-select" class="form-control" multiple="multiple" name="tags">
-                    <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.tag_name}" ></option>
+                    <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.name}" ></option>
                 </select>
             </div>
             <div class="input-group-btn">
