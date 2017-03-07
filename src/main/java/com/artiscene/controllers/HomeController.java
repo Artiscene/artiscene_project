@@ -42,11 +42,6 @@ public class HomeController {
         return "home";
     }
 
-//    @GetMapping("/register")
-//    public String registerPage(Model model) {
-//        model.addAttribute("user", new User());
-//        return "forms/register";
-//    }
 
     @PostMapping("/register")
     public String registerUser(@Valid User user, Errors validation, Model model, @RequestParam(name="password_confirm") String passwordConfirmation) {

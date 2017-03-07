@@ -29,7 +29,7 @@ public class FormsController {
     }
 
     @GetMapping("/login")
-    public String loginPage(Model model) {
+    public String loginPage() {
       
         return "forms/login";
     }

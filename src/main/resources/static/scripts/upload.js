@@ -20,7 +20,7 @@
     });
 
     $("#tag-select").select2({
-            theme: "bootstrap"
+            //theme: "bootstrap"
         });
 
     $(".select2-selection").css("width", "400px");
