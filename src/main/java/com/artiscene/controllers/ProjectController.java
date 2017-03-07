@@ -51,7 +51,7 @@ public class ProjectController {
     public String showAllProjects(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("projects", Collections.emptyList());
-        model.addAttribute("tags", tagDao.findAll());
+        model.addAttribute("tags", tagDao.findAllByOrderByName());
         return "gallery";
     }
 
