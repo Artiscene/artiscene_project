@@ -9,16 +9,23 @@
     <form th:action="@{/gallery}" method="post">
         <div id="gallery-search-div" class="input-group">
             <div class="form-group">
-                <label class="control-label col-sm-2" for="tag-select">Search by tag</label>
-                <select id="tag-select" class="form-control" multiple="multiple" name="tags">
-                    <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.name}" ></option>
-                </select>
+
+                <label id="search-by-tags" class="control-label col-sm-2" for="tag-select">Search by tag</label>
+                <div class="row">
+                    <select id="tag-select" class="form-control" multiple="multiple" name="tags" style="width: 80%">
+                        <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.tag_name}" ></option>
+                    </select>
+                    <button id="gallery-search-btn" class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+
             </div>
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
-            </div>
+            <!--<div class="input-group-btn">-->
+                <!--<button class="btn btn-default" type="submit">-->
+                    <!--<i class="glyphicon glyphicon-search"></i>-->
+                <!--</button>-->
+            <!--</div>-->
         </div>
     </form>
 </div>
