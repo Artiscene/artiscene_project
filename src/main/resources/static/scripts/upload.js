@@ -19,7 +19,9 @@
         $("#upload-div").clone().appendTo('#upload-div');
     });
 
-    $('#tag-select').select2();
+    $("#tag-select").select2({
+            theme: "bootstrap"
+        });
 
     $(".select2-selection").css("width", "400px");
 })();
