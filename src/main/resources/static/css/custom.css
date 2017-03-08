@@ -286,12 +286,12 @@ a:hover {
     font-size: 2.5em;
 }
 
-profile-info-div > * {
-    max-width: 250px;
-}
-
 .info-text {
     font-family: 'Open Sans', sans-serif;
+}
+
+.bold-info-text {
+    font-weight: bold;
 }
 
 #location-and-email-div {
