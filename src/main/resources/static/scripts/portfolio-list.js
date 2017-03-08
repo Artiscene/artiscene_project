@@ -25,9 +25,10 @@
     });
 
     $(window).resize(function(){
-        If($(window).width()<500){
-            $('.fade').removeClass('fade');
+        if($(window).width()<500){
+            $('#profile-body').removeClass('row').addClass('container center-block');
         }
+
     });
 
 })();

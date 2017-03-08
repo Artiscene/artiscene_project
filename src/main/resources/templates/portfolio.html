@@ -22,10 +22,10 @@
     <!-- Profile Body -->
     <div id="profile-body" class="row">
 
-        <div id="profile-info-div" class="col-sm-4 offset-sm-4 col-md-3 pull-md-9">
+        <div id="profile-info-div" class="col-sm-3 pull-sm-9 col-xs-12">
             <!--Profile Picture-->
-            <img th:if="${loggedInUser.profile_pic}"  class="profile-pic" th:src="${'/uploads/' + loggedInUser.profile_pic}"  />
-            <img th:if="!${loggedInUser.profile_pic}"  class="profile-pic" src="/img/default.jpeg" />
+            <img th:if="${loggedInUser.profile_pic}"  class="profile-pic col-12" th:src="${'/uploads/' + loggedInUser.profile_pic}"  />
+            <img th:if="!${loggedInUser.profile_pic}"  class="profile-pic col-12" src="/img/default.jpeg" />
 
             <!--Username -->
             <h3 class="sub-header" th:text="${loggedInUser.username}"></h3>
@@ -53,7 +53,7 @@
             </div><!-- end of interests div -->
         </div> <!-- end of profile info div -->
 
-        <div id="profile-main-column" class="col-md-9 push-md-3 col-sm-12">
+        <div id="profile-main-column" class="col-sm-8 push-sm-4 col-xs-12">
             <div id="profile-about-me">
                 <h3 class="sub-header">About <span th:text="${loggedInUser.username}"></span></h3>
                 <p th:if="${loggedInUser.bio}" th:text="${loggedInUser.bio}"></p>

@@ -281,14 +281,18 @@ a:hover {
     font-size: 2.5em;
 }
 
+profile-info-div > * {
+    max-width: 250px;
+}
+
 .info-text {
     font-family: 'Open Sans', sans-serif;
 }
 
 #location-and-email-div {
     text-align: left;
-    position: relative;
     margin: auto 0;
+    max-width: 250px;
 }
 
 #interests-div {
@@ -313,7 +317,7 @@ a:hover {
     margin: 5px;
     box-sizing: border-box;
     float: left;
-    width:90%;
+    width:100%;
 }
 
 #profile-about-me{
@@ -357,12 +361,6 @@ a:hover {
     margin: 5px;
     padding: 10px;
     border: 1px solid #DCF0D0;
-}
-
-#output {
-    margin: 0 auto;
-    max-height: 200px;
-    max-width: 500px;
 }
 
 /* ----------------------------------------------- Gallery styling */
@@ -425,47 +423,47 @@ a:hover {
 
 /* ----------------------------------------------- Form styling */
 
-/*.form-body {*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*width: 90%;*/
-    /*background-color: rgba(0, 0, 0, .8);*/
-    /*margin: 0 auto;*/
-/*}*/
+.form-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    background-color: rgba(0, 0, 0, .8);
+    margin: 0 auto;
+}
 
-/*.form-header {*/
-    /*text-align: center;*/
-    /*color: white;*/
-/*}*/
+.form-header {
+    text-align: center;
+    color: white;
+}
 
-/*.form-header > .header {*/
-    /*letter-spacing: 3px;*/
-/*}*/
+.form-header > .header {
+    letter-spacing: 3px;
+}
 
-/*#upload-div {*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*font-family: 'Open Sans', sans-serif;*/
-    /*color: white;*/
-    /*background-color: black;*/
-    /*border: 1px dashed white;*/
-    /*padding: 20px;*/
-    /*width: 80%;*/
-/*}*/
+#upload-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    background-color: black;
+    border: 1px dashed white;
+    padding: 20px;
+    width: 80%;
+}
 
-/*.buttons > .btn {*/
-    /*padding: 10px;*/
-    /*font-family: 'Cabin Sketch', cursive;*/
-    /*margin:10px;*/
-/*}*/
+.buttons > .btn {
+    padding: 10px;
+    font-family: 'Cabin Sketch', cursive;
+    margin:10px;
+}
 
-/*#price-div {*/
-    /*display: none;*/
-/*}*/
+#price-div {
+    display: none;
+}
 
 /* ----------------------------------------------- Modal Styling */
 
@@ -544,7 +542,8 @@ a:hover {
 }
 
 #for-sale-div {
-    margin: 20px;
+    margin-left: 100px;
+    margin-bottom: 20px;
     padding: 5px;
 }
 
@@ -560,5 +559,12 @@ a:hover {
 
 #tag-required {
     margin-left: 90px;
+}
+
+#output {
+    margin: 0 auto;
+    max-height: 200px;
+    max-width: 500px;
+    padding: 10px;
 }
 
