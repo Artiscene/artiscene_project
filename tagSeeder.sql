@@ -1,3 +1,4 @@
+
 USE artiscene_db;
 
 INSERT into tags (tag_name) VALUES ("acrylic");
@@ -85,6 +86,9 @@ INSERT into tags (tag_name) VALUES ("tattoo");
 INSERT into tags (tag_name) VALUES ("body mod");
 INSERT into tags (tag_name) VALUES ("body paint");
 INSERT into tags (tag_name) VALUES ("mixed");
-
+INSERT into tags (tag_name) VALUES ("sculpture");
+INSERT into tags (tag_name) VALUES ("portrait");
+INSERT into tags (tag_name) VALUES ("painting");
+INSERT into tags (tag_name) VALUES ("3d");
 
 
