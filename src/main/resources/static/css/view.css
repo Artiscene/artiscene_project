@@ -52,3 +52,11 @@
 #view-btns > form > button {
     margin: 20px 2px 20px 5px;
 }
+
+#strip-button-form {
+    margin: 20px;
+}
+
+#buy-piece-text {
+    color: white;
+}

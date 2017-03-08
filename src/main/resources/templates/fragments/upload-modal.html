@@ -44,6 +44,7 @@
                             <input type="text" class="form-control" id="artwork-date" name="artwork-date" th:field="*{date}"/>
                         </div>
                     </div> <!-- end of artwork date -->
+
                     <!-- Tag Selection -->
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="tag-select">Choose tags</label>
@@ -54,20 +55,25 @@
                         </select>
                         <p class="error-text">* At least 1 tag required</p>
                     </div> <!-- end of tag selection -->
-                    <!-- For Sale -->
-                    <div class="checkbox">
-                        <label>
-                        <input id="for-sale-checkbox" type="checkbox" value="1" name="forSale" />
-                        For Sale
-                        </label>
-                    </div> <!-- end of for sale checkbox-->
-                    <!-- Price if For Sale is checked -->
-                    <div id="price-div" class="form-group">
-                        <label class="control-label col-sm-2 offset-sm-2" for="artwork-price">Price <span class="required-field">*</span></label>
-                        <input id="artwork-price" name="artwork-price" type="text" th:field="*{price}"/>
-                    </div><!-- end of artwork price -->
+
+                    <div id="for-sale-div" class="col-md- col-md-offset-4">
+                        <!-- For Sale -->
+                        <div class="checkbox">
+                            <label id="for-sale-label">
+                            <input id="for-sale-checkbox" class="checkbox" type="checkbox" value="1" name="forSale" />
+                                For Sale
+                            </label>
+                        </div> <!-- end of for sale checkbox-->
+                        <!-- Price if For Sale is checked -->
+                        <div id="price-div" class="form-group">
+                            <label class="control-label col-sm-2 offset-sm-2" for="artwork-price">Price <span class="required-field">*</span> $</label>
+                            <input id="artwork-price" name="artwork-price" type="text" th:field="*{price}"/>
+                        </div><!-- end of artwork price -->
+                    </div><!-- end of for sale div -->
+
+                    <!-- Upload File -->
                     <div class="form-group">
-                        <label for="file" class="col-sm-10" >Upload <span class="required-field">*</span></label>
+                        <label for="file" class="control-label col-sm-2" >Upload <span class="required-field">*</span></label>
                         <input id="file" name="file" type="file" accept="image/*" onchange="loadFile(event)" />
                         <img id="output"/>
                         <p id="max-file" class="error-text">* Max file size is 10MB</p>
@@ -84,5 +90,6 @@
         </div> <!-- end of modal content -->
     </div> <!-- end of modal dialog -->
 </div> <!-- end of modal-->
+
 </body>
 </html>
