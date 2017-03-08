@@ -252,6 +252,11 @@ a:hover {
 
 }
 
+#portfolio-stripe-button {
+    float: right;
+    margin: 3px;
+}
+
 #profile-body{
     width: 100vw;
     padding: 10px;
