@@ -277,13 +277,23 @@ a:hover {
 
 #profile-info-div > .sub-header {
     font: 10vw 'Cabin Sketch', cursive;
-    color: #DCF0D0;
-    text-shadow: 1px 1px 1px black;
-    font-size: 30px;
+    color: white;
+    font-size: 2.5em;
 }
 
 .info-text {
     font-family: 'Open Sans', sans-serif;
+}
+
+#location-and-email-div {
+    text-align: left;
+    position: relative;
+    margin: auto 0;
+}
+
+#interests-div {
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
 }
 
 #interest-header {
@@ -395,12 +405,6 @@ a:hover {
     margin: 10px;
     padding: 3px;
 }
-
-/*#load-projects > div > h2 {*/
-    /*font-family: 'Open Sans', sans-serif;*/
-    /*color: white;*/
-    /*font-size: 20px;*/
-/*}*/
 
 #load-projects > div > a > img {
     max-height: 200px;
