@@ -12,6 +12,9 @@
         <div th:if="${showEditControls}">
             <button id="upload-artwork-btn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#upload-modal">Upload Artwork</button>
             <button id="profile-edit-btn" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit-profile-modal">Edit Profile</button>
+            <a id="portfolio-stripe-button" class="btn btn-primary btn-sm" href="https://connect.stripe.com/oauth/authorize?response_type=code&amp;client_id=ca_AAoE51ADyJNRUZfkhjed88sHXNfP79F3&amp;scope=read_write">
+                Connect with Stripe
+            </a>
         </div>
     </div><!-- end of portfolio header block -->
 
