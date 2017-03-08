@@ -29,7 +29,7 @@
     <p>Artwork uploaded by : <span id="view-artist-username" th:text="${project.user.username}"></span></p>
     <div id="view-tags-div" class="container">
         <h5>Tags for this piece:</h5>
-        <p id="view-tags" th:each="tag:${project.tags}"> | <span th:text="${tag.tag_name}"></span> | </p>
+        <p id="view-tags" th:each="tag:${project.tags}"> | <span th:text="${tag.name}"></span> | </p>
     </div><!-- end of view tags div -->
 </div> <!-- end of artwork info -->
 
@@ -45,22 +45,25 @@
 <div th:replace="fragments/footer :: footer"></div>
 
 
-<!-- STRIPE API -->
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+<script th:if="${project.forSale}"  type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
 <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+
 <form th:if="${project.forSale}" th:action="@{'/forms/payment'}" method="POST">
+
     <script
             src="https://checkout.stripe.com/checkout.js"
             class="stripe-button"
             data-key="pk_test_JKbmxAoOv4rgoznSpQ9RMgjF"
             data-name="Payment"
             data-description="$${project.price}"
-            th:attr="data-description=${'$' + project.price},data-amount=${project.price * 100}">
+            th:attr="data-description=${'$' + #numbers.formatDecimal(project.price, 0, 'COMMA', 2, 'POINT')},data-amount=${project.price * 100}">
     </script>
     <input type="hidden" name="projectId" th:value="${project.id}"/>
 </form>

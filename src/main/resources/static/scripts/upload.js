@@ -21,7 +21,7 @@
 
     $("#tag-select").select2();
 
-    $(".select2-selection").css("width", "400px");
+        $(".select2-selection").css("width", "400px");
 
     $(window).resize(function() {
         if ($(window).width() < 500) {

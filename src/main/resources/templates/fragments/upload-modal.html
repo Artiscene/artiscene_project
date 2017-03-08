@@ -49,7 +49,9 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="tag-select">Choose tags</label>
                         <select id="tag-select" class="form-control" multiple="multiple" name="tags">
-                            <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.tag_name}" ></option>
+                            <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.name}" >
+
+                            </option>
                         </select>
                         <p class="error-text">* At least 1 tag required</p>
                     </div> <!-- end of tag selection -->
