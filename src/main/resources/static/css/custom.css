@@ -417,13 +417,30 @@ profile-info-div > * {
     background-color: black;
 }
 
-#load-projects > div > div > a > img {
+#load-projects > div > a > img {
     max-height: 200px;
     margin: 0 auto;
     padding: 10px;
     border: 1px solid #DCF0D0;
     background-color: black;
 }
+
+.gallery-image  {
+    max-height: 200px;
+    margin: 4px;
+    padding: 10px;
+    border: 1px solid #DCF0D0;
+    background-color: black;
+}
+
+#gallery-load-artwork > div > div > a > img {
+    max-height: 200px;
+    margin: 4px;
+    padding: 10px;
+    border: 1px solid #DCF0D0;
+    background-color: black;
+}
+
 
 
 /* ----------------------------------------------- Form styling */
