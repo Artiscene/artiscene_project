@@ -32,7 +32,7 @@
 
 <div id="gallery-body">
 
-    <div class="artwork-div" id="load-projects">
+    <div class="artwork-div" id="gallery-load-artwork">
         <div th:each="project: ${projects}">
             <div>
                 <a th:href="${'/view/' + project.id}">
@@ -46,7 +46,7 @@
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>
-<script src="/scripts/project-list.js"></script>
+<script src="/scripts/gallery.js"></script>
 <script>$("#tag-select").select2({
     //theme: "bootstrap"
 });</script>
