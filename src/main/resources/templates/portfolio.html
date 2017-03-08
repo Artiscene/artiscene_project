@@ -35,12 +35,12 @@
 
             <div id="location-and-email-div" class="container">
                 <!-- Location -->
-                <h4 class="info-text">Location :
+                <h5 class="info-text">Location :
                     <span class="info-text" th:if="${loggedInUser.location}" th:text="${loggedInUser.location}"></span>
                     <span class="info-text" th:if="!${loggedInUser.location}">CLick "Edit Profile" and tell us where you are from!</span>
-                </h4>
+                </h5>
 
-                <h5 class="info-text" th:if="!${loggedInUser.location}">CLick "Edit Profile" and tell us where you are from!</h5>
+                <p class="info-text" th:if="!${loggedInUser.location}">CLick "Edit Profile" and tell us where you are from!</p>
 
                 <!-- Email -->
                 <h5 class="info-text">Email : <span class="info-text" th:text="${loggedInUser.email}"></span></h5>
