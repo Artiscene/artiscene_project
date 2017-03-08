@@ -64,4 +64,11 @@
         $('#homepage-load-artwork').html(html);
     });
 
+    //-------------------------------------
+
+    // $("#register-button") .click(function(event){
+    //     if()
+    //     event.preventDefault();
+    // });
+
 })();

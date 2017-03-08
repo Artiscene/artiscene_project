@@ -59,7 +59,7 @@ public class PaymentController {
         chargeParams.put("amount", (int) project.getPrice() * 100); //project price
         chargeParams.put("currency", "usd");
         chargeParams.put("source", token);
-        chargeParams.put("application_fee", 123);
+        //chargeParams.put("application_fee", 123);
         //chargeParams.put("transfer_group", "ORDER42");
         RequestOptions requestOptions = RequestOptions
             .builder()

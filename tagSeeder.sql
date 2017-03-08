@@ -1,3 +1,4 @@
+
 USE artiscene_db;
 
 INSERT into tags (tag_name) VALUES ("acrylic");
@@ -6,7 +7,6 @@ INSERT into tags (tag_name) VALUES ("charcoal");
 INSERT into tags (tag_name) VALUES ("ink");
 INSERT into tags (tag_name) VALUES ("color");
 INSERT into tags (tag_name) VALUES ("black and white");
-INSERT into tags (tag_name) VALUES ("mixed");
 INSERT into tags (tag_name) VALUES ("prints");
 INSERT into tags (tag_name) VALUES ("woodcut");
 INSERT into tags (tag_name) VALUES ("graphite");
@@ -69,7 +69,6 @@ INSERT into tags (tag_name) VALUES ("realism");
 INSERT into tags (tag_name) VALUES ("abstract");
 INSERT into tags (tag_name) VALUES ("direct observation");
 INSERT into tags (tag_name) VALUES ("surrealism");
-INSERT into tags (tag_name) VALUES ("mateur");
 INSERT into tags (tag_name) VALUES ("political");
 INSERT into tags (tag_name) VALUES ("calligraphy");
 INSERT into tags (tag_name) VALUES ("illustration");
@@ -85,6 +84,10 @@ INSERT into tags (tag_name) VALUES ("tattoo");
 INSERT into tags (tag_name) VALUES ("body mod");
 INSERT into tags (tag_name) VALUES ("body paint");
 INSERT into tags (tag_name) VALUES ("mixed");
+INSERT into tags (tag_name) VALUES ("sculpture");
+INSERT into tags (tag_name) VALUES ("portrait");
+INSERT into tags (tag_name) VALUES ("painting");
+INSERT into tags (tag_name) VALUES ("3d");
 
 
 
