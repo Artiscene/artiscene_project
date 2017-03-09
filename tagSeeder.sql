@@ -88,6 +88,6 @@ INSERT into tags (tag_name) VALUES ("sculpture");
 INSERT into tags (tag_name) VALUES ("portrait");
 INSERT into tags (tag_name) VALUES ("painting");
 INSERT into tags (tag_name) VALUES ("3d");
-
+INSERT into tags (tag_name) VALUES ("digital");
 
 
