@@ -32,6 +32,7 @@
                     <div class="form-group">
                         <label for="password">Password<span class="required-field"> * </span></label>
                         <input name="password" type="password" id="password" class="form-control" th:field="*{password}"/>
+                        <p class="error-text">Minimum of 8 characters</p>
                         <p class="error-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
                     </div>
                     <!--Confirm Password -->
