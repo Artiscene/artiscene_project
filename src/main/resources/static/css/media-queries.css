@@ -1,5 +1,14 @@
 @media only screen and (max-width: 768px) {
 
+    .main-header {
+        font-size: 18vw;
+    }
+
+    .homepage-header > .header {
+        font-size: 20px;
+        text-align: center;
+    }
+
     #gallery-search-btn {
         display: inline;
     }
