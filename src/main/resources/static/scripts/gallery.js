@@ -1,32 +1,19 @@
 /**
- * Created by HKoehler on 2/25/17.
+ * Created by Brian on 3/8/17.
  */
 (function(){
     'use strict';
 
     console.log('JS is Working!');
 
+    var html = $('#gallery-load-artwork').html().trim();
+    if (html !== '') {
+        return;
+    }
 
-    // randomize background image -------------------------------------------------------
-    var images = [
-        '../img/block-background.jpg',
-        '../img/astronaut-containers.jpeg',
-        '../img/female-sculpture.jpeg',
-        '../img/art-viewing.jpeg',
-        '../img/model-hand.jpeg',
-        '../img/hand-dust-flour-chalk.jpg'
-    ];
-
-    var randomNumber = Math.floor(Math.random() * images.length);
-    var backgroundImage = 'url(' + images[randomNumber] + ')';
-
-    $('#homepage-header-block').css('background-image', backgroundImage);
-
-
-    // populate featured art div --------------------------------------------------------
 
     var request = $.ajax({
-        url: '/home.json'
+        url: '/gallery.json'
     });
 
     request.done(function (project){
@@ -53,15 +40,15 @@
         var x = shuffle(project);
         console.log(x);
 
-        for ( var i = 0; i < 12; i++) {
+        for ( var i = 0; i < x.length; i++) {
 
             html += '<div>'
-                + '<a href="/view/' + project[i].id + '"><img src="/uploads/' + project[i].img_url + '" alt="No image"/></a>'
+                + '<a href="/view/' + project[i].id + '"><img class = "gallery-image" src="/uploads/' + project[i].img_url + '" alt="No image"/></a>'
                 + '</div>';
 
         }
 
-        $('#homepage-load-artwork').html(html);
+        $('#gallery-load-artwork').html(html);
     });
 
     //-------------------------------------

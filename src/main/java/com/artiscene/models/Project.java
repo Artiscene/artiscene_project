@@ -51,7 +51,7 @@ public class Project {
     @JsonManagedReference
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(
             name="tag_projects",
             joinColumns={@JoinColumn(name="project_id")},
